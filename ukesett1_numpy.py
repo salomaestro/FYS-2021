@@ -68,3 +68,39 @@ vec1 = np.random.randint(0, 2, 3)
 vec2 = np.random.randint(0, 2, 3)
 # print(vec1 * vec2)
 # 25
+Matrix = np.arange(10, 22).reshape(3, 4)
+print(Matrix)
+# 26
+def nrowsandcols(mat):
+	"""
+	Find the number of rows and columns of given matrix
+	Args:
+		param: (ndarray) - matrix
+	Returns:
+		(int, int) - rows, cols
+	"""
+	return len(mat), len(mat[0])
+
+# print(nrowsandcols(Matrix))
+# 27
+# print(np.eye(3))
+# 28
+onematrix = np.ones((10, 10))
+onematrix[1:-1, 1:-1] = 0
+# print(onematrix)
+# 29
+diagonalMatrix = np.diag([1, 2, 3, 4, 5])
+# print(diagonalMatrix)
+# 30
+staggMatrix = np.zeros([4, 4])
+staggMatrix[::2, 1::2] = 1
+staggMatrix[1::2, ::2] = 1
+print(staggMatrix)
+
+
+
+
+
+
+
+
