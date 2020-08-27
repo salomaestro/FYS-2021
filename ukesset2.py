@@ -68,9 +68,6 @@ def power_iteration_v2(matrix):
 
 	return v_new, ev_new, iterations
 
-print(power_iteration_v2(Pt))
-
-
-
-
-
+if __name__ == "__main__":
+	print(power_iteration(Pt, 20))
+	print(power_iteration_v2(Pt))
