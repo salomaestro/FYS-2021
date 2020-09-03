@@ -120,7 +120,7 @@ def ModifiedPageRank(matrix, alpha=0.85):
 	G = alpha * S + (1 - alpha) * E
 
 	# Now the ranking begins
-	return PageRank(G)
+	return PageRank(G.T)
 
 def main():
 	return None
