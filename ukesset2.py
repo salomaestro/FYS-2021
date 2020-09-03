@@ -1,4 +1,5 @@
 import numpy as np
+from ML_functions import power_iteration, power_iteration_v2, power_iteration_v3, PageRank, ModifiedPageRank
 
 Pt = np.transpose(np.array(
 	[[.03, .19, .27, .51], 
@@ -7,67 +8,43 @@ Pt = np.transpose(np.array(
 	[.22, .34, .08, .36]]
 	))
 
-def power_iteration(matrix, N_sim):
-	"""
-	Iterates like the power iteration method to converge on the stationary probabilities of the transitionmatrix
+# (a)
+Amatrix = np.array(
+	[[0, 0, 1, .5], 
+	[1/3, 0, 0, 0], 
+	[1/3, .5, 0, .5], 
+	[1/3, .5, 0, 0]])
+#(b)
+Bmatrix = np.array(
+	[[0, 1, 0, 0, 0],
+	[1, 0, 0, 0, 0],
+	[0, 0, 0, .5, .5],
+	[0, 0, 1, 0, 0],
+	[0, 0, 0, .5, .5]])
 
-	Args:
-		param1: (ndarray) - Transition matrix
-		parma2: (int) - Number of iterations
-	Returns:
-		(ndarray) - Stationary probability matrix
-	"""
-	la = np.random.rand(matrix.shape[1])
+print(power_iteration(Pt, 20))
+print(power_iteration_v2(Pt)[0])
+print(power_iteration_v3(Pt, 20))
+aNaive = PageRank(Amatrix)
+aModified = ModifiedPageRank(Amatrix)
+bNaive = PageRank(Bmatrix)
+bModified = ModifiedPageRank(Bmatrix)
+print("\nNaive PageRank method on matrix a: \n", aNaive,
+	"\nModified PageRank method on matrix a: \n", aModified,
+	"\nNaive PageRank method on matrix b: \n", bNaive,
+	"\nModified PageRank method on matrix b: \n", bModified)
 
-	for _ in range(N_sim):
+def translateResults(vec):
+	"""
+	Relates the ranking score to the vectors index to show which of the results are to be recommended.
+	Args: 
+		param: (ndarray) - must be an row vector
+	returns:
+
+	"""
 	
-		la1 = np.dot(matrix, la)
-		
-		la1_norm = np.linalg.norm(la1, 1)
-		
-		la = la1 / la1_norm
 
-	return la
+	pass
 
-# print(power_iteration(Pt, 10))
 
-def power_iteration_v2(matrix):
-	"""
-	Iterates like the power iteration method to converge on the stationary probabilities of the transitionmatrix,
-	but when the difference is small enough 
 
-	Args:
-		param1: (ndarray) - Transition matrix
-	Returns:
-		(ndarray) - Stationary probability matrix
-		(float) - eigenvalue
-		(int) - number of iteratios
-	"""
-	# creates a vector of random float values as a row vector with the same size of rows as given matrix
-	v = np.random.rand(matrix.shape[1])
-
-	# finds eigenvalues
-	ev = matrix.dot(v)
-	ev = v.dot(ev)
-
-	iterations = 0
-
-	while True:
-		Av = matrix.dot(v)
-		v_new = Av / np.linalg.norm(Av, 1)
-
-		ev_new = matrix.dot(v_new)
-		ev_new = v_new.dot(ev_new)
-
-		if np.abs(ev - ev_new) < 1E-15:
-			break
-
-		v = v_new
-		ev = ev_new
-		iterations += 1
-
-	return v_new, ev_new, iterations
-
-if __name__ == "__main__":
-	print(power_iteration(Pt, 20))
-	print(power_iteration_v2(Pt))

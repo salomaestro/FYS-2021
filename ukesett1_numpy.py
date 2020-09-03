@@ -7,7 +7,7 @@ import numpy as np
 # 3 sjekke om ingen elementer er null
 arr = np.arange(0, 11)
 # print(np.all(arr))
-# 4 sjekke om noen null
+# 4 sjekke om alle null
 # print(np.any(arr))
 # 5 sjekke om noen elementer er nan eller inf
 infarr = np.array([1, 0, np.nan, np.inf])
