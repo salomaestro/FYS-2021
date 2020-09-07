@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import csv
+# from sklearn.linear_model import LinearRegression as LR
 
 # Problem 3 (a)
 data = np.genfromtxt("FYS-2021\global-temperatures.csv", delimiter=" ")
@@ -38,6 +39,10 @@ class LinearRegression:
 
 reg = LinearRegression(data)
 result = reg.least_squares()
+
+#### scikit part
+
+####
 
 plt.plot(reg.x, reg.y, "g.")
 plt.plot(result[0], result[1])
