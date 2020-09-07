@@ -47,4 +47,5 @@ P_transition = np.array(
 	[.45, .5, .25],
 	[.45, .25, .5]])
 # 3(b)
-print("Power method on transition matrix gives ")
+print("Page Rank by power iteration on the transition matrix gives:\n", PageRank(P_transition))
+print("Interpretation: It ranks the different weathertypes by its most probable outcome in a broader aspect.")
