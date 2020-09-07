@@ -60,7 +60,7 @@ def ModifiedPageRank(matrix, alpha=0.85):
 	firstRow[firstRow > 0] = a[0]
 
 	# Concatenates a new row with 1/N to the bottom of the transposed matrix H
-	b = np.ones(np.shape(H)[0]) / (np.shape(H)[0] + 1)
+	b = np.ones(np.shape(H)[0]) / (np.shape(H)[0])
 	S = np.concatenate((H.T, [b]))
 
 	E = np.ones(np.shape(S)) / np.shape(S)[0]
