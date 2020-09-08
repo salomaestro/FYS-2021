@@ -24,7 +24,6 @@ class LinearRegression:
         self.X = np.concatenate((self.X, [self.x])).T
         self.r = np.array([self.y]).T
 
-
     def least_squares(self):
         """
         Linear regression by least squares method by linear algebra method
@@ -43,6 +42,7 @@ reg = LinearRegression(data)
 result = reg.least_squares()
 
 #### scikit part
+
 
 ####
 
