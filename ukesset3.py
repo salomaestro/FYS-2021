@@ -1,6 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import csv
+# from sklearn import datasets, linear_model
+# from sklearn.metrics import means_squared_error, r2_score
 # from sklearn.linear_model import LinearRegression as LR
 
 # Problem 3 (a)
@@ -44,8 +46,8 @@ result = reg.least_squares()
 
 ####
 
-plt.plot(reg.x, reg.y, "g.")
-plt.plot(result[0], result[1])
+plt.plot(reg.x, reg.y, ".")
+plt.plot(result[0], result[1], "g")
 plt.xlabel("years")
 plt.ylabel("Temperature")
 plt.title("Global temperatures with least squares linear regression")
