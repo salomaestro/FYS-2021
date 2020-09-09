@@ -1,12 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import csv
 # from sklearn import datasets, linear_model
 # from sklearn.metrics import means_squared_error, r2_score
 # from sklearn.linear_model import LinearRegression as LR
 
 # Problem 3 (a)
-data = np.genfromtxt("FYS-2021\global-temperatures.csv", delimiter=" ")
+data = np.genfromtxt("global-temperatures.csv", delimiter=" ")
 
 class LinearRegression:
     """
@@ -14,8 +13,8 @@ class LinearRegression:
     """
     def __init__(self, dataset):
         self.dataset = dataset
-        self.x = self.dataset.T[0,:]
-        self.y = self.dataset.T[1,:]
+        self.x = self.dataset.T[0, :]
+        self.y = self.dataset.T[1, :]
         self.N = np.shape(self.dataset)[0]
         self.A = np.array(
             [[self.N, np.sum(self.x)],
