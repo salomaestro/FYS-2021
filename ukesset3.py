@@ -1,9 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-# from sklearn import datasets, linear_model
-# from sklearn.metrics import means_squared_error, r2_score
-# from sklearn.linear_model import LinearRegression as LR
-
+from scipy import stats
 # Problem 3 (a)
 data = np.genfromtxt("global-temperatures.csv", delimiter=" ")
 
@@ -40,8 +37,7 @@ class LinearRegression:
 reg = LinearRegression(data)
 result = reg.least_squares()
 
-#### scikit part
-
+#### scipy
 
 ####
 
