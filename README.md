@@ -1,5 +1,4 @@
 # FYS-2021
 homework and such from FYS-2021
 
-ukesset 2 - contains the answers to the tasks given in the respective exercises. 
-It depends on the ML_functions.py file which contains all the general functions needed to run the other tasks.
+Most "ukessett x" are dependent on the ML_functions.py to run. This file contains as it´s name suggests; Machine learning functions... Things like Poweriteration, PageRank methods and some linear regression, while the "ukesset" contains the answers to the specific problems i´ve been tasked with.
