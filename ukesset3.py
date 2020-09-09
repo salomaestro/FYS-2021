@@ -37,12 +37,16 @@ class LinearRegression:
 reg = LinearRegression(data)
 result = reg.least_squares()
 
-#### scipy
-
+#### scipy comparison
+slope, intercept, r_value, p_value, std_err = stats.linregress(data)
+y = slope * data[1] + intercept
 ####
 
 plt.plot(reg.x, reg.y, ".")
+plt.plot(data[1], y, "y")
 plt.plot(result[0], result[1], "g")
+plt.xlim(data.T[0][0], data.T[0][-1])
+plt.ylim(np.min(data.T[1,:]), np.max(data.T[1,:]))
 plt.xlabel("years")
 plt.ylabel("Temperature")
 plt.title("Global temperatures with least squares linear regression")
