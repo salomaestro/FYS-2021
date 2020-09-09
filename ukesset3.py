@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy import stats
 # Problem 3 (a)
-data = np.genfromtxt("global-temperatures.csv", delimiter=" ")
+data = np.genfromtxt("FYS-2021\global-temperatures.csv", delimiter=" ")
 
 class LinearRegression:
     """
@@ -38,8 +38,12 @@ reg = LinearRegression(data)
 result = reg.least_squares()
 
 #### scipy comparison
+<<<<<<< HEAD
 slope, intercept, r_value, p_value, std_err = stats.linregress(data)
 y = slope * data[1] + intercept
+=======
+# slope, intercept, r_value, p_value, std_err = stats.linregress(data.T[0, :], data.T[1, :])
+>>>>>>> 2e1c32c18423e5948d4a01a966ea47be9d3794c1
 ####
 
 plt.plot(reg.x, reg.y, ".")
