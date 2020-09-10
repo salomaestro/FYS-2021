@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy import stats
 # Problem 3 (a)
-data = np.genfromtxt("FYS-2021\global-temperatures.csv", delimiter=" ")
+data = np.genfromtxt("global-temperatures.csv", delimiter=" ")
 
 class LinearRegression:
     """
@@ -34,6 +34,20 @@ class LinearRegression:
         y = self.w1 * self.x + self.w0
         return (self.x, y)
 
+    def r_squared(self):
+        """
+        Calculates SST, SSE, SSR, R^2
+        """
+        r_hat = np.matmul(self.X, self.w)
+        SSE = np.sum((self.r - r_hat) ** 2)
+        SST = np.sum((self.r - np.mean(self.r)) ** 2)
+        R_squared = 1 - SSE/SST
+        return R_squared
+
+    def residuals(self):
+
+        pass
+
 reg = LinearRegression(data)
 result = reg.least_squares()
 
@@ -41,6 +55,14 @@ result = reg.least_squares()
 slope, intercept, r_value, p_value, std_err = stats.linregress(data)
 y = slope * data[1] + intercept
 ####
+# Problem (3b)
+# The R^2 value tells us how good the regression line fits to the given data.
+# it´s calculated as R^2 = SSR/SST =(SST - SSE)/SST = 1 - SSE/SST
+print("R^2 value: ", reg.r_squared())
+# Problem (3c)
+# we can interprit the estimator betta^1 as the slope of our regression line
+# Problem (3d)
+# plotting the resiudals means plotting the error of our regression analysis.
 
 plt.plot(reg.x, reg.y, ".")
 plt.plot(data[1], y, "y")
