@@ -45,7 +45,7 @@ class LinearRegression:
         return R_squared
 
     def residuals(self):
-
+        
         pass
 
 reg = LinearRegression(data)
