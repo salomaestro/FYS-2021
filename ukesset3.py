@@ -31,8 +31,8 @@ class LinearRegression:
         self.w = np.matmul(np.matmul(np.linalg.inv(np.matmul(self.X.T, self.X)), self.X.T), self.r)
         self.w0 = self.w[0][0]
         self.w1 = self.w[1][0]
-        y = self.w1 * self.x + self.w0
-        return (self.x, y)
+        self.regressionline = self.w1 * self.x + self.w0
+        return (self.x, self.regressionline)
 
     def r_squared(self):
         """
@@ -45,8 +45,16 @@ class LinearRegression:
         return R_squared
 
     def residuals(self):
-        
-        pass
+        """
+        Calculates the residuals at each year, by taking the difference between the
+        regression line and the actual value
+        Args:
+            param1: (self)
+        Returns:
+            (ndarray) - contains floats of the residuals.
+        """
+        residual = np.abs(self.regressionline - self.y)
+        return residual
 
 reg = LinearRegression(data)
 result = reg.least_squares()
@@ -63,6 +71,7 @@ print("R^2 value: ", reg.r_squared())
 # we can interprit the estimator betta^1 as the slope of our regression line
 # Problem (3d)
 # plotting the resiudals means plotting the error of our regression analysis.
+residual_error = reg.residuals()
 
 plt.plot(reg.x, reg.y, ".")
 plt.plot(data[1], y, "y")
@@ -72,5 +81,10 @@ plt.ylim(np.min(data.T[1,:]), np.max(data.T[1,:]))
 plt.xlabel("years")
 plt.ylabel("Temperature")
 plt.title("Global temperatures with least squares linear regression")
+plt.legend()
+plt.show()
+plt.hist(residual_error)
+plt.xlabel("Error")
+plt.ylabel("Number of Points")
 plt.legend()
 plt.show()
