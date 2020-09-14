@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.9.14)  14 SEP 2020 19:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.9.14)  14 SEP 2020 21:09
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -589,7 +589,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.30     S
+l.31     S
           upervised learning consists of machine learning algorithms which b...
 
 Your command was ignored.
@@ -597,32 +597,24 @@ Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 30--36
+Underfull \hbox (badness 10000) in paragraph at lines 31--37
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 30--36
+Underfull \hbox (badness 10000) in paragraph at lines 31--37
 
  []
 
 
-! LaTeX Error: There's no line here to end.
+Underfull \hbox (badness 10000) in paragraph at lines 31--37
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.37     \newline
-                 
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
+ []
 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.48     \end{align}
+l.46     \end{align}
                     
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -630,17 +622,10 @@ With luck, this will get me unwedged. But if you
 really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
-! Double subscript.
-<argument>  $$ r(P_i) = \sum _{P_j \in B_P_
-                                           i} \dfrac {r(P_j)}{|P_j|}. $$ 
-l.48     \end{align}
-                    
-I treat `x_1_2' essentially like `x_1{}_2'.
-
 ! Missing { inserted.
 <inserted text> 
                 {
-l.48     \end{align}
+l.46     \end{align}
                     
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -649,7 +634,7 @@ Try to go on, since this might almost work.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.48     \end{align}
+l.46     \end{align}
                     
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -657,17 +642,10 @@ With luck, this will get me unwedged. But if you
 really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
-! Double subscript.
-<argument>  $$ r(P_i) = \sum _{P_j \in B_P_
-                                           i} \dfrac {r(P_j)}{|P_j|}. $$ 
-l.48     \end{align}
-                    
-I treat `x_1_2' essentially like `x_1{}_2'.
-
 ! Missing \endgroup inserted.
 <inserted text> 
                 \endgroup 
-l.48     \end{align}
+l.46     \end{align}
                     
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -678,7 +656,7 @@ my insertion and my current dilemma will both disappear.
 ! Misplaced \omit.
 \math@cr@@@ ...@ \@ne \add@amps \maxfields@ \omit 
                                                   \kern -\alignsep@ \iftag@ ...
-l.48     \end{align}
+l.46     \end{align}
                     
 I expect to see \omit only after tab marks or the \cr of
 an alignment. Proceed, and I'll ignore this case.
@@ -686,16 +664,21 @@ an alignment. Proceed, and I'll ignore this case.
 ! Missing { inserted.
 <inserted text> 
                 {
-l.48     \end{align}
+l.46     \end{align}
                     
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
 Try to go on, since this might almost work.
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 46--51
+
+ []
+
 ! Missing } inserted.
 <inserted text> 
                 }
-l.58       \end{align}
+l.60       \end{align}
                       
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -706,7 +689,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing { inserted.
 <inserted text> 
                 {
-l.58       \end{align}
+l.60       \end{align}
                       
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -715,7 +698,7 @@ Try to go on, since this might almost work.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.58       \end{align}
+l.60       \end{align}
                       
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -726,7 +709,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing \endgroup inserted.
 <inserted text> 
                 \endgroup 
-l.58       \end{align}
+l.60       \end{align}
                       
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -737,7 +720,7 @@ my insertion and my current dilemma will both disappear.
 ! Misplaced \omit.
 \math@cr@@@ ...@ \@ne \add@amps \maxfields@ \omit 
                                                   \kern -\alignsep@ \iftag@ ...
-l.58       \end{align}
+l.60       \end{align}
                       
 I expect to see \omit only after tab marks or the \cr of
 an alignment. Proceed, and I'll ignore this case.
@@ -745,7 +728,7 @@ an alignment. Proceed, and I'll ignore this case.
 ! Missing { inserted.
 <inserted text> 
                 {
-l.58       \end{align}
+l.60       \end{align}
                       
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -761,7 +744,7 @@ This may cause the page layout to be inconsistent, however.
 Here is how much of TeX's memory you used:
  23076 strings out of 480876
  590753 string characters out of 5911487
- 975776 words of memory out of 5000000
+ 976776 words of memory out of 5000000
  38340 multiletter control sequences out of 15000+600000
  543544 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -773,12 +756,13 @@ s/cm/cmbx12.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmex
 2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2020/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2020/texmf-dist/font
 s/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2020/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmsy10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmsy8.pfb>
-Output written on latexScript.pdf (2 pages, 85339 bytes).
+blic/amsfonts/cm/cmr8.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmsy10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cms
+y8.pfb>
+Output written on latexScript.pdf (2 pages, 94450 bytes).
 PDF statistics:
- 50 PDF objects out of 1000 (max. 8388607)
- 36 compressed objects within 1 object stream
+ 54 PDF objects out of 1000 (max. 8388607)
+ 39 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
