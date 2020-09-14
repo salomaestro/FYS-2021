@@ -244,18 +244,6 @@ INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm1
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
 INPUT latexScript.aux
-<<<<<<< HEAD
-INPUT c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
-INPUT c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
-INPUT c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb
-INPUT c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb
-INPUT c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb
-INPUT c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb
-INPUT c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb
-INPUT c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb
-INPUT c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
-INPUT c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
-=======
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb
@@ -265,4 +253,3 @@ INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pf
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
->>>>>>> c27c71d4fea9ffa50c4575e8b31fefce0beea974
