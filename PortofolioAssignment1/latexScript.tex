@@ -1,0 +1,60 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{fancyhdr}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+
+\title{Portofolio Assignment 1}
+\author{Candidate: 25}
+\date{September 2020}
+
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\fancyhf{}
+\rhead{
+    candidate: 25\\
+}
+\rfoot{Page \thepage}
+
+\begin{document}
+  \maketitle
+  \section*{Appendix}
+  \newpage
+  \section*{Problem 1}
+    \subsection*{(1a)} \\
+    Supervised learning consists of machine learning algorithms which both has inputs and outputs. The goal of the supervised learning algorithm is using the observed values of $x$ to make an prediction of $y$, where we, the creater of the algorithm is the supervisor. So generally the algorithm consists of whats called a mapping of $x$ to $y$. Or we can generalize this as $y = f(x)$, where $f$ is the mapping of $x$ to $y$. Examples of supervised learning algorithms include classification, regression etc.\\
+    %Suppose we had a task, \textit{Classify these balloons by color into different corners of the room.} But your brain already knows how to differentiate the different colors from seeing them from before. So in this case \textit{you} are the machine, your brain already know that if that balloon is a color on the far left of the wavespectrum it's a blue balloon, and puts it in one of the corners that belong to blue balloons.\\
+    \newline
+    Whereas in unsupervised learning the goal of the algorithm is to find connections in the data, such that we can learn more from it. Here we don't have a supervisor, we simply try to better see patterns in the input data. We also aren't interested in any output since the input is used to train the model to rule out differences of the variables. \\
+    \newline
+    The PageRank algorithm is a unsupervised learning algorithm. 
+
+    \newline
+
+
+
+    \subsection*{(1b)}
+    \begin{subequations}
+    \renewcommand{\theequation}{\theparentequation.\arabic{equation}}
+    \begin{align}
+      $$
+        r(P_i) = \sum_{P_j \in B_P_i} \dfrac{r(P_j)}{|P_j|}.
+      $$
+    \end{align}
+  \end{subequations}
+  \section*{Problem 2}
+    \subsection*{(2a)}
+      \begin{subequations}
+      \renewcommand{\theequation}{\theparentequation.\arabic{equation}}
+      \begin{align}
+        $$
+          y = f(x)
+        $$
+      \end{align}
+      \end{subequations}
+\end{document}
