@@ -20,15 +20,15 @@ white_won = np.where(score == 1) # index til runden
 black_won = np.where(score == 0) # index til runden
 tie = np.where(score == 0.5)
 
-print(white[white_won])
+print(games[white_won])
 i = np.arange(0, np.shape(A)[0])
 # A[rad][kolonne]
 
-for i in white[white_won]:
 
+I, J, _ = games[white_won]
+print(I)
 
-
-# print(np.count_nonzero(A))
+print(np.count_nonzero(A))
 
 
 
