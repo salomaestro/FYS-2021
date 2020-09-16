@@ -16,21 +16,26 @@ white_won = np.where(games.T[2] == 1) # index til runden
 black_won = np.where(games.T[2] == 0) # index til runden
 tie = np.where(games.T[2] == 0.5)
 
-total_of_rows_w = np.zeros(np.shape(id))
-
 
 i, j, _ = games[white_won].T.astype("int32")
-print(i)
-
-
 k, l, _ = games[black_won].T.astype("int32")
+
+
+print(i)
 
 
 A[i, j] += 1
 A[l, k] += 1
 
+######################
+#Still needs a way to divide each row on the total losses of the row.
+######################
+
+
 # print(A[1] / np.sum(A[1]))
 mat_ind = np.arange(0, np.shape(A)[0])
+print(mat_ind.shape)
+
 A[mat_ind] = A[mat_ind] / np.sum(A[mat_ind])
 # print(A)
 
@@ -44,9 +49,6 @@ print(np.count_nonzero(A))
 
 
 
-# for ind, _ in enumerate(A):
-#     ind = ind[0]
-#     A[ind]
 
 
 
