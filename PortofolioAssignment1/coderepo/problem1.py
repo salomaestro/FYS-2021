@@ -6,10 +6,11 @@ from ML_functions_PA import power_iteration, PageRank, ModifiedPageRank, LinearR
 dirname = os.path.dirname(__file__)
 filename_game = os.path.join(dirname, "chess-games.csv")
 filename_names = os.path.join(dirname, "chess-games-names.csv")
-
+filename_elo = os.path.join(dirname, "chess-games-elo.csv")
 # creating arrays of the data we are to process
 games = np.genfromtxt(filename_game, delimiter=" ")
 names = np.genfromtxt(filename_names, delimiter=",", dtype=str)
+elo = np.genfromtxt(filename_elo, delimiter=",", dtype=int)
 
 #################### Problem (1f) #################################
 # extracting the id, and singular names out of the names array.
@@ -71,8 +72,18 @@ def test_stochasticy():
 # test_stochasticy()
 
 # To make sure our matrix is irreducible, we take the google matrix appoach, using the damping factor alpha = 0.85
-
-# print("\n\nResults from ranking with the Google Matrix approach \n", RankChessGames(ModifiedPageRank(A.T)))
+AModified = RankChessGames(PageRank(ModifiedPageRank(A.T)))
+# print("\n\nResults from ranking with the Google Matrix approach \n", AModified)
 # print("We see that now we eliminate the instances where some had the same scores, such that all are ranked in relation to each other.")
 
 ################################# Problem (1h) ###############################################
+# I now use the modified matrix's eigenvector that's yielded fra the power iteration method.
+rank_score = power_iteration(A.T, 100)
+
+# since we in the power_iteration method have to convert the array to an numpy matrix object to be able
+# to do take the power of the matrix we now need to convert the elo ndarray to an numpy matrix object.
+elo = np.matrix(elo)
+
+input = np.concatenate((rank_score, elo.T[1]))
+linregress = LinearRegression(input.T)
+print(linregress.least_squares())

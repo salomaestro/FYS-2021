@@ -66,7 +66,7 @@ def ModifiedPageRank(matrix, alpha=0.85):
 	G = alpha * S + (1 - alpha) * E
 
 	# Now the ranking begins
-	return PageRank(G.T)
+	return G.T
 
 class LinearRegression:
     """
@@ -77,11 +77,9 @@ class LinearRegression:
         self.x = self.dataset.T[0, :]
         self.y = self.dataset.T[1, :]
         self.N = np.shape(self.dataset)[0]
-        self.A = np.array(
-            [[self.N, np.sum(self.x)],
-            [np.sum(self.x), np.sum(self.x ** 2)]])
+
         self.X = [np.ones(self.N).T]
-        self.X = np.concatenate((self.X, [self.x])).T
+        self.X = (np.concatenate((self.X, self.x))).T
         self.r = np.array([self.y]).T
 
     def least_squares(self):
@@ -93,7 +91,7 @@ class LinearRegression:
             (ndarray, ndarray) - (x, y) ready for plotting
         """
         self.w = np.matmul(np.matmul(np.linalg.inv(np.matmul(self.X.T, self.X)), self.X.T), self.r)
-        self.w0 = self.w[0][0]
+		self.w0 = self.w[0][0]
         self.w1 = self.w[1][0]
         self.regressionline = self.w1 * self.x + self.w0
         return (self.x, self.regressionline)
