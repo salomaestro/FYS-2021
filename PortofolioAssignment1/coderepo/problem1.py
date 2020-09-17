@@ -1,6 +1,6 @@
 import numpy as np
 import os
-from ML_functions_PA import power_iteration, PageRank, ModifiedPageRank
+from ML_functions_PA import power_iteration, PageRank, ModifiedPageRank, LinearRegression
 
 # fixing the file path
 dirname = os.path.dirname(__file__)
@@ -57,7 +57,7 @@ def RankChessGames(ranks):
     return string
 
 result = RankChessGames(rank)
-print(result)
+# print(result)
 
 ################################# Problem (1g) ###############################################
 
@@ -68,12 +68,11 @@ def test_stochasticy():
     for row, _ in enumerate(A):
         if A[row].all():
             print("oh shit!")
-test_stochasticy()
+# test_stochasticy()
 
 # To make sure our matrix is irreducible, we take the google matrix appoach, using the damping factor alpha = 0.85
 
-print("\n\nResults from ranking with the Google Matrix approach \n", RankChessGames(ModifiedPageRank(A.T)))
-print("We see that now we eliminate the instances where some had the same scores, such that all are ranked in relation to each other.")
+# print("\n\nResults from ranking with the Google Matrix approach \n", RankChessGames(ModifiedPageRank(A.T)))
+# print("We see that now we eliminate the instances where some had the same scores, such that all are ranked in relation to each other.")
 
 ################################# Problem (1h) ###############################################
-#
