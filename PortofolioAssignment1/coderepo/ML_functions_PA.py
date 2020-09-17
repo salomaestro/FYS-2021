@@ -14,7 +14,6 @@ def power_iteration(matrix, i):
 	pi_norm = pi / np.linalg.norm(pi, 1)
 
 	pow_matrix = np.matrix(matrix) ** i
-
 	return pow_matrix.dot(pi_norm)
 
 def PageRank(matrix):
@@ -29,10 +28,8 @@ def PageRank(matrix):
 	"""
 	ev = power_iteration(matrix, 100)
 	ev = np.array(ev)[0]
-	temp = ev.argsort()
-	ranks = np.empty_like(temp)
-	ranks[temp] = np.arange(len(ev))[::-1]
-	return ranks
+	rank = np.argsort(ev)
+	return rank
 
 def ModifiedPageRank(matrix, alpha=0.85):
 	"""

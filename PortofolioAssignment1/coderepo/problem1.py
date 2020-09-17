@@ -1,6 +1,6 @@
 import numpy as np
 import os
-import ML_functions
+from ML_functions_PA import power_iteration, PageRank
 
 #creating arrays of the data we are to process
 games = np.genfromtxt("coderepo/chess-games.csv", delimiter=" ")
@@ -29,8 +29,23 @@ for ind, _ in enumerate(games):
 
 #dividing the elements of each row by the sum of the row
 A = A / np.sum(A, axis=1).reshape((-1, 1))
-print(A)
 
+ranks = PageRank(A.T)
+ranks = np.flip(ranks)
+rankid = ranks[0:10]
+
+idname = names[rankid]
+
+crr_shape = np.shape(idname[1])[0]
+list_of = np.arange(1, crr_shape + 1).astype("str")
+
+def prettyprint():
+    string = ""
+    string += "rank, id, name"
+    for i in range(len(idname)):
+        string += "\n" + str(i + 1) + ", " + str(idname[i][0]) + ", " + str(idname[i][1])
+    print(string)
+prettyprint()
 
 
 
