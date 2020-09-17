@@ -47,7 +47,7 @@ def ModifiedPageRank(matrix, alpha=0.85):
 	# if H[0,:].all():
 	# 	pass
 
-	a = np.zeros(np.shape(matrix)[0])
+	a = np.zeros(np.shape(matrix)[1])
 	a[0] = 1 / (np.count_nonzero(matrix.T[0,:]) + 1)
 
 
@@ -67,6 +67,58 @@ def ModifiedPageRank(matrix, alpha=0.85):
 
 	# Now the ranking begins
 	return PageRank(G.T)
+
+	class LinearRegression:
+	    """
+	    Should have the shape of an (N x 2) matrix or (2 x N) matrix transposed
+	    """
+	    def __init__(self, dataset):
+	        self.dataset = dataset
+	        self.x = self.dataset.T[0, :]
+	        self.y = self.dataset.T[1, :]
+	        self.N = np.shape(self.dataset)[0]
+	        self.A = np.array(
+	            [[self.N, np.sum(self.x)],
+	            [np.sum(self.x), np.sum(self.x ** 2)]])
+	        self.X = [np.ones(self.N).T]
+	        self.X = np.concatenate((self.X, [self.x])).T
+	        self.r = np.array([self.y]).T
+
+	    def least_squares(self):
+	        """
+	        Linear regression by least squares method by linear algebra method
+	        Args:
+	            (self) - instance
+	        Returns:
+	            (ndarray, ndarray) - (x, y) ready for plotting
+	        """
+	        self.w = np.matmul(np.matmul(np.linalg.inv(np.matmul(self.X.T, self.X)), self.X.T), self.r)
+	        self.w0 = self.w[0][0]
+	        self.w1 = self.w[1][0]
+	        self.regressionline = self.w1 * self.x + self.w0
+	        return (self.x, self.regressionline)
+
+	    def r_squared(self):
+	        """
+	        Calculates SST, SSE, SSR, R^2
+	        """
+	        r_hat = np.matmul(self.X, self.w)
+	        SSE = np.sum((self.r - r_hat) ** 2)
+	        SST = np.sum((self.r - np.mean(self.r)) ** 2)
+	        R_squared = 1 - SSE/SST
+	        return R_squared
+
+	    def residuals(self):
+	        """
+	        Calculates the residuals at each year, by taking the difference between the
+	        regression line and the actual value
+	        Args:
+	            param1: (self)
+	        Returns:
+	            (ndarray) - contains floats of the residuals.
+	        """
+	        residual = np.abs(self.regressionline - self.y)
+	        return residual
 
 def main():
 	return None
