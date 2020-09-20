@@ -111,16 +111,35 @@ class LinearRegression:
 		self.regressionline = self.w1 * self.x + self.w0
 		return (self.x, self.regressionline)
 
+	def meanSquaredError(self):
+		"""
+		Calculates the mean squared error
+		Returns:
+			(float) - MSE
+		"""
+		r_hat = np.array(np.matmul(self.X, self.w))
+
+		self.MSE = np.sum((np.array(self.r) - r_hat) ** 2)
+		return self.MSE
+
+	def totalSumSquares(self):
+		"""
+		Calculates the total sum of squares
+		Returns:
+			(float) - TSS
+		"""
+		self.TSS = np.sum((self.r - np.mean(self.r)) ** 2)
+		return self.TSS
+
 	def r_squared(self):
 		"""
-		Calculates SST, SSE, SSR, R^2
+		Calculates R^2
 		Returns:
 			(float) - R^2 value
 		"""
-		r_hat = np.matmul(self.X, self.w)
-		SSE = np.sum((self.r - r_hat) ** 2)
-		SST = np.sum((self.r - np.mean(self.r)) ** 2)
-		R_squared = 1 - SSE/SST
+		self.meanSquaredError()
+		self.totalSumSquares()
+		R_squared = 1 - self.MSE / self.TSS
 		return R_squared
 
 	def residuals(self):

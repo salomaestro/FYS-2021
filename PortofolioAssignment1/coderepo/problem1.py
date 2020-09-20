@@ -97,8 +97,27 @@ b0, b1 = linregress.estimators()
 print("We get the estimates: betta_0 = {:.3f}, betta_1 = {:.3f}. Where betta_0 is the y-intercept, that is if we were to draw a regression line, it would be where the line crosses the y-axis. Then since we use the form of the regression line to be y = b_0 + b_1 * x, this means b_1 is the slope of the line.".format(b0, b1))
 
 xval, yval = linregress.least_squares()
+
+# Have to cast theese to numpy.ndarrays for the plots
 xval = np.array(xval)
 yval = np.array(yval)
-plt.plot(xval[0], yval[0])
-plt.xlabel("Log(PageRank), ")
+rank_scoreLog = np.array(rank_scoreLog)
+elo_score = np.array(elo.T[1])
+
+meansquarederror = linregress.meanSquaredError()
+rSquared = linregress.r_squared()
+print("The mean squared error: {:.3f}, R squared: {:.3f}.".format(meansquarederror, rSquared))
+
+# plots
+regressionline, = plt.plot(xval[0], yval[0], "g-", linewidth=2)
+datapoints = plt.scatter(rank_scoreLog, elo_score, marker=".", s=20)
+
+# for the plots
+plt.xlabel("log(PageRank)")
+plt.ylabel("Elo score")
+plt.title("Plot of Elo score against the logarithmic PageRanked chess players.\nWe get mean squared error: {:.3f}, R^2: {:.3f}".format(meansquarederror, rSquared))
+plt.legend((regressionline, datapoints), ("Regression line", "Datapoints"), loc="upper left", fancybox=True, shadow=True)
 plt.show()
+
+# picture = os.path.join(dirname, "Plot_Logarithmic.pdf")
+# plt.savefig(picture)
