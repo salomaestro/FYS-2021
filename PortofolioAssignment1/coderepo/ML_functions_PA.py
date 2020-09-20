@@ -109,7 +109,7 @@ class LinearRegression:
 		"""
 		self.estimators()
 		self.regressionline = self.w1 * self.x + self.w0
-		return self.x, self.regressionline
+		return (self.x, self.regressionline)
 
 	def r_squared(self):
 		"""

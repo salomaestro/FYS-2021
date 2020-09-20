@@ -80,23 +80,25 @@ AModified = RankChessGames(PageRank(ModifiedPageRank(A.T)))
 
 ################################# Problem (1h) ###############################################
 # I now use the modified matrix's eigenvector that's yielded fra the power iteration method.
-rank_score = power_iteration(A.T, 100)
+rank_score = power_iteration(ModifiedPageRank(A.T), 100)
 
-# since we in the power_iteration method have to convert the array to an numpy matrix object to be able to do take the power of the matrix we now need to convert the elo ndarray to an numpy matrix object.
+# Since the last element is just an extra page we use to modify this matrix to an Google matrix and we know that our ModifiedPageRank method only concatenates this last page to the end of the matrix, then the last element of the eigenvector rank_score will belong to this extra page. We need to remove it since we only have x-numbers of elo scores, and x+1 numbers of rows in the eigenvector (columnvector).
+rank_score = rank_score.T[:-1].T
+
+# Since we in the power_iteration method have to convert the array to an numpy matrix object to be able to do take the power of the matrix we now need to convert the elo ndarray to an numpy matrix object.
 elo = np.matrix(elo)
 
-# This step is a bit complicated. but it has to be done.. the log function will evaluate the zeros in the array to -Inf, such that we no longer can do the calculation. so what i do is take the log of the array elementwise and put the values in an array with the shape of the rank_score, but already filled with zeros. The elements "where" the rank_score is not zero are evaluated as log(element), but where it is zero, it does not get evaluated.
-rank_score = np.log(rank_score, out=np.zeros_like(rank_score), where=(rank_score!=0))
+# Taking the log of the array elementwise.
+rank_scoreLog = np.log(rank_score)
 
-# could maby evaluate the element zero as negative a high number, since ish equal to -Inf
-# rank_score = np.log(rank_score, out=np.zeros_like(rank_score), where=(rank_score!=0, rank_score, rank_score*-1E-10))
-
-input = np.concatenate((rank_score, elo.T[1]))
+input = np.concatenate((rank_scoreLog, elo.T[1]))
 linregress = LinearRegression(input.T)
 b0, b1 = linregress.estimators()
 print("We get the estimates: betta_0 = {:.3f}, betta_1 = {:.3f}. Where betta_0 is the y-intercept, that is if we were to draw a regression line, it would be where the line crosses the y-axis. Then since we use the form of the regression line to be y = b_0 + b_1 * x, this means b_1 is the slope of the line.".format(b0, b1))
 
 xval, yval = linregress.least_squares()
-# print(xval, yval)
-# plt.plot(xval, yval)
-# plt.show()
+xval = np.array(xval)
+yval = np.array(yval)
+plt.plot(xval[0], yval[0])
+plt.xlabel("Log(PageRank), ")
+plt.show()
