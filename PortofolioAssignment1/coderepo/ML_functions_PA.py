@@ -69,54 +69,71 @@ def ModifiedPageRank(matrix, alpha=0.85):
 	return G.T
 
 class LinearRegression:
-    """
-    Should have the shape of an (N x 2) matrix or (2 x N) matrix transposed
-    """
-    def __init__(self, dataset):
-        self.dataset = dataset
-        self.x = self.dataset.T[0, :]
-        self.y = self.dataset.T[1, :]
-        self.N = np.shape(self.dataset)[0]
+	"""
+	Class for using linear regression on datasets.
+	Should have the shape of an (N x 2) matrix or (2 x N) matrix transposed
+	"""
+	def __init__(self, dataset):
+		self.dataset = dataset
 
-        self.X = [np.ones(self.N).T]
-        self.X = (np.concatenate((self.X, self.x))).T
-        self.r = np.array([self.y]).T
+		# Splits the dataset into two ndarrays
+		self.x = self.dataset.T[0, :]
+		self.y = self.dataset.T[1, :]
 
-    def least_squares(self):
-        """
-        Linear regression by least squares method by linear algebra method
-        Args:
-            (self) - instance
-        Returns:
-            (ndarray, ndarray) - (x, y) ready for plotting
-        """
-        self.w = np.matmul(np.matmul(np.linalg.inv(np.matmul(self.X.T, self.X)), self.X.T), self.r)
-		self.w0 = self.w[0][0]
-        self.w1 = self.w[1][0]
-        self.regressionline = self.w1 * self.x + self.w0
-        return (self.x, self.regressionline)
+		# Shape of the dataset
+		self.N = np.shape(self.dataset)[0]
 
-    def r_squared(self):
-        """
-        Calculates SST, SSE, SSR, R^2
-        """
-        r_hat = np.matmul(self.X, self.w)
-        SSE = np.sum((self.r - r_hat) ** 2)
-        SST = np.sum((self.r - np.mean(self.r)) ** 2)
-        R_squared = 1 - SSE/SST
-        return R_squared
+		# Create X matrix of ones, then concatenate X with x (from dataset) to give the wanted X matrix
+		self.X = np.ones(self.N)
+		self.X = self.X.reshape((1, self.N))
+		self.X = np.concatenate((self.X, self.x)).T
+		self.r = np.array(self.y).T
 
-    def residuals(self):
-        """
-        Calculates the residuals at each year, by taking the difference between the
-        regression line and the actual value
-        Args:
-            param1: (self)
-        Returns:
-            (ndarray) - contains floats of the residuals.
-        """
-        residual = np.abs(self.regressionline - self.y)
-        return residual
+	def estimators(self):
+		"""
+		Calculate the estimator vector w by the method w* = (X^T X)^-1 X^T r
+		Returns:
+			(numpy.matrix) - A column vector where the first element is the y-intercept, and the
+							 secound is the slope of the regression function.
+		"""
+		self.w = np.matmul(np.matmul(np.linalg.inv(np.matmul(self.X.T, self.X)), self.X.T), self.r)
+		self.w0 = self.w[0][0].item()
+		self.w1 = self.w[1][0].item()
+		return self.w0, self.w1
+
+	def least_squares(self):
+		"""
+		Linear regression by least squares method by linear algebra method
+		Returns:
+			(ndarray, ndarray) - (x, y) ready for plotting
+		"""
+		self.estimators()
+		self.regressionline = self.w1 * self.x + self.w0
+		return self.x, self.regressionline
+
+	def r_squared(self):
+		"""
+		Calculates SST, SSE, SSR, R^2
+		Returns:
+			(float) - R^2 value
+		"""
+		r_hat = np.matmul(self.X, self.w)
+		SSE = np.sum((self.r - r_hat) ** 2)
+		SST = np.sum((self.r - np.mean(self.r)) ** 2)
+		R_squared = 1 - SSE/SST
+		return R_squared
+
+	def residuals(self):
+		"""
+		Calculates the residuals at each year, by taking the difference between the
+		regression line and the actual value
+		Args:
+		param1: (self)
+		Returns:
+		(ndarray) - contains floats of the residuals.
+		"""
+		residual = np.abs(self.regressionline - self.y)
+		return residual
 
 def main():
 	return None
