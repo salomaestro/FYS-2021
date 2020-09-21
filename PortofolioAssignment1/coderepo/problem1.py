@@ -59,7 +59,7 @@ def RankChessGames(ranks):
     return string
 
 result = RankChessGames(rank)
-# print(result)
+print(result)
 
 ################################# Problem (1g) ###############################################
 
@@ -70,13 +70,13 @@ def test_stochasticy():
     for row, _ in enumerate(A):
         if A[row].all():
             print("oh shit!")
-# test_stochasticy()
+test_stochasticy()
 
 # To make sure our matrix is irreducible, we take the google matrix appoach, using the damping factor alpha = 0.85
 AModified = RankChessGames(PageRank(ModifiedPageRank(A.T)))
 
-# print("\n\nResults from ranking with the Google Matrix approach \n", AModified)
-# print("We see that now we eliminate the instances where some had the same scores, such that all are ranked in relation to each other.")
+print("\n\nResults from ranking with the Google Matrix approach \n", AModified)
+print("We see that now we eliminate the instances where some had the same scores, such that all are ranked in relation to each other.")
 
 ################################# Problem (1h) ###############################################
 # I now use the modified matrix's eigenvector that's yielded fra the power iteration method.
@@ -101,6 +101,7 @@ xval, yval = linregress.least_squares()
 # Have to cast theese to numpy.ndarrays for the plots
 xval = np.array(xval)
 yval = np.array(yval)
+
 rank_scoreLog = np.array(rank_scoreLog)
 elo_score = np.array(elo.T[1])
 

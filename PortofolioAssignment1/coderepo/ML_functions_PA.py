@@ -1,4 +1,5 @@
 import numpy as np
+import math
 
 def power_iteration(matrix, i):
 	"""
@@ -153,6 +154,35 @@ class LinearRegression:
 		"""
 		residual = np.abs(self.regressionline - self.y)
 		return residual
+
+class ProbabilityDistributions:
+	"""
+	Class used for implementing the probability distributions needed in Portofolio assignment 1
+	"""
+	def __init__(self, data):
+		self.x = data
+		self.mean = np.mean(self.x)
+		self.std = np.std(self.x)
+		self.var = np.var(self.x)
+
+	def gamma(self, alpha, betta):
+		"""
+		Generic function for calculating the Gaussian distibution.
+
+		Returns:
+			(ndarray, ndarray) - (x, y)
+		"""
+		dist = 1 / (betta ** alpha * math.gamma(alpha)) * self.x ** (alpha - 1) * np.exp(- self.x / betta)
+		return self.x, dist
+
+	def normal(self):
+		"""
+		Generic function for calculating the normal (or gaussian) distribution.
+		Returns:
+		(ndarray, ndarray) - (x, y)
+		"""
+		dist = 1 / (np.sqrt(2 * np.pi) * self.std) * np.exp(- (self.x - self.mean) ** 2 / (2 * self.var))
+		return self.x, dist
 
 def main():
 	return None
