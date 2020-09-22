@@ -64,7 +64,7 @@ def plot():
     plt.show()
 
 #################### (2c) ##############################
-
+# creating the bayes classifier
 
 def main():
     print("We get the point estimates: betta_hat = {:.5f}, my_hat = {:.5f}, sigma2_hat = {:.5f}".format(betta_hat, my_hat, sigma2_hat))
