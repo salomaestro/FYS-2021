@@ -67,7 +67,7 @@ def plot():
 
 def main():
     print("We get the point estimates: betta_hat = {:.5f}, my_hat = {:.5f}, sigma2_hat = {:.5f}".format(betta_hat, my_hat, sigma2_hat))
-    plot()
+    plot() 
 
 if __name__ == "__main__":
     main()
