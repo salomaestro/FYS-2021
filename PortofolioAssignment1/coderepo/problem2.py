@@ -30,14 +30,15 @@ n1 = train1.shape[0]
 my_hat = 1 / n1 * np.sum(train1)
 sigma2_hat = 1 / n1 * np.sum((train1 - my_hat) ** 2)
 
-# choose C = 1 if P(C = 1 | x0, x1) > P(C = 0 | x0, x1) choose C = 0 otherwise. P(C|x0 ,x1) = P(C)p(x0, x1|C)/p(x0, x1)
-
 # prior probabilities
 priorC0 = n0 / n
 priorC1 = n1 / n
 
+# Gathering the probability distributions for our trainin set.
 train0Dist = ProbabilityDistributions(train0)
 train1Dist = ProbabilityDistributions(train1)
+
+# Changing type to better be able to sort.
 gammadist = np.array(train0Dist.gamma(alpha, betta_hat)).T
 normaldist = np.array(train1Dist.normal(my_hat, sigma2_hat)).T
 
@@ -119,9 +120,11 @@ decrypted = np.zeros_like(testset)
 # Set element number [index] equal to one
 decrypted[classifiedOnesindex] = 1
 
+#hast to be array of integers
 decrypted = decrypted.astype("int32")
 
 def main():
+    # Prints
     print("We get the point estimates: betta_hat = {:.5f}, my_hat = {:.5f}, sigma2_hat = {:.5f}".format(betta_hat, my_hat, sigma2_hat))
 
     print("We have our confusion matrix: \n{}\nAccuracy = {}\nPrecision = {}\nRecall = {}".format(confusionmatrix, accuracy, precision, recall))

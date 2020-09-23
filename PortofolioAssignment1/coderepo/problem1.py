@@ -67,9 +67,8 @@ def test_stochasticy():
     """
     Let's test the stochastic
     """
-    for row, _ in enumerate(A):
-        if A[row].all():
-            print("oh shit!")
+    if A.all(axis=0).all():
+        print("oh no, not stochastic!!!")
 test_stochasticy()
 
 # To make sure our matrix is irreducible, we take the google matrix appoach, using the damping factor alpha = 0.85

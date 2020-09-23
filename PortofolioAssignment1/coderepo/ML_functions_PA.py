@@ -11,10 +11,16 @@ def power_iteration(matrix, i):
 	Returns:
 		(ndarray) - Stationary probability matrix
 	"""
+	# Random eigenvector
 	pi = np.random.rand(matrix.shape[1])
+
+	# Normalizing
 	pi_norm = pi / np.linalg.norm(pi, 1)
 
+	# Power iterating
 	pow_matrix = np.matrix(matrix) ** i
+
+	# Return the product
 	return pow_matrix.dot(pi_norm)
 
 def PageRank(matrix):
@@ -27,8 +33,13 @@ def PageRank(matrix):
 	Returns:
 		(ndarray) - ranked
 	"""
+	# Using power_iteration to create eigenvector
 	ev = power_iteration(matrix, 100)
+
+	# Cast to correct shape
 	ev = np.array(ev)[0]
+
+	# Sort by indices
 	rank = np.argsort(ev)
 	return rank
 
@@ -97,7 +108,10 @@ class LinearRegression:
 			(numpy.matrix) - A column vector where the first element is the y-intercept, and the
 							 secound is the slope of the regression function.
 		"""
+		# Formulae for calculating the estimators
 		self.w = np.matmul(np.matmul(np.linalg.inv(np.matmul(self.X.T, self.X)), self.X.T), self.r)
+
+		# Extract estimators
 		self.w0 = self.w[0][0].item()
 		self.w1 = self.w[1][0].item()
 		return self.w0, self.w1
@@ -108,7 +122,10 @@ class LinearRegression:
 		Returns:
 			(ndarray, ndarray) - (x, y) ready for plotting
 		"""
+		# Make sure estimators have been created
 		self.estimators()
+
+		# Create array consisting of values for regression line
 		self.regressionline = self.w1 * self.x + self.w0
 		return (self.x, self.regressionline)
 
@@ -118,8 +135,10 @@ class LinearRegression:
 		Returns:
 			(float) - MSE
 		"""
+		# Estimator
 		r_hat = np.array(np.matmul(self.X, self.w))
 
+		# Generic mean squared error
 		self.MSE = np.sum((np.array(self.r) - r_hat) ** 2)
 		return self.MSE
 
@@ -150,6 +169,7 @@ class LinearRegression:
 		Returns:
 		(ndarray) - contains floats of the residuals.
 		"""
+		self.least_squares()
 		residual = np.abs(self.regressionline - self.y)
 		return residual
 
@@ -179,8 +199,7 @@ class ProbabilityDistributions:
 		dist = 1 / (np.sqrt(2 * np.pi) * np.sqrt(var)) * np.exp(- (self.x - mean) ** 2 / (2 * var))
 		return self.x, dist
 
-		# Creating the bayes classifier
-
+# Creating the bayes classifier
 def Bayes_classifier(all_x, priorclass0, priorclass1, alpha, betta_hat, mean, var):
 	"""
 	Method for classifying handwritten 0's and 1's under the assumption that all 0's follow a Gamma distribution, and all 1's follow a Normal distribution.
