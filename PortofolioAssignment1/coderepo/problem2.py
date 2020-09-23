@@ -8,6 +8,7 @@ dirname = os.path.dirname(__file__)
 filename_train = os.path.join(dirname, "optdigits-1d-train.csv")
 filename_test = os.path.join(dirname, "optdigits-1d-test.csv")
 
+# Importing our datasets
 trainingset = np.genfromtxt(filename_train, delimiter=" ")
 testset = np.genfromtxt(filename_test)
 
