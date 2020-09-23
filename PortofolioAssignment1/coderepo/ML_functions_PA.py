@@ -159,9 +159,6 @@ class ProbabilityDistributions:
 	"""
 	def __init__(self, data):
 		self.x = data
-		self.mean = np.mean(self.x)
-		self.std = np.std(self.x)
-		self.var = np.var(self.x)
 
 	def gamma(self, alpha, betta):
 		"""
@@ -173,35 +170,59 @@ class ProbabilityDistributions:
 		dist = 1 / (betta ** alpha * math.gamma(alpha)) * self.x ** (alpha - 1) * np.exp(- self.x / betta)
 		return self.x, dist
 
-	def normal(self):
+	def normal(self, mean, var):
 		"""
 		Generic function for calculating the normal (or gaussian) distribution.
 		Returns:
 		(ndarray, ndarray) - (x, y)
 		"""
-		dist = 1 / (np.sqrt(2 * np.pi) * self.std) * np.exp(- (self.x - self.mean) ** 2 / (2 * self.var))
+		dist = 1 / (np.sqrt(2 * np.pi) * np.sqrt(var)) * np.exp(- (self.x - mean) ** 2 / (2 * var))
 		return self.x, dist
 
 		# Creating the bayes classifier
 
-		def Bayes_classifier(all_x, priorclass0, priorclass1):
-		    """
-		    Method for classifying handwritten 0's and 1's under the assumption that all 0's follow a Gamma distribution, and all 1's follow a Normal distribution.
-		    Args:
-		        param1: (ndarray) - Collection of 0's and 1's interpreted by a camera as floats i, where 0 <= i <= 1.
-		        param2: (float) - prior probability of belonging to class 0.
-		        param3: (float) - prior probability of belonging to class 1.
-		    Returns:
-		        output1: (ndarray) - Values classified as 0's.
-		        output2: (ndarray) - Values classified as 1's.
-		    """
-		    # Uses my previously created class containing methods for calculating normal and gamma distributions
-		    classify = ProbabilityDistributions(all_x)
-		    likelihood1 = classify.gamma(alpha, betta_hat)[1]
-		    likelihood0 = classify.normal()[1]
-		    C1 = all_x[np.where(likelihood1 * priorclass1 > likelihood0 * priorclass0)]
-		    C0 = all_x[np.where(likelihood0 * priorclass0 > likelihood1 * priorclass1)]
-		    return C0, C1
+def Bayes_classifier(all_x, priorclass0, priorclass1, alpha, betta_hat, mean, var):
+	"""
+	Method for classifying handwritten 0's and 1's under the assumption that all 0's follow a Gamma distribution, and all 1's follow a Normal distribution.
+	Args:
+	    param1: (ndarray) - Collection of 0's and 1's interpreted by a camera as floats i, where 0 <= i <= 1.
+	    param2: (float) - prior probability of belonging to class 0.
+	    param3: (float) - prior probability of belonging to class 1.
+		peram4: (float) - defined alpha value for the gamma distribution
+		param5: (float) - estimated betta value for the gamma distibution
+		param6: (float) - estimated mean
+		param7: (float) - estimated variance
+	Returns:
+	    output1: (ndarray) - First row: index of values classified as 0's, second row: values of classified 0's.
+	    output2: (ndarray) - First row: index of values classified as 1's, second row: values of classified 1's.
+	"""
+	# Uses my previously created class containing methods for calculating normal and gamma distributions
+	classify = ProbabilityDistributions(all_x)
+
+
+	likelihood0 = classify.gamma(alpha, betta_hat)[1]
+	likelihood1 = classify.normal(mean, var)[1]
+
+
+	C1_index = np.where(likelihood1 * priorclass1 > likelihood0 * priorclass0)
+	C0_index = np.where(likelihood0 * priorclass0 > likelihood1 * priorclass1)
+
+
+	C1 = all_x[C1_index]
+	C0 = all_x[C0_index]
+
+
+	C0 = C0.reshape(1, C0.shape[0])
+	C1 = C1.reshape(1, C1.shape[0])
+
+
+	C0_index = C0_index[0].reshape(1, C0.shape[1])
+	C1_index = C1_index[0].reshape(1, C1.shape[1])
+
+
+	C0_withindex = np.concatenate((C0_index, C0))
+	C1_withindex = np.concatenate((C1_index, C1))
+	return C0_withindex, C1_withindex
 
 def main():
 	return None

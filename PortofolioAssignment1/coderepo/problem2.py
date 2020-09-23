@@ -9,9 +9,12 @@ filename_train = os.path.join(dirname, "optdigits-1d-train.csv")
 trainingset = np.genfromtxt(filename_train, delimiter=" ")
 
 # Here we filter out the appropriate information and put the x values which correspond to an label = (0/1)
-train0 = trainingset.T[1][np.where(trainingset.T[0] == 0)[0]]
-train1 = trainingset.T[1][np.where(trainingset.T[0] == 1)[0]]
+train0index = np.where(trainingset.T[0] == 0)[0]
+train1index = np.where(trainingset.T[0] == 1)[0]
+train0 = trainingset.T[1][train0index]
+train1 = trainingset.T[1][train1index]
 train = trainingset.T[1]
+train_ind = trainingset.T[0]
 n = trainingset.T[0].shape[0]
 
 # Are given alpha = 9
@@ -34,7 +37,7 @@ priorC1 = n1 / n
 train0Dist = ProbabilityDistributions(train0)
 train1Dist = ProbabilityDistributions(train1)
 gammadist = np.array(train0Dist.gamma(alpha, betta_hat)).T
-normaldist = np.array(train1Dist.normal()).T
+normaldist = np.array(train1Dist.normal(my_hat, sigma2_hat)).T
 
 #sorting by the first column to be able to plot with lines
 gammadist_sorted = gammadist[gammadist[:,0].argsort()].T
@@ -61,12 +64,34 @@ def plot():
 
     plt.subplots_adjust(hspace=0.5)
 
-    fig.suptitle("Histogram and estimated deistributions for:")
+    fig.suptitle("Histogram and estimated distributions for:")
     plt.show()
 
 #################### (2c) ##############################
 # Classifying
-class0, class1 = Bayes_classifier(train)
+class0, class1 = Bayes_classifier(train, priorC0, priorC1, alpha, betta_hat, my_hat, sigma2_hat)
+class0index = class0[0]
+class1index = class1[0]
+
+# Constructing the confusion matrix
+def confusionMatrix(classified0, classified1, actual0, actual1):
+    """
+    A measure of how good the algorithm works.
+    Args:
+        param1: (ndarray) - Array of indexes which are classified as 0's.
+        param2: (ndarray) - Array of indexes which are classified as 1's.
+        param3: (ndarray) - Array of indexes which are actually 0's.
+        param4: (ndarray) - Array of indexes which are actually 1's.
+    Returns:
+        (list of lists) - Nested list which is the confusion matrix.
+    """
+    # intersect1d compares two arrays and returns the elements which are found in both arrays.
+    tp = np.intersect1d(classified0, actual0).shape[0]
+    fn = np.intersect1d(classified1, actual0).shape[0]
+    fp = np.intersect1d(classified0, actual1).shape[0]
+    tn = np.intersect1d(classified1, actual1).shape[0]
+    return [[tp, fn], [fp, tn]]
+confusionmatrix = confusionMatrix(class0index, class1index, train0index, train1index)
 
 
 
