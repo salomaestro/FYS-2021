@@ -1,0 +1,5 @@
+PWD C:/Users/Christian Salomonsen/github/FYS-2021/PortofolioAssignment1
+INPUT c:/texlive/2020/texmf.cnf
+INPUT c:/texlive/2020/texmf-dist/web2c/texmf.cnf
+INPUT c:/texlive/2020/texmf-var/web2c/pdftex/pdflatex.fmt
+INPUT latexScript.tex

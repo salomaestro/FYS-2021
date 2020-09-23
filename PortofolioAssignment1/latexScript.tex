@@ -133,7 +133,15 @@
         & = -\dfrac{1}{2}n_1 ln(2\pi) + n_1 ln(\sigma) + \sum_{t=1}^{n_1} \dfrac{(x-\mu)^2}{2\sigma^2}
       \end{align*}
       \begin{align*}
-        \dfrac{\partial L(\mu)}{\partial \mu} & =\sum_{t=1}^{n1}\dfrac{2(x - \mu)2\sigma^2 - 0}{4\sigma^2} = 0 \quad&\quad \dfrac{\partial L(\sigma)}{\partial\sigma} = \dfrac{n_1}{\sigma} + \sum_{t=1}^n_1 \dfrac{}
+        \dfrac{\partial L(\mu)}{\partial \mu} & =\sum_{t=1}^{n1}\dfrac{2(x - \mu)2\sigma^2 - 0}{4\sigma^2} = 0 \quad&\quad\quad \dfrac{\partial L(\sigma)}{\partial\sigma} & = \dfrac{n_1}{\sigma} + \sum_{t=1}^{n_1} \dfrac{0 - (x - \mu)^2 4\sigma}{4\sigma^4}  = 0
+        \\
+        & \Rightarrow \sum_{t=1}^{n_1} 2(x - \mu)2\sigma^2 = 0 \quad&\quad\quad
+        \dfrac{n_1}{\sigma} & = \sum_{t=1}^{n_1} \dfrac{(x-\mu)^2}{\sigma^3}
+        \\
+        n_1\mu & = \sum_{t=1}^{n_1} x \quad&\quad\quad \sigma^2 &= \dfrac{1}{n_1}\sum_{t=1}^{n_1} (x-\mu)^2
+        \\
+        \hat{\mu} & = \dfrac{1}{n_1}\sum_{t=1}^{n_1} x_t \quad QED &\quad\quad
+        \hat{\sigma}^2 &= \dfrac{1}{n_1}\sum_{t=1}^{n_1} (x_t-\mu)^2 \quad QED
       \end{align*}
 
 
