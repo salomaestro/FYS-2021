@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.9.14)  23 SEP 2020 23:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.9.14)  23 SEP 2020 23:50
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -783,7 +783,7 @@ ript.aux) )
 Here is how much of TeX's memory you used:
  23685 strings out of 480876
  601509 string characters out of 5911487
- 981776 words of memory out of 5000000
+ 982776 words of memory out of 5000000
  38931 multiletter control sequences out of 15000+600000
  543891 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -800,7 +800,7 @@ cm/cmr6.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb
 ive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2020/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb><c:/texlive/2020/texmf-dist
 /fonts/type1/public/amsfonts/latxfont/line10.pfb>
-Output written on latexScript.pdf (5 pages, 195099 bytes).
+Output written on latexScript.pdf (5 pages, 195348 bytes).
 PDF statistics:
  82 PDF objects out of 1000 (max. 8388607)
  55 compressed objects within 1 object stream

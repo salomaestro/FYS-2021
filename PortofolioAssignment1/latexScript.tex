@@ -130,7 +130,10 @@
         L(\mu) & = ln \left( \sum_{t=1}^{n_1} \dfrac{1}{\sqrt{2\pi}\sigma}e^{-\dfrac{(x-\mu)^2}{2\sigma^2}}\right) \\
         & = ln \left(\sum_{t=1}^{n_1} \dfrac{1}{\sqrt{2\pi}\sigma} \right) + ln\left(e^{-\dfrac{(x-\mu)^2}{2\sigma^2}} \right)\\
         & = n_1(\cancelto{0}{ln(1)}-ln(\sqrt{2\pi}) + ln(\sigma)) + \sum_{t=1}^{n_1}\dfrac{(x-\mu)^2}{2\sigma^2} \\
-        & = -\dfrac{1}{2}n_1
+        & = -\dfrac{1}{2}n_1 ln(2\pi) + n_1 ln(\sigma) + \sum_{t=1}^{n_1} \dfrac{(x-\mu)^2}{2\sigma^2}
+      \end{align*}
+      \begin{align*}
+        \dfrac{\partial L(\mu)}{\partial \mu} & =\sum_{t=1}^{n1}\dfrac{2(x - \mu)2\sigma^2 - 0}{4\sigma^2} = 0 \quad&\quad \dfrac{\partial L(\sigma)}{\partial\sigma} = \dfrac{n_1}{\sigma} + \sum_{t=1}^n_1 \dfrac{}
       \end{align*}
 
 
