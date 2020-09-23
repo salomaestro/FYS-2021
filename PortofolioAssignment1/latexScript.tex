@@ -7,6 +7,7 @@
 \usepackage{pgfplots}
 \usepackage{graphicx}
 \usepackage{mathtools}
+\usepackage{cancel}
 \pgfplotsset{compat=1.16}
 \graphicspath{ {./pictures/} }
 
@@ -116,10 +117,20 @@
     \subsection*{(2a)}
       We are to show that the Maximum Likelihood estimators for the unknown parameters.
       \begin{align*}
-        p(x|C_0) & = \dfrac{1}{\beta^\alpha\Gamma(\alpha)}x_{t}^{\alpha-1}e^{-x_{t}/\beta}\\
-        l(\beta) & = \prod_{t=1}^{n_0} \dfrac{1}{\beta^\alpha \Gamma(\alpha)}x_{t}^{\alpha-1}e^{-x_{t}/\beta}\\
-        L(\beta) & = ln(l(\beta)) = ln(\sum_{t=1}^{n_0}\dfrac{1}{\beta^\alpha \Gamma(\alpha)}x_{t}^{\alpha-1}e^{-x_{t}/\beta})\\
-        & =\sum_{t=1}^{n_0}ln(\dfrac{1}{\beta^\alpha \Gamma(\alpha)}) + \sum_{t=1}^{n0}ln(x_{t}^{\alpha-1}) + \sum_{t=1}^{n_0} \dfrac{-x_t}{\beta}
+        p(x|C_0) & = \dfrac{1}{\beta^\alpha\Gamma(\alpha)}x_{0}^{\alpha-1}e^{-x_{0}/\beta}\\
+        l(\beta) & = \prod_{t=1}^{n_0} \dfrac{1}{\beta^\alpha \Gamma(\alpha)}x_{0}^{\alpha-1}e^{-x_{0}/\beta}\\
+        L(\beta) & = ln(l(\beta)) = ln(\sum_{t=1}^{n_0}\dfrac{1}{\beta^\alpha \Gamma(\alpha)}x_{0}^{\alpha-1}e^{-x_{0}/\beta})\\
+        & =\sum_{t=1}^{n_0}ln \left( \dfrac{1}{\beta^\alpha \Gamma(\alpha)} \right) + \sum_{t=1}^{n0}ln(x_{0}^{\alpha-1}) + \sum_{t=1}^{n_0} \dfrac{-x_0}{\beta}\\
+        & = n_0( \cancelto{0}{ln(1)} - ln(\beta^\alpha) + ln(\Gamma(\alpha))) + \sum_{t=1}^{n_0} ln(x_{0}^{\alpha-1}) - \dfrac{1}{\beta}\sum_{t=1}^{n_0}x_0 \\
+        \dfrac{\partial L(\beta)}{\partial\beta} & = -\dfrac{n_0 \alpha}{\beta} + \dfrac{1}{\beta^2}\sum_{t=1}^{n_0}x_0 = 0 \Leftrightarrow \dfrac{n_0 \alpha}{\beta} = \dfrac{\sum_{t=1}^{n_0}x_0}{\beta^2}\\
+        \Leftrightarrow \dfrac{\beta^2}{\beta} & = \dfrac{1}{n_0 \alpha}\sum_{t=1}^{n_0}x_0 \Rightarrow \underline{\hat{\beta} = \dfrac{1}{n_0 \alpha}\sum_{t=1}^{n_0}x_0^t} \quad QED
+      \end{align*}
+      \begin{align*}
+        p(x|C_1) & = \dfrac{1}{\sqrt{2\pi}\sigma}e^{-\dfrac{(x-\mu)^2}{2\sigma^2}} \\
+        L(\mu) & = ln \left( \sum_{t=1}^{n_1} \dfrac{1}{\sqrt{2\pi}\sigma}e^{-\dfrac{(x-\mu)^2}{2\sigma^2}}\right) \\
+        & = ln \left(\sum_{t=1}^{n_1} \dfrac{1}{\sqrt{2\pi}\sigma} \right) + ln\left(e^{-\dfrac{(x-\mu)^2}{2\sigma^2}} \right)\\
+        & = n_1(\cancelto{0}{ln(1)}-ln(\sqrt{2\pi}) + ln(\sigma)) + \sum_{t=1}^{n_1}\dfrac{(x-\mu)^2}{2\sigma^2} \\
+        & = -\dfrac{1}{2}n_1
       \end{align*}
 
 

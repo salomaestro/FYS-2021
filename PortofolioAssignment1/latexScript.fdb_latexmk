@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1600895456 "latexScript.tex" "latexScript.pdf" "latexScript" 1600895456
+["pdflatex"] 1600897421 "latexScript.tex" "latexScript.pdf" "latexScript" 1600897421
   "c:/texlive/2020/texmf-dist/fonts/map/fontname/texfonts.map" 1600093116 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1600091396 1004 54797486969f23fa377b128694d548df ""
   "c:/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1600091396 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -32,6 +32,7 @@
   "c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1600091396 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb" 1600091396 32626 5abc8bb2f28aa647d4c70f8ea38cc0d3 ""
   "c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb" 1600091396 36118 fad905eba93cff5bce1e185fe980a177 ""
+  "c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/latxfont/line10.pfb" 1600091396 11493 4f5ed183a47d3197cf8cd322325db6de ""
   "c:/texlive/2020/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1600094536 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "c:/texlive/2020/texmf-dist/tex/generic/iftex/iftex.sty" 1600093576 6501 4011d89d9621e0b0901138815ba5ff29 ""
   "c:/texlive/2020/texmf-dist/tex/generic/iftex/ifvtex.sty" 1600093576 1057 525c2192b5febbd8c1f662c9468335bb ""
@@ -140,6 +141,7 @@
   "c:/texlive/2020/texmf-dist/tex/latex/base/article.cls" 1600093873 20023 e427dd9e17e239bf926ef3aab67fe35e ""
   "c:/texlive/2020/texmf-dist/tex/latex/base/inputenc.sty" 1600093873 5050 8933a39ad74377accd18991c5eb90c58 ""
   "c:/texlive/2020/texmf-dist/tex/latex/base/size12.clo" 1600093873 8447 5c4b8ee712f8e349df2722115bc8c513 ""
+  "c:/texlive/2020/texmf-dist/tex/latex/cancel/cancel.sty" 1600091971 7592 dd751af313a16a0308545d5bfd7aaaa2 ""
   "c:/texlive/2020/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty" 1600092833 13886 d1306dcf79a944f6988e688c1785f9ce ""
   "c:/texlive/2020/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty" 1600092952 11128 a53805799bebfed6358fc1658a18e41f ""
   "c:/texlive/2020/texmf-dist/tex/latex/geometry/geometry.sty" 1600093237 41601 9cf6c5257b1bc7af01a58859749dd37a ""
@@ -172,12 +174,12 @@
   "c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1600097411 5058289 eeaee0d78bc67376d4a05921ed7ba0c6 ""
   "c:/texlive/2020/texmf-var/web2c/pdftex/pdflatex.fmt" 1600097550 2444765 7780aa0fb020d305c43e07fbb9a295cd ""
   "c:/texlive/2020/texmf.cnf" 1600097360 673 4ae7b2f49cee444c5343a45b5d0f169c ""
-  "latexScript.aux" 1600895449 346 f810799f1be48aeeb7bd6c7fffd9dbde "pdflatex"
-  "latexScript.tex" 1600895455 8935 2b927d1ff9cc4da8566674e643066d7f ""
+  "latexScript.aux" 1600897401 346 f810799f1be48aeeb7bd6c7fffd9dbde "pdflatex"
+  "latexScript.tex" 1600897420 10049 317d081585653a6c783092d3c9010e5c ""
   "pictures/Page.png" 1600881397 13035 c86a388f0662d6223ba5347a70fde7da ""
   "pictures/logarithmic.png" 1600893487 39557 c3bd8d2222ba91ce2f41e2ba6956d847 ""
   "pictures/nonlogarithmic.png" 1600893557 40232 d8b7a5f5338bdd884e27ac5495452bea ""
   (generated)
-  "latexScript.log"
   "latexScript.aux"
+  "latexScript.log"
   "latexScript.pdf"

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.9.14)  23 SEP 2020 23:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.9.14)  23 SEP 2020 23:43
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -523,6 +523,8 @@ LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 130.
 \l_MT_below_shortintertext_sep=\dimen282
 \xmathstrut@box=\box59
 \xmathstrut@dim=\dimen283
+) (c:/texlive/2020/texmf-dist/tex/latex/cancel/cancel.sty
+Package: cancel 2013/04/12 v2.2 Cancel math terms
 ) (c:/texlive/2020/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2020-09-11 L3 backend support: PDF output (pdfTeX)
 \l__kernel_color_stack_int=\count289
@@ -530,20 +532,20 @@ File: l3backend-pdftex.def 2020-09-11 L3 backend support: PDF output (pdfTeX)
 ) (./latexScript.aux)
 \openout1 = `latexScript.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -602,12 +604,12 @@ e
 Package pgfplots notification 'compat/show suggested version=true': you might b
 enefit from \pgfplotsset{compat=1.17} (current compat level: 1.16).
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 28.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 29.
 
 (c:/texlive/2020/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 28.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 29.
 
 (c:/texlive/2020/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -619,7 +621,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.31       S
+l.32       S
             upervised learning consists of machine learning algorithms which...
 
 Your command was ignored.
@@ -627,12 +629,12 @@ Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 31--36
+Underfull \hbox (badness 10000) in paragraph at lines 32--37
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 31--36
+Underfull \hbox (badness 10000) in paragraph at lines 32--37
 
  []
 
@@ -643,14 +645,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.37       \newline
+l.38       \newline
                    
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 45--50
+Underfull \hbox (badness 10000) in paragraph at lines 46--51
 
  []
 
@@ -660,12 +662,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 45--50
 <./pictures/Page.png, id=20, 282.05376pt x 231.86626pt>
 File: ./pictures/Page.png Graphic file (type png)
 <use ./pictures/Page.png>
-Package pdftex.def Info: ./pictures/Page.png  used on input line 56.
+Package pdftex.def Info: ./pictures/Page.png  used on input line 57.
 (pdftex.def)             Requested size: 170.71835pt x 142.26608pt.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.60       \begin{bmatrix}
+l.61       \begin{bmatrix}
                           
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -673,7 +675,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.64       \end{bmatrix}
+l.65       \end{bmatrix}
                         
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -682,19 +684,19 @@ really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--66
+Underfull \hbox (badness 10000) in paragraph at lines 52--67
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 70--73
+Underfull \hbox (badness 10000) in paragraph at lines 71--74
 
  []
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.74       $\pi = $\begin{bmatrix}
+l.75       $\pi = $\begin{bmatrix}
                                   
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -702,7 +704,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.78       \end{bmatrix}
+l.79       \end{bmatrix}
                         
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -713,7 +715,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.81       \begin{bmatrix}
+l.82       \begin{bmatrix}
                           
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -721,7 +723,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.83       \end{bmatrix}
+l.84       \end{bmatrix}
                         
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -732,7 +734,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.85       \begin{bmatrix}
+l.86       \begin{bmatrix}
                           
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -740,7 +742,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.87       \end{bmatrix}
+l.88       \end{bmatrix}
                         
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -749,7 +751,7 @@ really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 74--91
+Underfull \hbox (badness 10000) in paragraph at lines 75--92
 
  []
 
@@ -760,7 +762,7 @@ We now make it that large for the rest of the document.
 This may cause the page layout to be inconsistent, however.
 
 [2 <./pictures/Page.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 92--95
+Underfull \hbox (badness 10000) in paragraph at lines 93--96
 
  []
 
@@ -768,24 +770,24 @@ Underfull \hbox (badness 10000) in paragraph at lines 92--95
 <./pictures/logarithmic.png, id=29, 462.528pt x 346.896pt>
 File: ./pictures/logarithmic.png Graphic file (type png)
 <use ./pictures/logarithmic.png>
-Package pdftex.def Info: ./pictures/logarithmic.png  used on input line 110.
+Package pdftex.def Info: ./pictures/logarithmic.png  used on input line 111.
 (pdftex.def)             Requested size: 227.6217pt x 199.16722pt.
 <./pictures/nonlogarithmic.png, id=30, 462.528pt x 346.896pt>
 File: ./pictures/nonlogarithmic.png Graphic file (type png)
 <use ./pictures/nonlogarithmic.png>
-Package pdftex.def Info: ./pictures/nonlogarithmic.png  used on input line 111.
+Package pdftex.def Info: ./pictures/nonlogarithmic.png  used on input line 112.
 
 (pdftex.def)             Requested size: 227.6217pt x 199.16722pt.
 [4 <./pictures/logarithmic.png> <./pictures/nonlogarithmic.png>] [5] (./latexSc
 ript.aux) ) 
 Here is how much of TeX's memory you used:
- 23655 strings out of 480876
- 601084 string characters out of 5911487
- 979776 words of memory out of 5000000
- 38905 multiletter control sequences out of 15000+600000
+ 23685 strings out of 480876
+ 601509 string characters out of 5911487
+ 981776 words of memory out of 5000000
+ 38931 multiletter control sequences out of 15000+600000
  543891 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 73i,11n,127p,728b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 73i,18n,127p,728b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
 <c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pf
 b><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/tex
 live/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2020
@@ -796,11 +798,12 @@ pe1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public
 cm/cmr6.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb
 ><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texl
 ive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2020/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on latexScript.pdf (5 pages, 188121 bytes).
+exmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb><c:/texlive/2020/texmf-dist
+/fonts/type1/public/amsfonts/latxfont/line10.pfb>
+Output written on latexScript.pdf (5 pages, 195099 bytes).
 PDF statistics:
- 78 PDF objects out of 1000 (max. 8388607)
- 52 compressed objects within 1 object stream
+ 82 PDF objects out of 1000 (max. 8388607)
+ 55 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  28 words of extra memory for PDF output out of 10000 (max. 10000000)
 
