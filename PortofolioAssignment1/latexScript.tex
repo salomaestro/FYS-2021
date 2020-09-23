@@ -104,18 +104,20 @@
       From my implementation of the linear regression model we get back two paramaters, $\beta_0, \beta_1$. Where $\beta_0$ is the y-intercept, meaning where the regression line crosses the y-axis. While $\beta_1$ on the other hand is the slope of the regression line. Meaning that in this system we have $y = \beta_1 \cdot x + \beta_0$, where $x$ is our $ln(PageRank)$, and $y$ the Elo-rating.
     \subsection*{(1i)}
       We see that we get a $R^2$-value of $0.721$ which is a measure of how well our regression line fit the given data. While mean squared error is the mean of the error, that is, the distance between the regression line and the actual Elo-rank.\\
-      \begin{figure}[comp]
+      \begin{figure}[h]
         \caption{Comparison between logarithmic and non-logarithmic linear model}
         \centering
-        \includegraphics[width=6cm, height=5cm]{Plot_Logarithmic}
-        \includegraphics[width=6cm, height=5cm]{Plot_nonLogarithmic}
-      \end{figure}
-
-
-
-
-
+        \includegraphics[width=8cm, height=7cm]{logarithmic}
+        \includegraphics[width=8cm, height=7cm]{nonlogarithmic}
+      \end{figure}\\
+      What we see here is that with the logarithmic model we get a higher $R^2$ value, and a lower mean squared error which both are better in the logarithmic case than in the non logarithmic case. Taking the $R^2$ value into consideration we could say the logarithmic model is a $9.9$ percent better fit.
+  \newpage
+  \section*{Problem2}
+    \subsection*{(2a)}
+      We are to show that the Maximum Likelihood estimators for the unknown parameters.
       \begin{align*}
+        p(x|C_0) & = \dfrac{1}{\beta^\alpha\Gamma(\alpha)}x^{\lpha-1}e^{-x/\beta}
+        = \
       \end{align*}
 
 
