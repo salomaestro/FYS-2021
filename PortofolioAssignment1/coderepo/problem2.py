@@ -2,11 +2,14 @@ import numpy as np
 import os
 import matplotlib.pyplot as plt
 from ML_functions_PA import ProbabilityDistributions, Bayes_classifier
+from he1_util import get_msg_for_labels
 
 dirname = os.path.dirname(__file__)
 filename_train = os.path.join(dirname, "optdigits-1d-train.csv")
+filename_test = os.path.join(dirname, "optdigits-1d-test.csv")
 
 trainingset = np.genfromtxt(filename_train, delimiter=" ")
+testset = np.genfromtxt(filename_test)
 
 # Here we filter out the appropriate information and put the x values which correspond to an label = (0/1)
 train0index = np.where(trainingset.T[0] == 0)[0]
@@ -14,7 +17,6 @@ train1index = np.where(trainingset.T[0] == 1)[0]
 train0 = trainingset.T[1][train0index]
 train1 = trainingset.T[1][train1index]
 train = trainingset.T[1]
-train_ind = trainingset.T[0]
 n = trainingset.T[0].shape[0]
 
 # Are given alpha = 9
@@ -69,9 +71,9 @@ def plot():
 
 #################### (2c) ##############################
 # Classifying
-class0, class1 = Bayes_classifier(train, priorC0, priorC1, alpha, betta_hat, my_hat, sigma2_hat)
-class0index = class0[0]
-class1index = class1[0]
+trainclassified0, trainclassified1 = Bayes_classifier(train, priorC0, priorC1, alpha, betta_hat, my_hat, sigma2_hat)
+class0index = trainclassified0[0]
+class1index = trainclassified1[0]
 
 # Constructing the confusion matrix
 def confusionMatrix(classified0, classified1, actual0, actual1):
@@ -83,25 +85,50 @@ def confusionMatrix(classified0, classified1, actual0, actual1):
         param3: (ndarray) - Array of indexes which are actually 0's.
         param4: (ndarray) - Array of indexes which are actually 1's.
     Returns:
-        (list of lists) - Nested list which is the confusion matrix.
+        (ndarray) - Nested list which is the confusion matrix.
     """
     # intersect1d compares two arrays and returns the elements which are found in both arrays.
     tp = np.intersect1d(classified0, actual0).shape[0]
     fn = np.intersect1d(classified1, actual0).shape[0]
     fp = np.intersect1d(classified0, actual1).shape[0]
     tn = np.intersect1d(classified1, actual1).shape[0]
-    return [[tp, fn], [fp, tn]]
+    return np.array([np.array([tp, fn]), np.array([fp, tn])])
 confusionmatrix = confusionMatrix(class0index, class1index, train0index, train1index)
 
+# (tp + tn)/N
+accuracy = (confusionmatrix[0][0] + confusionmatrix[1][1]) / np.sum(confusionmatrix)
 
+# tp/p'
+precision = confusionmatrix[0][0] / np.sum(confusionmatrix, axis=0)[0]
 
+# tp/p
+recall = confusionmatrix[0][0] / np.sum(confusionmatrix, axis=1)[0]
 
+########################### (2d) #######################################
 
+# Uses the classification algorithm on tour testset!
+class0, class1 = Bayes_classifier(testset, priorC0, priorC1, alpha, betta_hat, my_hat, sigma2_hat)
 
+# Pick out the indices
+classifiedZerosindex = class0[0].astype("int32")
+classifiedOnesindex = class1[0].astype("int32")
+
+# Create zero-array with shape as our test set
+decrypted = np.zeros_like(testset)
+
+# Set element number [index] equal to one
+decrypted[classifiedOnesindex] = 1
+
+decrypted = decrypted.astype("int32")
 
 def main():
     print("We get the point estimates: betta_hat = {:.5f}, my_hat = {:.5f}, sigma2_hat = {:.5f}".format(betta_hat, my_hat, sigma2_hat))
-    # plot()
+
+    print("We have our confusion matrix: \n{}\nAccuracy = {}\nPrecision = {}\nRecall = {}".format(confusionmatrix, accuracy, precision, recall))
+
+    print("Decrypted message: %s" % get_msg_for_labels(decrypted))
+
+    plot()
 
 if __name__ == "__main__":
     main()

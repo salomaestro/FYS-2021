@@ -199,27 +199,27 @@ def Bayes_classifier(all_x, priorclass0, priorclass1, alpha, betta_hat, mean, va
 	# Uses my previously created class containing methods for calculating normal and gamma distributions
 	classify = ProbabilityDistributions(all_x)
 
-
+	# p(x|C_i) - using our distributions
 	likelihood0 = classify.gamma(alpha, betta_hat)[1]
 	likelihood1 = classify.normal(mean, var)[1]
 
-
+	# Classifying by index
 	C1_index = np.where(likelihood1 * priorclass1 > likelihood0 * priorclass0)
 	C0_index = np.where(likelihood0 * priorclass0 > likelihood1 * priorclass1)
 
-
+	# Assigning the classified index to classes
 	C1 = all_x[C1_index]
 	C0 = all_x[C0_index]
 
-
+	# Reshaping reshaping such that we can concatenate
 	C0 = C0.reshape(1, C0.shape[0])
 	C1 = C1.reshape(1, C1.shape[0])
 
-
+	# Doing the same for the indices
 	C0_index = C0_index[0].reshape(1, C0.shape[1])
 	C1_index = C1_index[0].reshape(1, C1.shape[1])
 
-
+	# Concatenating both
 	C0_withindex = np.concatenate((C0_index, C0))
 	C1_withindex = np.concatenate((C1_index, C1))
 	return C0_withindex, C1_withindex
