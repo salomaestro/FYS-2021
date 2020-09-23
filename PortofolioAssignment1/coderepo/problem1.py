@@ -113,11 +113,11 @@ regressionline, = plt.plot(xval[0], yval[0], "g-", linewidth=2)
 datapoints = plt.scatter(rank_scoreLog, elo_score, marker=".", s=20)
 
 # for the plots
-plt.xlabel("log(PageRank)")
+plt.xlabel("ln(PageRank)")
 plt.ylabel("Elo score")
 plt.title("Plot of Elo score against the logarithmic PageRanked chess players.\nWe get mean squared error: {:.3f}, R^2: {:.3f}".format(meansquarederror, rSquared))
 plt.legend((regressionline, datapoints), ("Regression line", "Datapoints"), loc="upper left", fancybox=True, shadow=True)
 plt.show()
 
-# picture = os.path.join(dirname, "Plot_Logarithmic.pdf")
+# picture = os.path.join(dirname, "Plot_Logarithmic")
 # plt.savefig(picture)

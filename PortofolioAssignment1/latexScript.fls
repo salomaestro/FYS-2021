@@ -253,6 +253,12 @@ INPUT c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT ./pictures/Page.png
 INPUT ./pictures/Page.png
 INPUT ./pictures/Page.png
+INPUT ./pictures/Plot_Logarithmic.pdf
+INPUT ./pictures/Plot_Logarithmic.pdf
+INPUT ./pictures/Plot_Logarithmic.pdf
+INPUT ./pictures/Plot_nonLogarithmic.pdf
+INPUT ./pictures/Plot_nonLogarithmic.pdf
+INPUT ./pictures/Plot_nonLogarithmic.pdf
 INPUT latexScript.aux
 INPUT c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb

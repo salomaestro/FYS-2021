@@ -51,7 +51,7 @@
       For this problem I'll show an example i think makes everything a bit clearer.\\
       \quad We are given 3 pages: $P_1, P_2, P_3$
       \begin{figure}[h]
-        \caption{Illustration of the problem}
+        \caption{Illustration of the example}
         \centering
         \includegraphics[width=6cm, height=5cm]{Page}
       \end{figure}
@@ -99,8 +99,17 @@
       \end{align}
       From equation \ref{eq2} we see that the matrix is stochastic, since a value at $ij$ would be the same as a outlink in our conventional manner, then it is divided by the sum of the row. This matrix will however not be irreducable, since there obviously exist dangling nodes with this approach.
     \subsection*{(1g)}
-      The main difference is that all dangling nodes are gone. Also many of the players which had previously had the same rank 
-
+      The main difference is that all dangling nodes are gone. Also many of the players which had previously had the same rank are now instead ranked in relation to each other.
+    \subsection*{(1h)}
+      From my implementation of the linear regression model we get back two paramaters, $\beta_0, \beta_1$. Where $\beta_0$ is the y-intercept, meaning where the regression line crosses the y-axis. While $\beta_1$ on the other hand is the slope of the regression line. Meaning that in this system we have $y = \beta_1 \cdot x + \beta_0$, where $x$ is our $ln(PageRank)$, and $y$ the Elo-rating.
+    \subsection*{(1i)}
+      We see that we get a $R^2$-value of $0.721$ which is a measure of how well our regression line fit the given data. While mean squared error is the mean of the error, that is, the distance between the regression line and the actual Elo-rank.\\
+      \begin{figure}[comp]
+        \caption{Comparison between logarithmic and non-logarithmic linear model}
+        \centering
+        \includegraphics[width=6cm, height=5cm]{Plot_Logarithmic}
+        \includegraphics[width=6cm, height=5cm]{Plot_nonLogarithmic}
+      \end{figure}
 
 
 

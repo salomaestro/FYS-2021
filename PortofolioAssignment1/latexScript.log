@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.9.14)  23 SEP 2020 21:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.9.14)  23 SEP 2020 22:33
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -764,29 +764,79 @@ Underfull \hbox (badness 10000) in paragraph at lines 92--95
 
  []
 
-[3] (./latexScript.aux) ) 
+[3]
+
+! LaTeX Error: Unknown float option `c'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.107       \begin{figure}[comp]
+                                
+Option `c' ignored and `p' used.
+
+
+! LaTeX Error: Unknown float option `o'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.107       \begin{figure}[comp]
+                                
+Option `o' ignored and `p' used.
+
+
+! LaTeX Error: Unknown float option `m'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.107       \begin{figure}[comp]
+                                
+Option `m' ignored and `p' used.
+
+<./pictures/Plot_Logarithmic.pdf, id=29, 462.52798pt x 346.89601pt>
+File: ./pictures/Plot_Logarithmic.pdf Graphic file (type pdf)
+<use ./pictures/Plot_Logarithmic.pdf>
+Package pdftex.def Info: ./pictures/Plot_Logarithmic.pdf  used on input line 11
+0.
+(pdftex.def)             Requested size: 170.71626pt x 142.26534pt.
+<./pictures/Plot_nonLogarithmic.pdf, id=30, 462.52798pt x 346.89601pt>
+File: ./pictures/Plot_nonLogarithmic.pdf Graphic file (type pdf)
+<use ./pictures/Plot_nonLogarithmic.pdf>
+Package pdftex.def Info: ./pictures/Plot_nonLogarithmic.pdf  used on input line
+ 111.
+(pdftex.def)             Requested size: 170.71626pt x 142.26534pt.
+[4] [5 <./pictures/Plot_Logarithmic.pdf> <./pictures/Plot_nonLogarithmic.pdf
+
+pdfTeX warning: pdflatex.exe (file ./pictures/Plot_nonLogarithmic.pdf): PDF inc
+lusion: multiple pdfs with page group included in a single page
+>] (./latexScript.aux) ) 
 Here is how much of TeX's memory you used:
- 23641 strings out of 480876
- 600727 string characters out of 5911487
+ 23653 strings out of 480876
+ 601159 string characters out of 5911487
  979776 words of memory out of 5000000
- 38891 multiletter control sequences out of 15000+600000
+ 38903 multiletter control sequences out of 15000+600000
  543891 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  73i,11n,127p,728b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
-<c:/texlive/2020/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmbx12.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmex
-10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c
-:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/
-2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2020/texmf
--dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2020/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2020/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmr8.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmsy10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cms
-y8.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on latexScript.pdf (3 pages, 120965 bytes).
+<c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmbx12.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmex1
+0.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:
+/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2
+020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2020/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2020/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2020/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr8.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmsy10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
+8.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on latexScript.pdf (5 pages, 157401 bytes).
 PDF statistics:
- 64 PDF objects out of 1000 (max. 8388607)
- 45 compressed objects within 1 object stream
+ 166 PDF objects out of 1000 (max. 8388607)
+ 60 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 18 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 28 words of extra memory for PDF output out of 10000 (max. 10000000)
 
