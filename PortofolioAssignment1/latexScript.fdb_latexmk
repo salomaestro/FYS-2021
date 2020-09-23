@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1600894606 "latexScript.tex" "latexScript.pdf" "latexScript" 1600894606
+["pdflatex"] 1600895456 "latexScript.tex" "latexScript.pdf" "latexScript" 1600895456
   "c:/texlive/2020/texmf-dist/fonts/map/fontname/texfonts.map" 1600093116 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1600091396 1004 54797486969f23fa377b128694d548df ""
   "c:/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1600091396 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -27,6 +27,7 @@
   "c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb" 1600091396 35469 dcf3a5f2fc1862f5952e3ee5eb1d98c4 ""
   "c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1600091396 32722 d7379af29a190c3f453aba36302ff5a9 ""
   "c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb" 1600091396 32362 bc3f3eec7ab7d65fe700963d4017d32c ""
+  "c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb" 1600091396 32734 69e00a6b65cedb993666e42eedb3d48f ""
   "c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb" 1600091396 32726 39f0f9e62e84beb801509898a605dbd5 ""
   "c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1600091396 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb" 1600091396 32626 5abc8bb2f28aa647d4c70f8ea38cc0d3 ""
@@ -171,12 +172,12 @@
   "c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1600097411 5058289 eeaee0d78bc67376d4a05921ed7ba0c6 ""
   "c:/texlive/2020/texmf-var/web2c/pdftex/pdflatex.fmt" 1600097550 2444765 7780aa0fb020d305c43e07fbb9a295cd ""
   "c:/texlive/2020/texmf.cnf" 1600097360 673 4ae7b2f49cee444c5343a45b5d0f169c ""
-  "latexScript.aux" 1600894593 346 f810799f1be48aeeb7bd6c7fffd9dbde "pdflatex"
-  "latexScript.tex" 1600894606 8531 919f53c8412a128f3fac321a8dc87031 ""
+  "latexScript.aux" 1600895449 346 f810799f1be48aeeb7bd6c7fffd9dbde "pdflatex"
+  "latexScript.tex" 1600895455 8935 2b927d1ff9cc4da8566674e643066d7f ""
   "pictures/Page.png" 1600881397 13035 c86a388f0662d6223ba5347a70fde7da ""
   "pictures/logarithmic.png" 1600893487 39557 c3bd8d2222ba91ce2f41e2ba6956d847 ""
   "pictures/nonlogarithmic.png" 1600893557 40232 d8b7a5f5338bdd884e27ac5495452bea ""
   (generated)
   "latexScript.log"
-  "latexScript.pdf"
   "latexScript.aux"
+  "latexScript.pdf"

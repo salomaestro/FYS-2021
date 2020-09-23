@@ -116,8 +116,10 @@
     \subsection*{(2a)}
       We are to show that the Maximum Likelihood estimators for the unknown parameters.
       \begin{align*}
-        p(x|C_0) & = \dfrac{1}{\beta^\alpha\Gamma(\alpha)}x^{\lpha-1}e^{-x/\beta}
-        = \
+        p(x|C_0) & = \dfrac{1}{\beta^\alpha\Gamma(\alpha)}x_{t}^{\alpha-1}e^{-x_{t}/\beta}\\
+        l(\beta) & = \prod_{t=1}^{n_0} \dfrac{1}{\beta^\alpha \Gamma(\alpha)}x_{t}^{\alpha-1}e^{-x_{t}/\beta}\\
+        L(\beta) & = ln(l(\beta)) = ln(\sum_{t=1}^{n_0}\dfrac{1}{\beta^\alpha \Gamma(\alpha)}x_{t}^{\alpha-1}e^{-x_{t}/\beta})\\
+        & =\sum_{t=1}^{n_0}ln(\dfrac{1}{\beta^\alpha \Gamma(\alpha)}) + \sum_{t=1}^{n0}ln(x_{t}^{\alpha-1}) + \sum_{t=1}^{n_0} \dfrac{-x_t}{\beta}
       \end{align*}
 
 
