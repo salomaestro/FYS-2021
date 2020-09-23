@@ -1,7 +1,7 @@
 import numpy as np
 import os
 import matplotlib.pyplot as plt
-from ML_functions_PA import ProbabilityDistributions
+from ML_functions_PA import ProbabilityDistributions, Bayes_classifier
 
 dirname = os.path.dirname(__file__)
 filename_train = os.path.join(dirname, "optdigits-1d-train.csv")
@@ -11,6 +11,7 @@ trainingset = np.genfromtxt(filename_train, delimiter=" ")
 # Here we filter out the appropriate information and put the x values which correspond to an label = (0/1)
 train0 = trainingset.T[1][np.where(trainingset.T[0] == 0)[0]]
 train1 = trainingset.T[1][np.where(trainingset.T[0] == 1)[0]]
+train = trainingset.T[1]
 n = trainingset.T[0].shape[0]
 
 # Are given alpha = 9
@@ -64,11 +65,18 @@ def plot():
     plt.show()
 
 #################### (2c) ##############################
-# creating the bayes classifier
+# Classifying
+class0, class1 = Bayes_classifier(train)
+
+
+
+
+
+
 
 def main():
     print("We get the point estimates: betta_hat = {:.5f}, my_hat = {:.5f}, sigma2_hat = {:.5f}".format(betta_hat, my_hat, sigma2_hat))
-    plot()
+    # plot()
 
 if __name__ == "__main__":
     main()

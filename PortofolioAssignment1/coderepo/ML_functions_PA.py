@@ -147,8 +147,6 @@ class LinearRegression:
 		"""
 		Calculates the residuals at each year, by taking the difference between the
 		regression line and the actual value
-		Args:
-		param1: (self)
 		Returns:
 		(ndarray) - contains floats of the residuals.
 		"""
@@ -183,6 +181,27 @@ class ProbabilityDistributions:
 		"""
 		dist = 1 / (np.sqrt(2 * np.pi) * self.std) * np.exp(- (self.x - self.mean) ** 2 / (2 * self.var))
 		return self.x, dist
+
+		# Creating the bayes classifier
+
+		def Bayes_classifier(all_x, priorclass0, priorclass1):
+		    """
+		    Method for classifying handwritten 0's and 1's under the assumption that all 0's follow a Gamma distribution, and all 1's follow a Normal distribution.
+		    Args:
+		        param1: (ndarray) - Collection of 0's and 1's interpreted by a camera as floats i, where 0 <= i <= 1.
+		        param2: (float) - prior probability of belonging to class 0.
+		        param3: (float) - prior probability of belonging to class 1.
+		    Returns:
+		        output1: (ndarray) - Values classified as 0's.
+		        output2: (ndarray) - Values classified as 1's.
+		    """
+		    # Uses my previously created class containing methods for calculating normal and gamma distributions
+		    classify = ProbabilityDistributions(all_x)
+		    likelihood1 = classify.gamma(alpha, betta_hat)[1]
+		    likelihood0 = classify.normal()[1]
+		    C1 = all_x[np.where(likelihood1 * priorclass1 > likelihood0 * priorclass0)]
+		    C0 = all_x[np.where(likelihood0 * priorclass0 > likelihood1 * priorclass1)]
+		    return C0, C1
 
 def main():
 	return None
