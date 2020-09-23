@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.9.14)  20 SEP 2020 14:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.9.14)  23 SEP 2020 21:02
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -491,27 +491,59 @@ File: tikzlibraryplotmarks.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 (c:/texlive/2020/texmf-dist/tex/generic/pgf/libraries/pgflibraryplotmarks.code.
 tex
 File: pgflibraryplotmarks.code.tex 2020/01/08 v3.1.5b (3.1.5b)
-))) (c:/texlive/2020/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+))) (c:/texlive/2020/texmf-dist/tex/latex/mathtools/mathtools.sty
+Package: mathtools 2020/03/24 v1.24 mathematical typesetting tools
+(c:/texlive/2020/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count285
+\calc@Bcount=\count286
+\calc@Adimen=\dimen274
+\calc@Bdimen=\dimen275
+\calc@Askip=\skip61
+\calc@Bskip=\skip62
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count287
+\calc@Cskip=\skip63
+) (c:/texlive/2020/texmf-dist/tex/latex/mathtools/mhsetup.sty
+Package: mhsetup 2017/03/31 v1.3 programming setup (MH)
+)
+LaTeX Info: Thecontrolsequence`\('isalreadyrobust on input line 130.
+LaTeX Info: Thecontrolsequence`\)'isalreadyrobust on input line 130.
+LaTeX Info: Thecontrolsequence`\['isalreadyrobust on input line 130.
+LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 130.
+\g_MT_multlinerow_int=\count288
+\l_MT_multwidth_dim=\dimen276
+\origjot=\skip64
+\l_MT_shortvdotswithinadjustabove_dim=\dimen277
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen278
+\l_MT_above_intertext_sep=\dimen279
+\l_MT_below_intertext_sep=\dimen280
+\l_MT_above_shortintertext_sep=\dimen281
+\l_MT_below_shortintertext_sep=\dimen282
+\xmathstrut@box=\box59
+\xmathstrut@dim=\dimen283
+) (c:/texlive/2020/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2020-09-11 L3 backend support: PDF output (pdfTeX)
-\l__kernel_color_stack_int=\count285
-\l__pdf_internal_box=\box59
+\l__kernel_color_stack_int=\count289
+\l__pdf_internal_box=\box60
 ) (./latexScript.aux)
 \openout1 = `latexScript.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -548,16 +580,16 @@ LaTeX Font Info:    ... okay on input line 24.
 
 (c:/texlive/2020/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count286
-\scratchdimen=\dimen274
-\scratchbox=\box60
-\nofMPsegments=\count287
-\nofMParguments=\count288
+\scratchcounter=\count290
+\scratchdimen=\dimen284
+\scratchbox=\box61
+\nofMPsegments=\count291
+\nofMParguments=\count292
 \everyMPshowfont=\toks40
-\MPscratchCnt=\count289
-\MPscratchDim=\dimen275
-\MPnumerator=\count290
-\makeMPintoPDFobject=\count291
+\MPscratchCnt=\count293
+\MPscratchDim=\dimen285
+\MPnumerator=\count294
+\makeMPintoPDFobject=\count295
 \everyMPtoPDFconversion=\toks41
 ) (c:/texlive/2020/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -570,12 +602,12 @@ e
 Package pgfplots notification 'compat/show suggested version=true': you might b
 enefit from \pgfplotsset{compat=1.17} (current compat level: 1.16).
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 25.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 28.
 
 (c:/texlive/2020/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 25.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 28.
 
 (c:/texlive/2020/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -587,20 +619,20 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.28     S
-          upervised learning consists of machine learning algorithms which b...
+l.31       S
+            upervised learning consists of machine learning algorithms which...
 
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 28--34
+Underfull \hbox (badness 10000) in paragraph at lines 31--36
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 28--34
+Underfull \hbox (badness 10000) in paragraph at lines 31--36
 
  []
 
@@ -611,167 +643,146 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.35     \newline
-                 
+l.37       \newline
+                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-! Missing } inserted.
-<inserted text> 
-                }
-l.47     \end{align}
-                    
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
 
-! Missing { inserted.
-<inserted text> 
-                {
-l.47     \end{align}
-                    
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.47     \end{align}
-                    
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing \endgroup inserted.
-<inserted text> 
-                \endgroup 
-l.47     \end{align}
-                    
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Misplaced \omit.
-\math@cr@@@ ...@ \@ne \add@amps \maxfields@ \omit 
-                                                  \kern -\alignsep@ \iftag@ ...
-l.47     \end{align}
-                    
-I expect to see \omit only after tab marks or the \cr of
-an alignment. Proceed, and I'll ignore this case.
-
-! Missing { inserted.
-<inserted text> 
-                {
-l.47     \end{align}
-                    
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 47--52
+Underfull \hbox (badness 10000) in paragraph at lines 45--50
 
  []
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.61       \end{align}
-                      
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing { inserted.
-<inserted text> 
-                {
-l.61       \end{align}
-                      
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.61       \end{align}
-                      
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing \endgroup inserted.
-<inserted text> 
-                \endgroup 
-l.61       \end{align}
-                      
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Misplaced \omit.
-\math@cr@@@ ...@ \@ne \add@amps \maxfields@ \omit 
-                                                  \kern -\alignsep@ \iftag@ ...
-l.61       \end{align}
-                      
-I expect to see \omit only after tab marks or the \cr of
-an alignment. Proceed, and I'll ignore this case.
-
-! Missing { inserted.
-<inserted text> 
-                {
-l.61       \end{align}
-                      
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
 
 [1
 
 {c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+<./pictures/Page.png, id=20, 282.05376pt x 231.86626pt>
+File: ./pictures/Page.png Graphic file (type png)
+<use ./pictures/Page.png>
+Package pdftex.def Info: ./pictures/Page.png  used on input line 56.
+(pdftex.def)             Requested size: 170.71835pt x 142.26608pt.
+! Missing $ inserted.
+<inserted text> 
+                $
+l.60       \begin{bmatrix}
+                          
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.64       \end{bmatrix}
+                        
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 51--66
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 70--73
+
+ []
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.74       $\pi = $\begin{bmatrix}
+                                  
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.78       \end{bmatrix}
+                        
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.81       \begin{bmatrix}
+                          
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.83       \end{bmatrix}
+                        
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.85       \begin{bmatrix}
+                          
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.87       \end{bmatrix}
+                        
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 74--91
+
+ []
+
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
 Make it at least 27.18335pt.
 We now make it that large for the rest of the document.
 This may cause the page layout to be inconsistent, however.
 
-[2] (./latexScript.aux) ) 
+[2 <./pictures/Page.png>] [3] (./latexScript.aux) ) 
 Here is how much of TeX's memory you used:
- 23076 strings out of 480876
- 590753 string characters out of 5911487
- 976776 words of memory out of 5000000
- 38340 multiletter control sequences out of 15000+600000
- 543544 words of font info for 62 fonts, out of 8000000 for 9000
+ 23640 strings out of 480876
+ 600722 string characters out of 5911487
+ 979776 words of memory out of 5000000
+ 38890 multiletter control sequences out of 15000+600000
+ 543891 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 73i,11n,127p,732b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
-<c:/texlive/2020/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmbx12.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmex
-10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c
-:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/
-2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2020/texmf
--dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2020/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2020/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmr8.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmsy10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cms
-y8.pfb>
-Output written on latexScript.pdf (2 pages, 93829 bytes).
+ 73i,11n,127p,728b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
+<c:/texlive/2020/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2020/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmmi12.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmmi6.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.
+pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/te
+xlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2020
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2020/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2020/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmti12.pfb>
+Output written on latexScript.pdf (3 pages, 117460 bytes).
 PDF statistics:
- 54 PDF objects out of 1000 (max. 8388607)
- 39 compressed objects within 1 object stream
+ 64 PDF objects out of 1000 (max. 8388607)
+ 45 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 18 words of extra memory for PDF output out of 10000 (max. 10000000)
 

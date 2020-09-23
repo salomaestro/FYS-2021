@@ -194,6 +194,12 @@ INPUT c:/texlive/2020/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/ti
 INPUT c:/texlive/2020/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryplotmarks.code.tex
 INPUT c:/texlive/2020/texmf-dist/tex/generic/pgf/libraries/pgflibraryplotmarks.code.tex
 INPUT c:/texlive/2020/texmf-dist/tex/generic/pgf/libraries/pgflibraryplotmarks.code.tex
+INPUT c:/texlive/2020/texmf-dist/tex/latex/mathtools/mathtools.sty
+INPUT c:/texlive/2020/texmf-dist/tex/latex/mathtools/mathtools.sty
+INPUT c:/texlive/2020/texmf-dist/tex/latex/tools/calc.sty
+INPUT c:/texlive/2020/texmf-dist/tex/latex/tools/calc.sty
+INPUT c:/texlive/2020/texmf-dist/tex/latex/mathtools/mhsetup.sty
+INPUT c:/texlive/2020/texmf-dist/tex/latex/mathtools/mhsetup.sty
 INPUT c:/texlive/2020/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 INPUT c:/texlive/2020/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 INPUT latexScript.aux
@@ -241,8 +247,12 @@ INPUT c:/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam7.tfm
 INPUT c:/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT c:/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT c:/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
+INPUT c:/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmti12.tfm
 OUTPUT latexScript.pdf
 INPUT c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map
+INPUT ./pictures/Page.png
+INPUT ./pictures/Page.png
+INPUT ./pictures/Page.png
 INPUT latexScript.aux
 INPUT c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
@@ -254,3 +264,4 @@ INPUT c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb
 INPUT c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb
 INPUT c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 INPUT c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
+INPUT c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb

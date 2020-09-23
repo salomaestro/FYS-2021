@@ -5,7 +5,10 @@
 \usepackage{amssymb}
 \usepackage{fancyhdr}
 \usepackage{pgfplots}
+\usepackage{graphicx}
+\usepackage{mathtools}
 \pgfplotsset{compat=1.16}
+\graphicspath{ {./pictures/} }
 
 \title{Portofolio Assignment 1}
 \author{Candidate: 25}
@@ -25,39 +28,86 @@
   \maketitle
   \section*{Problem 1}
     \subsection*{(1a)} \\
-    Supervised learning consists of machine learning algorithms which both has inputs and outputs. The goal of the supervised learning algorithm is using the observed values of $x$ to make an prediction of $y$, where we, the creater of the algorithm is the supervisor. So generally the algorithm consists of whats called a mapping of $x$ to $y$. Or we can generalize this as $y = f(x)$, where $f$ is the mapping of $x$ to $y$. Examples of supervised learning algorithms include classification, regression etc.\\
-    %Suppose we had a task, \textit{Classify these balloons by color into different corners of the room.} But your brain already knows how to differentiate the different colors from seeing them from before. So in this case \textit{you} are the machine, your brain already know that if that balloon is a color on the far left of the wavespectrum it's a blue balloon, and puts it in one of the corners that belong to blue balloons.\\
-    \newline
-    Whereas in unsupervised learning the goal of the algorithm is to find connections in the data, such that we can learn more from it. Here we don't have a supervisor, we simply try to better see patterns in the input data. We also aren't interested in any output since the input is used to train the model to rule out differences of the variables.\\
-    \newline
-    The PageRank algorithm is a unsupervised learning algorithm.
+      Supervised learning consists of machine learning algorithms which both has inputs and outputs. The goal of the supervised learning algorithm is using the observed values of $x$ to make an prediction of $y$, where we, the creater of the algorithm is the supervisor. So generally the algorithm consists of whats called a mapping of $x$ to $y$. Or we can generalize this as $y = f(x)$, where $f$ is the mapping of $x$ to $y$. Examples of supervised learning algorithms include classification, regression etc.\\
+      \newline
+      Whereas in unsupervised learning the goal of the algorithm is to find connections in the data, such that we can learn more from it. Here we don't have a supervisor, we simply try to better see patterns in the input data. We also aren't interested in any output since the input is used to train the model to rule out differences of the variables.\\
+      \newline
+      The PageRank algorithm is a unsupervised learning algorithm.
 
-    \newline
+      \newline
 
 
 
     \subsection*{(1b)}
-    We are given an equation representing the PageRank method,
-    \begin{subequations}
-    \renewcommand{\theequation}{\theparentequation.\arabic{equation}}
-    \begin{align}
-      $$
+      We are given an equation representing the PageRank method,
+      \begin{align} \label{eq1}
         r(P_i) = \sum\limits_{P_j \in B_{P_i}} \dfrac{r(P_j)}{|P_j|}.
-      $$
-    \end{align}
-    \end{subequations}
-    This sum ranks, with the $r(P_i)$ method, the given page, where $p_1, p_2, ... , p_n$ represent all the pages we want to compare against, where $n$ is the number of pages. $P_j$ is a page contained within the set of all the other pages that links to $P_i$, denoted $B_{P_i}$. Then the same is true for $r(P_j)$ as is for $r(P_i)$. $|P_j|$ represents the number of links from $P_j$ to other pages.\\
-    \newline
-    This equation will provide a ranking vector, $\pi$, to all the pages $p_1,...,p_n$. That means we need $n$ of these rankings to compute all the ranks for the different pages. If we are given an matrix
-
-  \section*{Problem 2}
-    \subsection*{(2a)}
-      \begin{subequations}
-      \renewcommand{\theequation}{\theparentequation.\arabic{equation}}
-      \begin{align}
-        $$
-          y = f(x)
-        $$
       \end{align}
-      \end{subequations}
+      This sum ranks, with the $r(P_i)$ method, the given page, where $p_1, p_2, ... , p_n$ represent all the pages we want to compare against, where $n$ is the number of pages. $P_j$ is a page contained within the set of all the other pages that links to $P_i$, denoted $B_{P_i}$. Then the same is true for $r(P_j)$ as is for $r(P_i)$. $|P_j|$ represents the number of links from $P_j$ to other pages.\\
+      \newline
+      This equation will provide a ranking vector, $\pi$, to all the pages $p_1,...,p_n$. That means we need $n$ of these rankings to compute all the ranks for the different pages.\\
+      In a sense we can view this as a way for each page to cast a \textit{vote} for the other pages, but it's altered in a way that we can see in equation \ref{eq1}. What happens here is that to give a rank to page $i$, we sum all the ranks of the other pages that link to page $i$, and divide each of those pages rank by their outlinks. If we now say again that each page can cast a vote for another page, then the rank gained by page $i$ from a particular page $j$ is the vote, divided by the other votes page $j$ has casted to other pages.
+    \subsection*{(1c)}
+      For this problem I'll show an example i think makes everything a bit clearer.\\
+      \quad We are given 3 pages: $P_1, P_2, P_3$
+      \begin{figure}[h]
+        \caption{Illustration of the problem}
+        \centering
+        \includegraphics[width=6cm, height=5cm]{Page}
+      \end{figure}
+      \newline
+      This system gives the transitionmatrix, $H^T = $
+      \begin{bmatrix}
+        0 & 1 & 1/2\\
+        1/2 & 0 & 1/2\\
+        1/2 & 0 & 0
+      \end{bmatrix}
+      . \\Where the first column represents $P_1$'s votes for $P_2$ and $P_3$. We note that $P_1$'s votes have been divided by the total number of votes $P_1$ has given. This also goes for the second and third column. This means if we write this as equation \ref{eq1} we get the system:\\
+      \begin{align*}
+        r(P_1) & = \dfrac{r(P_1)}{|P_1|} + \dfrac{r(P_2)}{|P_2|} + \dfrac{r(P_3)}{|P_3|} \\
+        r(P_2) & = \dfrac{r(P_1)}{|P_1|} + \dfrac{r(P_2)}{|P_2|} + \dfrac{r(P_3)}{|P_3|} \\
+        r(P_3) & = \dfrac{r(P_1)}{|P_1|} + \dfrac{r(P_2)}{|P_2|} + \dfrac{r(P_3)}{|P_3|}
+      \end{align*}
+      Which look suspiciously similar to a matrix system of equations.
+      Let's define a vector $\pi$, such that, \\
+      \vskip0.5cm
+      $\pi = $\begin{bmatrix}
+        r(P_1)\\
+        r(P_2)\\
+        r(P_3)
+      \end{bmatrix}
+      , then when we calculate $H^T \pi$\\
+      We get, $H^T \pi = $
+      \begin{bmatrix}
+        r(P_2) + \dfrac{r(P_3)}{2} \\ \dfrac{r(P_1)}{2} + \dfrac{r(P_3)}{2} \\ \dfrac{r(P_1)}{2}
+      \end{bmatrix}
+      $=$
+      \begin{bmatrix}
+        r(P_1)\\r(P_2)\\r(P_3)
+      \end{bmatrix}
+      $ = \pi \quad(\Rightarrow \lambda = 1)$\\
+      Which is our eigenvector. This also holds for the general case with $n$ pages.\\
+      To solve this as an iterative method we use the power method. The power method consists of a random vector, that sums to one, which means it's normalized. Then if you multiply the matrix by itself many times, the transition matrix will converge. The remaining step now is to multiply the random vector with the \textit{power matrix}, to get an eigenvector, hence the name power method. Because of the convergent behavior of the transition matrix we know that we will always get the same eigenvector as an result of the multiplication.\\
+    \subsection*{(1d)}
+      If a matrix is stochastic that means that every element of a matrix $A$, with elements, $[a_{ij}]$ has the property $0 \leq a_{ij} \leq 1$, where each row sums to $1$. This can also be seen in the matrix i wrote in the example of the previous task, $H^T$. Here we see that each row of $H$ sums to $1$, since each row of $H$ represents page $i$ casting votes which is divided by the sum of the row.\\
+      \newline
+      The irreducability of a matrix basically just means that if we imagine being on a page, we have the possibility to travel to any other pages. We do this by adding a slight and equal portion to all elements which are zero. This we do to prevent \textit{danglin-nodes} which means to prevent you traveling from one page to anthor which does not have another outlink. In my code i used the Google matrix which i had implemented from earlier. This approach does this by adding a small value to all elements of the matrix.
+    \subsection*{(1e)}
+
+
+
+
+      \begin{align*}
+      \end{align*}
+
+
+
+
+
+
+
+      \begin{align*}
+      \end{align*}
+
+
 \end{document}
