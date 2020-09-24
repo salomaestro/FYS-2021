@@ -251,9 +251,9 @@ INPUT c:/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam7.tfm
 INPUT c:/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT c:/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT c:/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
-INPUT c:/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmti12.tfm
 OUTPUT latexScript.pdf
 INPUT c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map
+INPUT c:/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmti12.tfm
 INPUT ./pictures/Page.png
 INPUT ./pictures/Page.png
 INPUT ./pictures/Page.png
@@ -263,6 +263,9 @@ INPUT ./pictures/logarithmic.png
 INPUT ./pictures/nonlogarithmic.png
 INPUT ./pictures/nonlogarithmic.png
 INPUT ./pictures/nonlogarithmic.png
+INPUT ./pictures/histograms.png
+INPUT ./pictures/histograms.png
+INPUT ./pictures/histograms.png
 INPUT latexScript.aux
 INPUT c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb

@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1600960295 "latexScript.tex" "latexScript.pdf" "latexScript" 1600960333
+["pdflatex"] 1600971708 "latexScript.tex" "latexScript.pdf" "latexScript" 1600971763
   "c:/texlive/2020/texmf-dist/fonts/map/fontname/texfonts.map" 1600093116 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1600091396 1004 54797486969f23fa377b128694d548df ""
   "c:/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1600091396 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -175,12 +175,13 @@
   "c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1600097411 5058289 eeaee0d78bc67376d4a05921ed7ba0c6 ""
   "c:/texlive/2020/texmf-var/web2c/pdftex/pdflatex.fmt" 1600097550 2444765 7780aa0fb020d305c43e07fbb9a295cd ""
   "c:/texlive/2020/texmf.cnf" 1600097360 673 4ae7b2f49cee444c5343a45b5d0f169c ""
-  "latexScript.aux" 1600960297 346 62d6f13c6571931642b3ec11a1e5bfad "pdflatex"
-  "latexScript.tex" 1600960295 13312 2c6dd2ccff1b210a671e57f0f41a1690 ""
+  "latexScript.aux" 1600971710 536 8abe070625006ab428bf8b55c71340db "pdflatex"
+  "latexScript.tex" 1600971761 15080 447196f90424491f11122c784fd30a5d ""
   "pictures/Page.png" 1600881397 13035 c86a388f0662d6223ba5347a70fde7da ""
+  "pictures/histograms.png" 1600971354 37028 f2ea9808f9a6dd57f009343fa057abba ""
   "pictures/logarithmic.png" 1600893487 39557 c3bd8d2222ba91ce2f41e2ba6956d847 ""
   "pictures/nonlogarithmic.png" 1600893557 40232 d8b7a5f5338bdd884e27ac5495452bea ""
   (generated)
-  "latexScript.pdf"
   "latexScript.log"
+  "latexScript.pdf"
   "latexScript.aux"
