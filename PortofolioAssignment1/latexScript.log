@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.9.14)  24 SEP 2020 17:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.9.14)  24 SEP 2020 17:11
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -625,7 +625,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.33       S
+l.34       S
             upervised learning consists of machine learning algorithms which...
 
 Your command was ignored.
@@ -633,121 +633,22 @@ Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 33--39
+Underfull \hbox (badness 10000) in paragraph at lines 34--40
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 33--39
+Underfull \hbox (badness 10000) in paragraph at lines 34--40
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 33--39
+Underfull \hbox (badness 10000) in paragraph at lines 34--40
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 43--48
-
- []
-
-[1
-
-{c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-<./pictures/Page.png, id=19, 282.05376pt x 231.86626pt>
-File: ./pictures/Page.png Graphic file (type png)
-<use ./pictures/Page.png>
-Package pdftex.def Info: ./pictures/Page.png  used on input line 54.
-(pdftex.def)             Requested size: 170.71835pt x 142.26608pt.
-! Missing $ inserted.
-<inserted text> 
-                $
-l.58       \begin{bmatrix}
-                          
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.62       \end{bmatrix}
-                        
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 49--64
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 68--71
-
- []
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.72       $\pi = $\begin{bmatrix}
-                                  
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.76       \end{bmatrix}
-                        
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.79       \begin{bmatrix}
-                          
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.81       \end{bmatrix}
-                        
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.83       \begin{bmatrix}
-                          
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.85       \end{bmatrix}
-                        
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 72--89
+Underfull \hbox (badness 10000) in paragraph at lines 44--49
 
  []
 
@@ -757,15 +658,114 @@ Make it at least 27.18335pt.
 We now make it that large for the rest of the document.
 This may cause the page layout to be inconsistent, however.
 
+[1{c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+
+]
+<./pictures/Page.png, id=19, 282.05376pt x 231.86626pt>
+File: ./pictures/Page.png Graphic file (type png)
+<use ./pictures/Page.png>
+Package pdftex.def Info: ./pictures/Page.png  used on input line 55.
+(pdftex.def)             Requested size: 170.71835pt x 142.26608pt.
+! Missing $ inserted.
+<inserted text> 
+                $
+l.59       \begin{bmatrix}
+                          
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.63       \end{bmatrix}
+                        
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 50--65
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 69--72
+
+ []
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.73       $\pi = $\begin{bmatrix}
+                                  
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.77       \end{bmatrix}
+                        
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.80       \begin{bmatrix}
+                          
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.82       \end{bmatrix}
+                        
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.84       \begin{bmatrix}
+                          
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.86       \end{bmatrix}
+                        
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 73--90
+
+ []
+
 [2 <./pictures/Page.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 90--93
+Underfull \hbox (badness 10000) in paragraph at lines 91--94
 
  []
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.102       \begin{matrix}
+l.103       \begin{matrix}
                           
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -773,7 +773,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.114       \end{matrix}
+l.115       \end{matrix}
                         \\
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -784,7 +784,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.118       \begin{matrix}
+l.119       \begin{matrix}
                           
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -792,7 +792,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.130       \end{matrix}
+l.131       \end{matrix}
                         \\
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -801,17 +801,17 @@ really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 100--132
+Underfull \hbox (badness 10000) in paragraph at lines 101--133
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 100--132
+Underfull \hbox (badness 10000) in paragraph at lines 101--133
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 100--132
+Underfull \hbox (badness 10000) in paragraph at lines 101--133
 
  []
 
@@ -819,12 +819,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 100--132
 <./pictures/logarithmic.png, id=29, 462.528pt x 346.896pt>
 File: ./pictures/logarithmic.png Graphic file (type png)
 <use ./pictures/logarithmic.png>
-Package pdftex.def Info: ./pictures/logarithmic.png  used on input line 139.
+Package pdftex.def Info: ./pictures/logarithmic.png  used on input line 140.
 (pdftex.def)             Requested size: 227.6217pt x 199.16722pt.
 <./pictures/nonlogarithmic.png, id=30, 462.528pt x 346.896pt>
 File: ./pictures/nonlogarithmic.png Graphic file (type png)
 <use ./pictures/nonlogarithmic.png>
-Package pdftex.def Info: ./pictures/nonlogarithmic.png  used on input line 140.
+Package pdftex.def Info: ./pictures/nonlogarithmic.png  used on input line 141.
 
 (pdftex.def)             Requested size: 227.6217pt x 199.16722pt.
 
@@ -852,7 +852,7 @@ cmr8.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
 <c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texliv
 e/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb><c:/texlive/2020/te
 xmf-dist/fonts/type1/public/amsfonts/latxfont/line10.pfb>
-Output written on latexScript.pdf (7 pages, 203144 bytes).
+Output written on latexScript.pdf (7 pages, 203140 bytes).
 PDF statistics:
  90 PDF objects out of 1000 (max. 8388607)
  61 compressed objects within 1 object stream
