@@ -8,6 +8,7 @@
 \usepackage{graphicx}
 \usepackage{mathtools}
 \usepackage{cancel}
+\usepackage{cite}
 \pgfplotsset{compat=1.16}
 \graphicspath{ {./pictures/} }
 
@@ -29,9 +30,9 @@
   \maketitle
   \section*{Problem 1}
     \subsection*{(1a)} \\
-      Supervised learning consists of machine learning algorithms which both has inputs and outputs. The goal of the supervised learning algorithm is using the observed values of $x$ to make an prediction of $y$, where we, the creater of the algorithm is the supervisor. So generally the algorithm consists of whats called a mapping of $x$ to $y$. Or we can generalize this as $y = f(x)$, where $f$ is the mapping of $x$ to $y$. Examples of supervised learning algorithms include classification, regression etc.\\
+      Supervised learning consists of machine learning algorithms which both has inputs and outputs. The goal of the supervised learning algorithm is using the observed values of $x$ to make an prediction of $y$, where we, the creater of the algorithm is the supervisor. So generally the algorithm consists of whats called a mapping of $x$ to $y$. Or we can generalize this as $y = f(x)$, where $f$ is the mapping of $x$ to $y$. Examples of supervised learning algorithms include classification, regression etc. In supervised learning we need to have \\
       \newline
-      Whereas in unsupervised learning the goal of the algorithm is to find connections in the data, such that we can learn more from it. Here we don't have a supervisor, we simply try to better see patterns in the input data. We also aren't interested in any output since the input is used to train the model to rule out differences of the variables.\\
+      Whereas in unsupervised learning the goal of the algorithm is to find connections in the input data, such that we can learn more from it. Here we don't have a supervisor, we simply try to better see patterns in the input data. We also aren't interested in any output since the input is used to train the model to rule out differences of the variables.\\
       \newline
       The PageRank algorithm is a unsupervised learning algorithm.
 
@@ -143,6 +144,14 @@
         \hat{\mu} & = \dfrac{1}{n_1}\sum_{t=1}^{n_1} x_t \quad QED &\quad\quad
         \hat{\sigma}^2 &= \dfrac{1}{n_1}\sum_{t=1}^{n_1} (x_t-\mu)^2 \quad QED
       \end{align*}
+    \subsection*{(2b)}
+      We see from our graph that the distributional assumptions appear to fit to our data in an reasonable manner with the estimators. The individual classified data seem not to stray too long from the distributions.
+    \subsection*{(2c)}
+      Since we are only using an Bayes classifier with one attribute to classify from, some misclassfications are to be expected. If we think of what the classifier does, it is basically only putting one element into one class if it is above a certain threshold value.\\
+      In other words say we have a bit of a struggle with how to record or get the data in the first place. We do not know how a zero and a one is recorded, but could perhaps assume it represents a picture of either a zero or one, which then reports back the percentage of black in the picture, which again is the decimal number we are to use. In fact we are very lucky with our data which do not deviate a lot from our point-estimates.
+    \subsection*{(2d)}
+      It seems i have been \textit{rickrolled}. ~\cite{Karl:mannen}
 
-
+\bibliography{sources} % sources.bib is the name of the database.
+\bibliographystyle{plain}
 \end{document}
