@@ -4,13 +4,18 @@ import math
 def power_iteration(matrix, i):
 	"""
 	Iterates like the power iteration method to converge on the stationary probabilities of the transitionmatrix
-
 	Args:
 		param1: (ndarray) - Transition matrix
 		parma2: (int) - Number of iterations
 	Returns:
 		(ndarray) - Stationary probability matrix
 	"""
+	# Our matrix has to be an transition matrix, also called a probability matrix, which implies it has to be stochastic, meaning the columns must sum to one.
+	if np.sum(matrix, axis=1)[0] == 1:
+		matrix = matrix.T
+	if np.sum(matrix, axis=0)[0] != 1:
+		print("This is not a stochastic/probability matrix")
+
 	# Random eigenvector
 	pi = np.random.rand(matrix.shape[1])
 

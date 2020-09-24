@@ -81,7 +81,7 @@ print("We see that now we eliminate the instances where some had the same scores
 # I now use the modified matrix's eigenvector that's yielded fra the power iteration method.
 rank_score = power_iteration(ModifiedPageRank(A.T), 100)
 
-# Since the last element is just an extra page we use to modify this matrix to an Google matrix and we know that our ModifiedPageRank method only concatenates this last page to the end of the matrix, then the last element of the eigenvector rank_score will belong to this extra page. We need to remove it since we only have x-numbers of elo scores, and x+1 numbers of rows in the eigenvector (columnvector).
+# Since the last element is just an extra page we use to modify this matrix to an Google matrix and we know that our ModifiedPageRank method only concatenates this last page to the end of the matrix, then the last element of the eigenvector rank_score will belong to this extra page. We need to remove it since we only have x-numbers of elo scores, and x+1 numbers of rows in the eigenvector (columnvector). This will lead to an minimal error, since we will now not have a 100% stochastic matrix, but very close.
 rank_score = rank_score.T[:-1].T
 
 # Since we in the power_iteration method have to convert the array to an numpy matrix object to be able to do take the power of the matrix we now need to convert the elo ndarray to an numpy matrix object.

@@ -30,16 +30,12 @@
   \maketitle
   \section*{Problem 1}
     \subsection*{(1a)} \\
-      Supervised learning consists of machine learning algorithms which both has inputs and outputs. The goal of the supervised learning algorithm is using the observed values of $x$ to make an prediction of $y$, where we, the creater of the algorithm is the supervisor. So generally the algorithm consists of whats called a mapping of $x$ to $y$. Or we can generalize this as $y = f(x)$, where $f$ is the mapping of $x$ to $y$. Examples of supervised learning algorithms include classification, regression etc. In supervised learning we need to have \\
+      Supervised learning consists of machine learning algorithms which both has inputs and outputs. The goal of the supervised learning algorithm is using the observed values of $x$ to make an prediction of $y$, where we, the creater of the algorithm is the supervisor. So generally the algorithm consists of whats called a mapping, or the algorithm, of $x$ to $y$. Or we can generalize this as $y = f(x)$, where $f$ is the mapping of $x$ to $y$. Examples of supervised learning algorithms include classification, regression etc. In supervised learning we need to have a training set of labeled data, which means we need to know if a result is correct or not beforehand. We use the labeled data to estimate our parameters.\\
       \newline
       Whereas in unsupervised learning the goal of the algorithm is to find connections in the input data, such that we can learn more from it. Here we don't have a supervisor, we simply try to better see patterns in the input data. We also aren't interested in any output since the input is used to train the model to rule out differences of the variables.\\
       \newline
-      The PageRank algorithm is a unsupervised learning algorithm.
-
+      The PageRank algorithm is an unsupervised learning algorithm because we do not have labeled training data, we use a probability matrix with only inputs to rank pages in relation to each other.
       \newline
-
-
-
     \subsection*{(1b)}
       We are given an equation representing the PageRank method,
       \begin{align} \label{eq1}
@@ -101,7 +97,38 @@
       \end{align}
       From equation \ref{eq2} we see that the matrix is stochastic, since a value at $ij$ would be the same as a outlink in our conventional manner, then it is divided by the sum of the row. This matrix will however not be irreducable, since there obviously exist dangling nodes with this approach.
     \subsection*{(1g)}
-      The main difference is that all dangling nodes are gone. Also many of the players which had previously had the same rank are now instead ranked in relation to each other.
+      Ranks according to our algorithm.\\
+      \newline
+      \begin{matrix}
+        &Rank, &Id, &Name\\
+        &1 &1 &Karjakin Sergey\\
+        &2 &17 &Svidler Peter\\
+        &3 &73 &Andreikin Dmitry\\
+        &4 &128 &Aronian Levon\\
+        &5 &178 &Matlakov Maxim\\
+        &6 &2 &Ivanchuk Vassily\\
+        &7 &131 &Kramnik Vladimir\\
+        &8 &29 &Vachier-Lagrave Maxime\\
+        &9 &54 &Tomashevsky Evgeny\\
+        &10 &157 &Areshchenko Alexander\\
+      \end{matrix}\\
+      \newline
+      Results from ranking with the Google Matrix approach.\\
+      \newline
+      \begin{matrix}
+        &Rank &Id &Name\\
+        &1 &1 &Karjakin Sergey\\
+        &2 &17 &Svidler Peter\\
+        &3 &73 &Andreikin Dmitry\\
+        &4 &128 &Aronian Levon\\
+        &5 &2 &Ivanchuk Vassily\\
+        &6 &29 &Vachier-Lagrave Maxime\\
+        &7 &178 &Matlakov Maxim\\
+        &8 &131 &Kramnik Vladimir\\
+        &9 &54 &Tomashevsky Evgeny\\
+        &10 &10 &Grischuk Alexander\\
+      \end{matrix}\\
+      We see that some players switches ranks with this approach.
     \subsection*{(1h)}
       From my implementation of the linear regression model we get back two paramaters, $\beta_0, \beta_1$. Where $\beta_0$ is the y-intercept, meaning where the regression line crosses the y-axis. While $\beta_1$ on the other hand is the slope of the regression line. Meaning that in this system we have $y = \beta_1 \cdot x + \beta_0$, where $x$ is our $ln(PageRank)$, and $y$ the Elo-rating.
     \subsection*{(1i)}
@@ -150,8 +177,5 @@
       Since we are only using an Bayes classifier with one attribute to classify from, some misclassfications are to be expected. If we think of what the classifier does, it is basically only putting one element into one class if it is above a certain threshold value.\\
       In other words say we have a bit of a struggle with how to record or get the data in the first place. We do not know how a zero and a one is recorded, but could perhaps assume it represents a picture of either a zero or one, which then reports back the percentage of black in the picture, which again is the decimal number we are to use. In fact we are very lucky with our data which do not deviate a lot from our point-estimates.
     \subsection*{(2d)}
-      It seems i have been \textit{rickrolled}. ~\cite{Karl:mannen}
-
-\bibliography{sources} % sources.bib is the name of the database.
-\bibliographystyle{plain}
+      It seems i have been vigorously \textit{rickrolled}. The answer is \underline{\underline{$nevergonnagiveymuup$}}.
 \end{document}
