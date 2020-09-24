@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.9.14)  24 SEP 2020 20:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.9.14)  24 SEP 2020 20:34
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -849,6 +849,54 @@ File: ./pictures/histograms.png Graphic file (type png)
 <use ./pictures/histograms.png>
 Package pdftex.def Info: ./pictures/histograms.png  used on input line 192.
 (pdftex.def)             Requested size: 398.35915pt x 284.54124pt.
+! Missing $ inserted.
+<inserted text> 
+                $
+l.201       \begin{bmatrix}
+                           
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.204       \end{bmatrix}
+                         
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.206       \begin{bmatrix}
+                           
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.209       \end{bmatrix}
+                         \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 196--212
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 196--212
+
+ []
+
 [8 <./pictures/histograms.png>] [9] (./latexScript.aux) ) 
 Here is how much of TeX's memory you used:
  23780 strings out of 480876
@@ -871,7 +919,7 @@ s/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmsy8.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmti12.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/latx
 font/line10.pfb>
-Output written on latexScript.pdf (9 pages, 233592 bytes).
+Output written on latexScript.pdf (9 pages, 234053 bytes).
 PDF statistics:
  98 PDF objects out of 1000 (max. 8388607)
  65 compressed objects within 1 object stream
