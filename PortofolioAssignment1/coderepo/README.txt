@@ -9,6 +9,6 @@ python -m pip install os-sys
 
 The programs I have written are problem1.py, problem2.py and ML_functions_PA.py
 
-Both programs problem1.py and problem2.py heavily rely on ML_functions_PA.py to function, so this needs to be included no matter how you prefer to run the programs.
+Both programs problem1.py and problem2.py heavily rely on ML_functions_PA.py to function, so this needs to be included no matter how you prefer to run the programs. To do this, put all files inside a common repository then execute the problem1.py and problem2.py programs as you wish.
 
 The same programs also rely on the files given in the assignment collections of data.
