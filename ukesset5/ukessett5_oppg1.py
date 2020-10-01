@@ -17,3 +17,5 @@ repeat
         w_j = w_j + nu * delta w_j
 until convergence
 """
+w_j = np.random.uniform(-0.01, 0.01, size=(3, 1))
+print(w_j)
