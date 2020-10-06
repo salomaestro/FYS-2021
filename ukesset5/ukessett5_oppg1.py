@@ -32,10 +32,14 @@ def gradDescent(X, r):
 
     for t in range(0, np.shape(X)[0]):
         dj = np.zeros_like(w)
-        while np.where(abs(dj) < 1, 1, 0).any():
+        grddesc = True
+        while grddesc:
+            test = np.where(dj < 0.5, 1, 0)
+            if np.all((test == 1)):
+                grddesc = False
             y = 1 / (1 + np.exp(-(np.dot(w, X[t]) + w0)))
             dj = np.sum(r[t] - y) * X[t]
-            print(dj)
+            print(abs(dj))
             w = w + s * dj
             w0 = w0 + s * np.sum(r[t] - y)
 
