@@ -1,4 +1,8 @@
 import numpy as np
+import os
+dirname = os.path.dirname(__file__)
+filename_tictac = os.path.join(dirname, "tictac-end.csv")
+
 """
 Pseudocode:
 for j = 0, .. , d
@@ -17,5 +21,24 @@ repeat
         w_j = w_j + nu * delta w_j
 until convergence
 """
-w_j = np.random.uniform(-0.01, 0.01, size=(3, 1))
-print(w_j)
+data = np.genfromtxt(filename_tictac, delimiter=" ", dtype="int64")
+groundTruth = data[:, 0]
+tactoes = np.delete(data, 0, axis=1)
+
+def gradDescent(X, r):
+    w = np.random.uniform(-0.01, 0.01, size=(X.shape[1]))
+    w0 = np.random.uniform(0, 10)
+    s = 0.5
+
+    for t in range(0, np.shape(X)[0]):
+        dj = np.zeros_like(w)
+        while np.where(abs(dj) < 1, 1, 0).any():
+            y = 1 / (1 + np.exp(-(np.dot(w, X[t]) + w0)))
+            dj = np.sum(r[t] - y) * X[t]
+            print(dj)
+            w = w + s * dj
+            w0 = w0 + s * np.sum(r[t] - y)
+
+
+    c = np.dot(w.T, X) + w0
+gradDescent(tactoes, groundTruth)
