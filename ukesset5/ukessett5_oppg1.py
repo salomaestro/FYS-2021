@@ -41,6 +41,7 @@ def gradDescent(X, r):
     while grddesc:
         y = sigmoid(X, w)
         Dj = np.matmul((r - y), X)
+        print(Dj)
         w = w + s * Dj
 
         test = np.where(Dj < 0.01, 1, 0)
