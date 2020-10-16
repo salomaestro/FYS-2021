@@ -32,12 +32,12 @@ def gradDescent(X, r):
     w = np.random.uniform(-0.01, 0.01, size=(X.shape[1])) #.astype("float128")
 
     # Step size, may change later.
-    s = 0.05
+    s = 0.08
 
     # Create array of ones with same shape as the weights this is the derivatives
-    Dj = np.ones_like(w) * 10
-    grddesc = True
+    Dj = np.ones_like(w) * np.random.uniform(-10, 10)
 
+    grddesc = True
     while grddesc:
         y = sigmoid(X, w)
         Dj = np.matmul((r - y), X)
