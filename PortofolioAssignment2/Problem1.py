@@ -27,7 +27,9 @@ class LogisticDiscrimination:
         # Init derivatives, as array of same shape as weights, but as an random number between -10 and 10
         Dj = np.ones_like(self.w) * np.random.uniform(-10, 10)
 
+        self.has_been_trained = False
         self.test_has_been_called = False
+
 
     # Chose to use lambda function since its so small
     # sigmoid = lambda self, x, weights: 1 / (1 + np.exp(-(np.matmul(x, weights))))
@@ -43,6 +45,7 @@ class LogisticDiscrimination:
         Returns:
             (ndarray, ndarray) - (Confusion matrix, accuracy)
         """
+        self.has_been_trained = True
         # set stepsize
         s = 0.0003
 
@@ -95,12 +98,39 @@ class LogisticDiscrimination:
         self.testPerf = self.performance(classifiedZero, classifiedOne, actualZero, actualOne)
         return self.testPerf
 
+    def is_model_trained(self):
+        """
+        Test if model is trained
+        """
+        try:
+            if not self.has_been_trained:
+                raise Exception("Cannot test without a trained model!")
+        except Exception as e:
+            raise e
+
     def performance(self, classified0, classified1, actual0, actual1):
+        """
+        method for the performance measures we typically use.
+        Args:
+            param1: (ndarray) - Array of indexes which are classified as 0's.
+            param2: (ndarray) - Array of indexes which are classified as 1's.
+            param3: (ndarray) - Array of indexes which are actually 0's.
+            param4: (ndarray) - Array of indexes which are actually 1's.
+        Returns:
+            (ndarray, ndarray) - (confusion matrix, accuracy).
+
+        """
         confmat = self.confusionMatrix(classified0, classified1, actual0, actual1)
         accuracy = (confmat[0][0] + confmat[1][1]) / np.sum(confmat).astype("float32")
         return confmat, accuracy
 
     def __str__(self):
+        """
+        Creates a readable print for the viewer of the result of the code with the built in python-magic methods. To use, print the instance of the object, i.e. Foo = LogisticDiscrimination(bar) -> Foo.train() -> Foo.test(testdata) -> print(Foo).
+        Returns:
+            (str) - To be printed
+        """
+        self.is_model_trained()
         string = "Training:\n Confusion matrix:\n {self.trainPerf[0]}\nAccuracy = {self.trainPerf[1]} ".format(self=self)
         if self.test_has_been_called:
             string += "\n\nTest:\n Confusion matrix:\n {self.testPerf[0]}\nAccuracy = {self.testPerf[1]}".format(self=self)
@@ -109,7 +139,7 @@ class LogisticDiscrimination:
     def confusionMatrix(self, classified0, classified1, actual0, actual1):
         # Note: this method has been copied from my own work in Portfolio Assignment 1
         """
-        A measure of how good the algorithm works.
+        Can be used with the performance method as a measure of how good the algorithm works.
         Args:
             param1: (ndarray) - Array of indexes which are classified as 0's.
             param2: (ndarray) - Array of indexes which are classified as 1's.
