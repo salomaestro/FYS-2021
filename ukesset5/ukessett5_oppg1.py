@@ -29,7 +29,7 @@ sigmoid = lambda x, weights: 1 / (1 + np.exp(-(np.matmul(x, weights))))
 
 def gradDescent(X, r):
     # Define random vector of weights with the same dimension as our data, 9 in this case
-    w = np.random.uniform(-0.01, 0.01, size=(X.shape[1])).astype("float128")
+    w = np.random.uniform(-0.01, 0.01, size=(X.shape[1])) #.astype("float128")
 
     # Step size, may change later.
     s = 0.05
