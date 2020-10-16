@@ -5,15 +5,29 @@ import os
 # Import and initialize the data
 dirname = os.path.dirname(__file__)
 filename_seals_train = os.path.join(dirname, "seals_train.csv")
-data = np.genfromtxt(filename_seals_train, delimiter=" ")
+filename_seals_test = os.path.join(dirname, "seals_test.csv")
+traindata = np.genfromtxt(filename_seals_train, delimiter=" ")
+testdata = np.genfromtxt(filename_seals_test, delimiter=" ")
 
 class LogisticDiscrimination:
     """
     Class for implementing the logistic discrimination algorithm, tailored for Portfolio assignment 2.
     """
-    def __init__(self, trainingData):
-        # Quick init, will have to initialize trainig and test data later on in the methods.
-        self.data = trainingData
+    def __init__(self, trainingData, stepsize=0.0003):
+        # Extract ground truth by indices
+        self.gt = trainingData[:, 0]
+
+        # Init training data
+        self.traindata = np.delete(trainingData, 0, axis=1)
+        self.traindata = np.insert(self.traindata, 0, np.ones_like(self.gt), axis=1)
+
+        # Init weights
+        self.w = np.random.uniform(-0.01, 0.01, size=(self.traindata.shape[1]))
+
+        # Init derivatives, as array of same shape as weights, but as an random number between -10 and 10
+        Dj = np.ones_like(self.w) * np.random.uniform(-10, 10)
+
+        self.test_has_been_called = False
 
     # Chose to use lambda function since its so small
     # sigmoid = lambda self, x, weights: 1 / (1 + np.exp(-(np.matmul(x, weights))))
@@ -24,55 +38,73 @@ class LogisticDiscrimination:
     def train(self):
         """
         Method for training model with training data.
+        Args:
+            (self) - Instance, training data has been initialized in the __init__ function.
+        Returns:
+            (ndarray, ndarray) - (Confusion matrix, accuracy)
         """
-        # Extract ground truth by indices
-        self.gt = self.data[:, 0]
-
-        # Init training data
-        self.traindata = np.delete(self.data, 0, axis=1)
-        self.traindata = np.insert(self.traindata, 0, np.ones_like(self.gt), axis=1)
-
-        # Init weights
-        self.w = np.random.uniform(-0.01, 0.01, size=(self.traindata.shape[1]))
-
-        # Init derivatives, as array of same shape as weights, but as an random number between -10 and 10
-        Dj = np.ones_like(self.w) * np.random.uniform(-10, 10)
-
         # set stepsize
-        s = 0.0005
+        s = 0.0003
 
         # Set gradualDescent to True
         gradualDescent = True
+        runs = 0
         while gradualDescent:
             # use sigmoid to get y
-            print(np.matmul(self.traindata, self.w))
             y = self.sigmoid(self.traindata, self.w)
             Dj = np.matmul((self.gt - y), self.traindata)
-            print(Dj)
-            self.w += s * Dj
+            self.w = self.w + s * Dj
 
-            test_wheter_at_extrema = np.where(Dj < 0.5, 1, 0)
+            test_wheter_at_extrema = np.where(Dj < 0.05, 1, 0)
 
             # Test if we are at extrema
             if np.all((test_wheter_at_extrema == 1)):
                 gradualDescent = False
-
+            runs += 1
         # Classify as 0's or 1's
-        self.c = np.round(self.sigmoid(self.traindata, self.w))
+        c = np.round(self.sigmoid(self.traindata, self.w))
 
-        classifiedZero = np.where(self.c < 0.5)
-        classifiedOne = np.where(self.c > 0.5)
+        classifiedZero = np.where(c < 0.5)
+        classifiedOne = np.where(c > 0.5)
 
         actualZero = np.where(self.gt < 0.5)
         actualOne = np.where(self.gt > 0.5)
-
-        return classifiedZero, classifiedOne
+        self.trainPerf = self.performance(classifiedZero, classifiedOne, actualZero, actualOne)
+        return self.trainPerf
 
     def test(self, testdata):
         """
         Method for testing model on trained weights and biases.
+        Args:
+            (self) - Instance
+            (ndarray) - test data, the data we wish to test. Must have rows the same size as the training data
+        Returns:
+            (ndarray, ndarray) - (Confusion matrix, accuracy)
         """
-        self.testdata = testdata
+        self.test_has_been_called = True
+        groundtruth = testdata[:, 0]
+        self.testdata = np.delete(testdata, 0, axis=1)
+        self.testdata = np.insert(self.testdata, 0, np.ones_like(groundtruth), axis=1)
+
+        classified = np.round(self.sigmoid(self.testdata, self.w))
+        classifiedZero = np.where(classified < 0.5)
+        classifiedOne = np.where(classified > 0.5)
+
+        actualZero = np.where(groundtruth < 0.5)
+        actualOne = np.where(groundtruth > 0.5)
+        self.testPerf = self.performance(classifiedZero, classifiedOne, actualZero, actualOne)
+        return self.testPerf
+
+    def performance(self, classified0, classified1, actual0, actual1):
+        confmat = self.confusionMatrix(classified0, classified1, actual0, actual1)
+        accuracy = (confmat[0][0] + confmat[1][1]) / np.sum(confmat).astype("float32")
+        return confmat, accuracy
+
+    def __str__(self):
+        string = "Training:\n Confusion matrix:\n {self.trainPerf[0]}\nAccuracy = {self.trainPerf[1]} ".format(self=self)
+        if self.test_has_been_called:
+            string += "\n\nTest:\n Confusion matrix:\n {self.testPerf[0]}\nAccuracy = {self.testPerf[1]}".format(self=self)
+        return string
 
     def confusionMatrix(self, classified0, classified1, actual0, actual1):
         # Note: this method has been copied from my own work in Portfolio Assignment 1
@@ -95,8 +127,10 @@ class LogisticDiscrimination:
 
 
 def main():
-    seals = LogisticDiscrimination(data)
-    print(seals.train())
+    seals = LogisticDiscrimination(traindata)
+    seals.train()
+    seals.test(testdata)
+    print(seals)
 
 if __name__ == "__main__":
     main()
