@@ -30,10 +30,10 @@ class LogisticDiscrimination:
         self.has_been_trained = False
         self.test_has_been_called = False
 
-
-    # Chose to use lambda function since its so small
-    # sigmoid = lambda self, x, weights: 1 / (1 + np.exp(-(np.matmul(x, weights))))
     def sigmoid(self, x, weights):
+        """
+        The generic sigmoid function. Because of overflow error due to np.exp(-large number) i made a slight modification to use the step before the final, most compact sigmoid, but still the same function.
+        """
         mul = np.matmul(x, weights)
         return np.exp(mul) / (1 + np.exp(mul))
 
@@ -154,7 +154,6 @@ class LogisticDiscrimination:
         fp = np.intersect1d(classified0, actual1).shape[0]
         tn = np.intersect1d(classified1, actual1).shape[0]
         return np.array([np.array([tp, fn]), np.array([fp, tn])])
-
 
 def main():
     seals = LogisticDiscrimination(traindata)
