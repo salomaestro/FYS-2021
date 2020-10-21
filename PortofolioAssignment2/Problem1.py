@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import os
+from sklearn import metrics
 
 # Import and initialize the data
 dirname = os.path.dirname(__file__)
@@ -12,8 +13,13 @@ testdata = np.genfromtxt(filename_seals_test, delimiter=" ")
 class LogisticDiscrimination:
     """
     Class for implementing the logistic discrimination algorithm, tailored for Portfolio assignment 2.
+    How to:
+        - Initialize object, first calling: model = LogisticDiscrimination(trainingdata)
+        - Train model, use: model.train()
+        - Test model, use: model.test(testdata)
+        - Print performance: print(model)
     """
-    def __init__(self, trainingData, stepsize=0.0003):
+    def __init__(self, trainingData):
         # Extract ground truth by indices
         self.gt = trainingData[:, 0]
 
@@ -45,51 +51,67 @@ class LogisticDiscrimination:
         Returns:
             (ndarray, ndarray) - (Confusion matrix, accuracy)
         """
+        # Check if this method has been called
         self.has_been_trained = True
+
         # set stepsize
         s = 0.0003
 
         # Set gradualDescent to True
         gradualDescent = True
-        runs = 0
         while gradualDescent:
             # use sigmoid to get y
             y = self.sigmoid(self.traindata, self.w)
+
+            # Caluclate derivatives
             Dj = np.matmul((self.gt - y), self.traindata)
+
+            # Caluclate and update weights
             self.w = self.w + s * Dj
 
-            test_wheter_at_extrema = np.where(Dj < 0.05, 1, 0)
+            test_wheter_at_extrema = np.where(Dj < 0.0001, 1, 0)
 
             # Test if we are at extrema
             if np.all((test_wheter_at_extrema == 1)):
                 gradualDescent = False
-            runs += 1
-        # Classify as 0's or 1's
+
+        # Classify as 0's or 1's by rounding the sigmoid function
         c = np.round(self.sigmoid(self.traindata, self.w))
 
+        # Classify as zeros or ones
         classifiedZero = np.where(c < 0.5)
         classifiedOne = np.where(c > 0.5)
 
+        # Create arrays with ground truth
         actualZero = np.where(self.gt < 0.5)
         actualOne = np.where(self.gt > 0.5)
+
+        # Find and return the performance of the training
         self.trainPerf = self.performance(classifiedZero, classifiedOne, actualZero, actualOne)
         return self.trainPerf
 
-    def test(self, testdata):
+    def test(self, testdata, discriminationThreshold = 0.5):
         """
         Method for testing model on trained weights and biases.
         Args:
             (self) - Instance
             (ndarray) - test data, the data we wish to test. Must have rows the same size as the training data
+            (float) - Optional. Thresold for the decision boundary
         Returns:
             (ndarray, ndarray) - (Confusion matrix, accuracy)
         """
         self.test_has_been_called = True
+
+        self.testdata_unchanged = testdata
+        # Initialize test data
         groundtruth = testdata[:, 0]
         self.testdata = np.delete(testdata, 0, axis=1)
         self.testdata = np.insert(self.testdata, 0, np.ones_like(groundtruth), axis=1)
 
-        classified = np.round(self.sigmoid(self.testdata, self.w))
+        # Classify wheter 0's or 1's depending on the treshold
+        classified = np.where(self.sigmoid(self.testdata, self.w) < discriminationThreshold, 0, 1)
+
+        # Same sort of classification as for the training method
         classifiedZero = np.where(classified < 0.5)
         classifiedOne = np.where(classified > 0.5)
 
@@ -118,9 +140,10 @@ class LogisticDiscrimination:
             param4: (ndarray) - Array of indexes which are actually 1's.
         Returns:
             (ndarray, ndarray) - (confusion matrix, accuracy).
-
         """
         confmat = self.confusionMatrix(classified0, classified1, actual0, actual1)
+
+        # Calculates the accuracy of the model
         accuracy = (confmat[0][0] + confmat[1][1]) / np.sum(confmat).astype("float32")
         return confmat, accuracy
 
@@ -130,9 +153,15 @@ class LogisticDiscrimination:
         Returns:
             (str) - To be printed
         """
+        # Checks if the model has been trained.
         self.is_model_trained()
+
+        # Creates a string containing the performance of the training.
         string = "Training:\n Confusion matrix:\n {self.trainPerf[0]}\nAccuracy = {self.trainPerf[1]} ".format(self=self)
+
         if self.test_has_been_called:
+
+            # Adds as string containing the performance of the test.
             string += "\n\nTest:\n Confusion matrix:\n {self.testPerf[0]}\nAccuracy = {self.testPerf[1]}".format(self=self)
         return string
 
@@ -155,11 +184,59 @@ class LogisticDiscrimination:
         tn = np.intersect1d(classified1, actual1).shape[0]
         return np.array([np.array([tp, fn]), np.array([fp, tn])])
 
+    def ROC(self, n=50):
+        """
+        Function for plotting the ROC, or Reciever Operating Characteristic, curve for the different thresholds for the logistic discrimination model.
+        Args:
+            param1: (self) - Instance
+            param2: (int) - Optional. How many threshold values
+        """
+        # n Evenely spaced threshold values from 0 to 1
+        thresholds = np.linspace(0,  1, n)
+
+        # Array of True positive rates and False positive rates.
+        tpRates = np.zeros_like(thresholds)
+        fpRates = np.zeros_like(thresholds)
+
+        # Looping trought the threshold array
+        for ind, threshold in enumerate(thresholds):
+
+            # Gathering the confusion matrix for every threshold
+            confusionmat = self.test(self.testdata_unchanged, threshold)[0]
+
+            tp = confusionmat[0][0]
+            fn = confusionmat[0][1]
+            fp = confusionmat[1][0]
+            tn = confusionmat[1][1]
+
+            # Calculates the rates and fills the arrays
+            tpRates[ind] = tp / (tp + fn)
+            fpRates[ind] = fp / (fp + tn)
+
+        # my main plot with false postive rates on the first axis, and true positive rates on the second axis.
+        mainplot = plt.plot(fpRates, tpRates, label="Logistic discrimination")
+
+        # The diagonal line, generally known as the x/y - line
+        xyLine = plt.plot(np.linspace(np.min(fpRates), np.max(fpRates), len(thresholds)), np.linspace(np.min(tpRates), np.max(tpRates), len(thresholds)), "--", label="No discrimination")
+
+        # Using sklearn.metrics AUC method
+        AUC = metrics.auc(fpRates, tpRates)
+
+        # Misc for naming the plots.
+        title = plt.title("ROC curve")
+        xlab = plt.xlabel("False positive rates")
+        ylab = plt.ylabel("True positive rates")
+        plt.legend(title="n = {} Step size of thresholds\nAUC = {:.3f}".format(n, AUC))
+        plt.show()
+
+        return AUC
+        
 def main():
     seals = LogisticDiscrimination(traindata)
     seals.train()
     seals.test(testdata)
-    print(seals)
+    seals.ROC(100)
+    # print(seals)
 
 if __name__ == "__main__":
     main()

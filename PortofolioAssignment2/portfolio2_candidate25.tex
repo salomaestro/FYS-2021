@@ -21,7 +21,7 @@
   \section*{Problem 1}
     \subsection*{(1a)}
       \begin{figure}[h]
-        \caption{Figur 1. Decision boudary of a logistic descrimination classifier}
+        \caption{Decision boudary of a logistic descrimination classifier}
         \centering
         \includegraphics[width=\textwidth,keepaspectratio=true,height=\textheight-\the\textundbildtextheight]{decisionboundary_1a}
       \end{figure}\\
@@ -53,5 +53,29 @@
       Here i have also made the assumption that if  $C(\mbf{x^t}) = 0$ then $\mbf{x^t}$ is assigned to $y^t = 1$, althoug in reality this is quite rare.
 
     \subsection*{(1b)}
-      Programming task
+      % \begin{figure}[h]
+      %   \caption{Confusion matrix and accuracy of test on trained model.}
+      %   \centering
+      %   \includegraphics[width=5cm]{confmat1b}
+      % \end{figure}
+      After having trained my logistic discrimination model on the \textit{seals\_train.csv} file, and the used the trained weights to classify the test data. I produce with the \textit{seals\_test.csv} file the confusion matrix:\\
+      \[
+        \text{confusion matrix} =
+        \begin{bmatrix}
+          87 & 15  & \\
+          11 & 100 & \\
+        \end{bmatrix}
+        \text{, and accuracy} \approx \underline{0.878}
+      \]
+      Which means the model classified 87 class 0's correctly, 11 class 1's as class 0's, 15 class 0's as class 1's and 100 class 1's correctly.
+    \newpage
+    \subsection*{(1c)}
+    \begin{figure}[h]
+      \caption{The Reciever Operating Characteristic}
+      \centering
+      \includegraphics[width=14cm]{ROC}
+    \end{figure}\\
+    The ROC curve represents\\
+
+    For the Area Under the Curve score i got AUC $ \approx \underline{0.930}$ by using \textit{sklearn.metrics} built-in function for calculating the AUC score.
 \end{document}

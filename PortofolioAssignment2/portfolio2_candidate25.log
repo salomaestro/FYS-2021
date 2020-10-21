@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.9.14)  16 OCT 2020 20:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.9.14)  19 OCT 2020 22:09
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -288,30 +288,60 @@ Underfull \hbox (badness 10000) in paragraph at lines 31--35
 [1
 
 {c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./bilder/decisi
-onboundary_1a.png>] [2] (./portfolio2_candidate25.aux) ) 
+onboundary_1a.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 61--62
+
+ []
+
+[2]
+<./bilder/ROC.png, id=24, 462.528pt x 346.896pt>
+File: ./bilder/ROC.png Graphic file (type png)
+<use ./bilder/ROC.png>
+Package pdftex.def Info: ./bilder/ROC.png  used on input line 76.
+(pdftex.def)             Requested size: 398.33858pt x 298.76936pt.
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.78     T
+          he ROC curve represents\\
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--79
+
+ []
+
+[3 <./bilder/ROC.png>] (./portfolio2_candidate25.aux) ) 
 Here is how much of TeX's memory you used:
- 3021 strings out of 480876
- 39808 string characters out of 5911487
- 286657 words of memory out of 5000000
- 18620 multiletter control sequences out of 15000+600000
- 546313 words of font info for 71 fonts, out of 8000000 for 9000
+ 3031 strings out of 480876
+ 39951 string characters out of 5911487
+ 287657 words of memory out of 5000000
+ 18629 multiletter control sequences out of 15000+600000
+ 546660 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  36i,14n,45p,783b,246s stack positions out of 5000i,500n,10000p,200000b,80000s
-<c:/texlive/2020/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2020/texmf-dist/font
-s/type1/public/amsfonts/cm/cmbx8.pfb><c:/texlive/2020/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmex10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmmi12.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mmi8.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb
-><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texli
-ve/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2020/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2020/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2020/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmsy10.pfb>
-Output written on portfolio2_candidate25.pdf (2 pages, 117266 bytes).
+<c:/texlive/2020/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2020/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmbx8.pfb><c:/texlive/2020/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmex10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmmi12.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+mi8.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb>
+<c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texliv
+e/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2020/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2020/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2020/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmsy10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmti12.pfb>
+Output written on portfolio2_candidate25.pdf (3 pages, 154731 bytes).
 PDF statistics:
- 58 PDF objects out of 1000 (max. 8388607)
- 40 compressed objects within 1 object stream
+ 67 PDF objects out of 1000 (max. 8388607)
+ 45 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

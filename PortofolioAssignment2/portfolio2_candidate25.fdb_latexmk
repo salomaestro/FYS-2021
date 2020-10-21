@@ -1,5 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1602873959 "portfolio2_candidate25.tex" "portfolio2_candidate25.pdf" "portfolio2_candidate25" 1602873959
+["pdflatex"] 1603138188 "portfolio2_candidate25.tex" "portfolio2_candidate25.pdf" "portfolio2_candidate25" 1603138188
+  "bilder/ROC.png" 1603137884 34530 556ec1cd972fabe88b4a72895dd88fca ""
   "bilder/decisionboundary_1a.png" 1602869941 15215 e2a9eb664a8c42f3815d1c9b44aae237 ""
   "c:/texlive/2020/texmf-dist/fonts/map/fontname/texfonts.map" 1600093116 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1600091396 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
@@ -28,6 +29,7 @@
   "c:/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm" 1600092153 1124 6c73e740cf17375f03eec0ee63599741 ""
   "c:/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm" 1600092153 1116 933a60c408fc0a863a92debe84b2d294 ""
   "c:/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm" 1600092153 1120 8b7d695260f3cff42e636090a8002094 ""
+  "c:/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmti12.tfm" 1600092153 1484 ed72f8f5cf654cda15ecc8e32bfcbee5 ""
   "c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb" 1600091396 32080 340ef9bf63678554ee606688e7b5339d ""
   "c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb" 1600091396 32166 b0c356b15f19587482a9217ce1d8fa67 ""
   "c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb" 1600091396 30251 6afa5cb1d0204815a708a080681d4674 ""
@@ -39,6 +41,7 @@
   "c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb" 1600091396 32734 69e00a6b65cedb993666e42eedb3d48f ""
   "c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb" 1600091396 32726 39f0f9e62e84beb801509898a605dbd5 ""
   "c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1600091396 32569 5e5ddc8df908dea60932f3c484a54c0d ""
+  "c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb" 1600091396 36118 fad905eba93cff5bce1e185fe980a177 ""
   "c:/texlive/2020/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1600094536 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "c:/texlive/2020/texmf-dist/tex/generic/iftex/iftex.sty" 1600093576 6501 4011d89d9621e0b0901138815ba5ff29 ""
   "c:/texlive/2020/texmf-dist/tex/generic/iftex/ifvtex.sty" 1600093576 1057 525c2192b5febbd8c1f662c9468335bb ""
@@ -70,8 +73,8 @@
   "c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1600097411 5058289 eeaee0d78bc67376d4a05921ed7ba0c6 ""
   "c:/texlive/2020/texmf-var/web2c/pdftex/pdflatex.fmt" 1600097550 2444765 7780aa0fb020d305c43e07fbb9a295cd ""
   "c:/texlive/2020/texmf.cnf" 1600097360 673 4ae7b2f49cee444c5343a45b5d0f169c ""
-  "portfolio2_candidate25.aux" 1602873946 197 0f11d34c0c551cb8f7ca9b628feecf14 "pdflatex"
-  "portfolio2_candidate25.tex" 1602873959 3074 d9d5225883f0a28344960401f3bf85ee ""
+  "portfolio2_candidate25.aux" 1603138187 326 fcc857be1ed431dffc777019b7457344 "pdflatex"
+  "portfolio2_candidate25.tex" 1603138188 4219 e2ab573b630b499d24651930d3cede74 ""
   (generated)
   "portfolio2_candidate25.pdf"
   "portfolio2_candidate25.aux"
