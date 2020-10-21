@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 import os
 from sklearn import metrics
 
-
 # Import and initialize the data
 dirname = os.path.dirname(__file__)
 filename_seals_train = os.path.join(dirname, "seals_train.csv")
@@ -164,6 +163,8 @@ class LogisticDiscrimination:
         string = "Training:\n Confusion matrix:\n {self.trainPerf[0]}\nAccuracy = {self.trainPerf[1]} ".format(self=self)
 
         if self.test_has_been_called:
+            # Run test again to make sure we are using correct decision boundary
+            self.test(self.testdata_unchanged)
 
             # Adds as string containing the performance of the test.
             string += "\n\nTest:\n Confusion matrix:\n {self.testPerf[0]}\nAccuracy = {self.testPerf[1]}".format(self=self)
@@ -237,44 +238,83 @@ class LogisticDiscrimination:
 
     def correctly_classified(self):
         """
-
+        Method for extracting 5 correctly classified seal image indices, and 5 wrong classified seal image indices.
+        Returns:
+            (tuple of arrays) - (ndarray, ndarray), five correct indices, five wrong indices.
         """
+        # Run test again to make sure we are using correct
         self.test(self.testdata_unchanged)
-        correctly_classified_harp = np.intersect1d(self.classifiedZero, self.actualZero) # 0
-        correctly_classified_hooded = np.intersect1d(self.classifiedOne, self.actualOne) # 1
+
+        # In essence the same as is done in the confusion matrix, which means find the tp, fn, fp, tn
+        correctly_classified_harp = np.intersect1d(self.classifiedZero, self.actualZero)
+        correctly_classified_hooded = np.intersect1d(self.classifiedOne, self.actualOne)
         wrongly_classified_harp = np.intersect1d(self.classifiedZero, self.actualOne)
         wrongly_classified_hooded = np.intersect1d(self.classifiedOne, self.actualZero)
 
+        # Add together lists of all correctly classified and all faulty classified into separate arrays
         correct_class = np.concatenate((correctly_classified_harp, correctly_classified_hooded))
         wronged_class = np.concatenate((wrongly_classified_harp, wrongly_classified_hooded))
+
+        # Choose five random of corrects and five random of faulties.
         five_correct = np.random.choice(correct_class, 5)
         five_wrong = np.random.choice(wronged_class, 5)
 
         return five_correct, five_wrong
 
-def show_image(i, title, save_name):
+def show_image(i, title):
+    """
+    Show testimage number i
+    Args:
+        param1: (int) - index of picture
+        param2: (str) - title for picture of index i
+    """
+    # Reshape row i of size 4096 (= 64 x 64)
     plt.imshow(np.reshape(testimages[i], (64, 64)))
+
+    # Add title
     plt.title(str(title))
     plt.show()
-    plt.savefig(str(save_name))
 
-def do_task_1d(five_corr, five_wrg):
-    # print(five_corr, five_wrg)
+def show_five_corr_five_incorr(five_corr, five_wrg):
+    """
+    Shows 5 correctly classified images & 5 incorretly classified images separately, with sensible title.
+    Args:
+        param1: (ndarray) - Indices of 5 correctly classified images
+        param2: (ndarray) - Indices of 5 incorrectly classified images
+    """
+    # Combine all images to one array
     all_img = np.concatenate((five_corr, five_wrg))
     for i, index_of_pic in enumerate(all_img):
+
+        # i <= 5 give the correctly classified images
         if i <= 5:
-            show_image(index_of_pic, title="Correctly classified seal", save_name=str(dirname) + "correctly_classified_" + str(i))
+
+            # Use function show_image to show images
+            show_image(index_of_pic, title="Image " + str(i + 1) + ": Correctly classified seal.")
         else:
-            show_image(index_of_pic, title="Not correctly classified seals", save_name= str(dirname) + "not_correctly_classified_" + str(i))
+            show_image(index_of_pic, title="Image " + str(i + 1) + ": Not correctly classified seals.")
 
 def main():
+    # Init class
     seals = LogisticDiscrimination(traindata)
+
+    # Train class
     seals.train()
+
+    # Test class
     seals.test(testdata)
+
+    # Print performance of class
     print(seals)
+
+    # Gather samples of correct classifications and misclassified seals
     samples = seals.correctly_classified()
-    #seals.ROC(100)
-    do_task_1d(samples[0], samples[1])
+
+    # Construct ROC curve and AUC
+    seals.ROC(100)
+
+    # Show images
+    show_five_corr_five_incorr(samples[0], samples[1])
 
 if __name__ == "__main__":
     main()

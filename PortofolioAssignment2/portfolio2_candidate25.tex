@@ -6,21 +6,26 @@
 \usepackage{graphicx}
 \usepackage{cancel}
 \usepackage{fancyhdr}
+\usepackage{float}
 
 \graphicspath{ {./bilder/} }
-\title{Portfolio assignment 2}
-\author{Candidate25}
+
+\title{ \begin{huge}
+\textbf{Portfolio Assignment 2}
+\end{huge} }
+
+\author{Candidate 25}
 \date{}
 
 \rfoot{\thepage}
 \newcommand{\bs}{\boldsymbol}
 \newcommand{\mbf}{\mathbf}
 
-\maketitle
 \begin{document}
+\maketitle
   \section*{Problem 1}
     \subsection*{(1a)}
-      \begin{figure}[h]
+      \begin{figure}[H]
         \caption{Decision boudary of a logistic descrimination classifier}
         \centering
         \includegraphics[width=\textwidth,keepaspectratio=true,height=\textheight-\the\textundbildtextheight]{decisionboundary_1a}
@@ -70,12 +75,68 @@
       Which means the model classified 87 class 0's correctly, 11 class 1's as class 0's, 15 class 0's as class 1's and 100 class 1's correctly.
     \newpage
     \subsection*{(1c)}
-    \begin{figure}[h]
-      \caption{The Reciever Operating Characteristic}
-      \centering
-      \includegraphics[width=14cm]{ROC}
-    \end{figure}\\
-    The ROC curve represents\\
+      \begin{figure}[H]
+        \caption{The Reciever Operating Characteristic}
+        \centering
+        \includegraphics[width=14cm]{ROC}
+      \end{figure}\\
+      The ROC curve represents\\
 
-    For the Area Under the Curve score i got AUC $ \approx \underline{0.930}$ by using \textit{sklearn.metrics} built-in function for calculating the AUC score.
+      \noindent For the Area Under the Curve score i got AUC $ \approx \underline{0.930}$ by using \textit{sklearn.metrics} built-in function for calculating the AUC score.
+    \subsection*{(1d)}
+      For this task I have created a function which classifies seal images corresponding to a given index, called \textit{show\_image}. Furthermore I use this function to show 5 random images which I know my classifier correctly classified in task (1b), and 5 random images I know are incorrectly classified.
+      \begin{figure}[H]
+        \caption{Pictures of correctly classified seals}
+        \centering
+        \includegraphics[width=8cm]{corr1}
+        \includegraphics[width=8cm]{corr2}
+        \includegraphics[width=8cm]{corr3}
+        \includegraphics[width=8cm]{corr4}
+        \includegraphics[width=8cm]{corr5}
+      \end{figure}\\
+      \begin{figure}[H]
+        \caption{Pictures of not correctly classified seals}
+        \centering
+        \includegraphics[width=8cm]{notcorr6}
+        \includegraphics[width=8cm]{notcorr7}
+        \includegraphics[width=8cm]{notcorr8}
+        \includegraphics[width=8cm]{notcorr9}
+        \includegraphics[width=8cm]{notcorr10}
+      \end{figure}\\
+      \noindent In Figure 3. the pictures are of either \textit{Harp seal pups} or \textit{Hooded seal pups}, where the algorithm has classified theese seals correctly. Whereas in Figure 4. the pictures are of either \textit{Harp seal pups} classified as \textit{Hooded seal pups}, or \textit{Hooded seal pups} classified as \textit{Harp seal pups}.\\
+      \\
+      This leads to a question, what are the possible reasons as to why the pictures in Figure 4. are misclassified. By studying theese example photos I belive one reason to this comes from not the whole seal being present in the image. An exmple of this we see in Image 9. The seal is located between approximately pixel 50 to pixel 64 along the first axis, and pixels 10 to 30 along the second axis. Where not the whole seal is present, althoug we tell the classifier there is a seal in the image. This leads to making a sort of edjucated guess, since not all of the features neccesary to make a correct classification is present.\\
+      In image 8. it seems as though the lack of a good image resolution may be hiding a lot of the features the classifier neeeds to make a correct decision, and hence it misclassifies the seal.\\
+      Image 10. demonstrates a noisy image where a lot of the features of the seal is hidden due to lots of darker areas, and very bright areas making it hard to pinpoint where the seal begins and ends.\\
+      In conclusion, the reason as to why the classifier fails to make a correct decision I belive arise when the images hides the distinct features of the seal.
+  \section*{Problem 2}
+    \subsection*{(2a)}
+      \begin{figure}[H]
+        \caption{2-dimensional plot of training set $\{(\mbf{x}^i, y^i)\}_{i=1}^6$, and decision boundary of a decision tree.}
+        \centering
+        \includegraphics[scale=0.75]{decisionboundary_2a}
+      \end{figure}\\
+      This plot illustrates the two decision boundaries needed to classify the training set with zero errors. Here I have used two boundaries. The first going from $x_1 = 1.5$ spanning the secound axis, and the second going from $x_2 = 1.5$ spanning the first axis.\\
+      \begin{figure}[H]
+        \caption{Decision tree for training set.}
+        \centering
+        \includegraphics[scale=0.6]{DescisionTree}
+      \end{figure}\\
+      \noindent From this decision tree we see that we can create a IF-THEN rule which describes how the tree would classify the datapoint:
+      \[
+        \mbf{x}^t =
+        \left[
+          \begin{array}{ccc}
+            x_1^t \\
+            x_2^t \\
+          \end{array}
+        \right]
+      \]
+      This means that, \\
+      IF: $x_1^t < 1.5$, THEN $\mbf{x}^t \rightarrow y^t = 0$\\
+      IF: $x_1^t \geq$ AND $x_2^t < 1.5$ THEN $y^t = 0$\\
+      IF: $x_1^t \geq$ AND $x_2^t \geq 1.5$ THEN $y^t = 1$
+  \section*{Problem 3}
+    \subsection*{(3a)}
+      3a
 \end{document}

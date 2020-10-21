@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.9.14)  19 OCT 2020 22:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.9.14)  21 OCT 2020 15:36
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -139,49 +139,34 @@ s
 \f@nch@O@erf=\skip58
 \f@nch@O@olf=\skip59
 \f@nch@O@orf=\skip60
-)
-
-! LaTeX Error: Missing \begin{document}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.19 \maketitle
-               
-You're in trouble here.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-LaTeX Font Info:    Trying to load font information for U+msa on input line 19.
-
-(c:/texlive/2020/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 19.
-
-(c:/texlive/2020/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) (c:/texlive/2020/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count191
+\float@exts=\toks24
+\float@box=\box47
+\@float@everytoks=\toks25
+\@floatcapt=\box48
 ) (c:/texlive/2020/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2020-09-11 L3 backend support: PDF output (pdfTeX)
-\l__kernel_color_stack_int=\count191
-\l__pdf_internal_box=\box47
+\l__kernel_color_stack_int=\count192
+\l__pdf_internal_box=\box49
 ) (./portfolio2_candidate25.aux)
 \openout1 = `portfolio2_candidate25.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -218,17 +203,17 @@ LaTeX Font Info:    ... okay on input line 20.
 
 (c:/texlive/2020/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count192
+\scratchcounter=\count193
 \scratchdimen=\dimen154
-\scratchbox=\box48
-\nofMPsegments=\count193
-\nofMParguments=\count194
-\everyMPshowfont=\toks24
-\MPscratchCnt=\count195
+\scratchbox=\box50
+\nofMPsegments=\count194
+\nofMParguments=\count195
+\everyMPshowfont=\toks26
+\MPscratchCnt=\count196
 \MPscratchDim=\dimen155
-\MPnumerator=\count196
-\makeMPintoPDFobject=\count197
-\everyMPtoPDFconversion=\toks25
+\MPnumerator=\count197
+\makeMPintoPDFobject=\count198
+\everyMPtoPDFconversion=\toks27
 ) (c:/texlive/2020/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -237,11 +222,21 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
+LaTeX Font Info:    Trying to load font information for U+msa on input line 25.
+
+(c:/texlive/2020/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 25.
+
+(c:/texlive/2020/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
 <./bilder/decisionboundary_1a.png, id=1, 790.45313pt x 451.6875pt>
 ! Undefined control sequence.
 \Gin@@eheight ...ght -\the \textundbildtextheight 
                                                   
-l.26 ...extundbildtextheight]{decisionboundary_1a}
+l.31 ...extundbildtextheight]{decisionboundary_1a}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -252,17 +247,17 @@ and I'll forget about whatever was undefined.
 ! You can't use `\relax' after \the.
 \setlength #1#2->#1 #2\relax 
                              
-l.26 ...extundbildtextheight]{decisionboundary_1a}
+l.31 ...extundbildtextheight]{decisionboundary_1a}
                                                   
 I'm forgetting what you said and using zero instead.
 
 File: ./bilder/decisionboundary_1a.png Graphic file (type png)
 <use ./bilder/decisionboundary_1a.png>
-Package pdftex.def Info: ./bilder/decisionboundary_1a.png  used on input line 2
-6.
+Package pdftex.def Info: ./bilder/decisionboundary_1a.png  used on input line 3
+1.
 (pdftex.def)             Requested size: 500.4848pt x 285.9913pt.
 
-Overfull \hbox (5.87575pt too wide) in paragraph at lines 26--27
+Overfull \hbox (5.87575pt too wide) in paragraph at lines 31--32
  \OT1/cmr/m/n/12 0[] 
  []
 
@@ -273,7 +268,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.28       I
+l.33       I
             n the plot above we see the points from the training set: $\{(\m...
 
 Your command was ignored.
@@ -281,7 +276,7 @@ Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 31--35
+Underfull \hbox (badness 10000) in paragraph at lines 36--40
 
  []
 
@@ -289,15 +284,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 31--35
 
 {c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./bilder/decisi
 onboundary_1a.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 61--62
+Underfull \hbox (badness 10000) in paragraph at lines 66--67
 
  []
 
 [2]
-<./bilder/ROC.png, id=24, 462.528pt x 346.896pt>
+<./bilder/ROC.png, id=23, 462.528pt x 346.896pt>
 File: ./bilder/ROC.png Graphic file (type png)
 <use ./bilder/ROC.png>
-Package pdftex.def Info: ./bilder/ROC.png  used on input line 76.
+Package pdftex.def Info: ./bilder/ROC.png  used on input line 81.
 (pdftex.def)             Requested size: 398.33858pt x 298.76936pt.
 
 ! LaTeX Error: There's no line here to end.
@@ -306,42 +301,171 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.78     T
-          he ROC curve represents\\
+l.83       T
+            he ROC curve represents\\
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 78--79
+Underfull \hbox (badness 10000) in paragraph at lines 83--84
 
  []
 
-[3 <./bilder/ROC.png>] (./portfolio2_candidate25.aux) ) 
+<./bilder/corr1.png, id=24, 462.528pt x 346.896pt>
+File: ./bilder/corr1.png Graphic file (type png)
+<use ./bilder/corr1.png>
+Package pdftex.def Info: ./bilder/corr1.png  used on input line 91.
+(pdftex.def)             Requested size: 227.62204pt x 170.71628pt.
+<./bilder/corr2.png, id=25, 462.528pt x 346.896pt>
+File: ./bilder/corr2.png Graphic file (type png)
+<use ./bilder/corr2.png>
+Package pdftex.def Info: ./bilder/corr2.png  used on input line 92.
+(pdftex.def)             Requested size: 227.62204pt x 170.71628pt.
+<./bilder/corr3.png, id=26, 462.528pt x 346.896pt>
+File: ./bilder/corr3.png Graphic file (type png)
+<use ./bilder/corr3.png>
+Package pdftex.def Info: ./bilder/corr3.png  used on input line 93.
+(pdftex.def)             Requested size: 227.62204pt x 170.71628pt.
+<./bilder/corr4.png, id=27, 462.528pt x 346.896pt>
+File: ./bilder/corr4.png Graphic file (type png)
+<use ./bilder/corr4.png>
+Package pdftex.def Info: ./bilder/corr4.png  used on input line 94.
+(pdftex.def)             Requested size: 227.62204pt x 170.71628pt.
+<./bilder/corr5.png, id=28, 462.528pt x 346.896pt>
+File: ./bilder/corr5.png Graphic file (type png)
+<use ./bilder/corr5.png>
+Package pdftex.def Info: ./bilder/corr5.png  used on input line 95.
+(pdftex.def)             Requested size: 227.62204pt x 170.71628pt.
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.97       \begin
+                 {figure}[H]
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+<./bilder/notcorr6.png, id=29, 462.528pt x 346.896pt>
+File: ./bilder/notcorr6.png Graphic file (type png)
+<use ./bilder/notcorr6.png>
+Package pdftex.def Info: ./bilder/notcorr6.png  used on input line 100.
+(pdftex.def)             Requested size: 227.62204pt x 170.71628pt.
+<./bilder/notcorr7.png, id=30, 462.528pt x 346.896pt>
+File: ./bilder/notcorr7.png Graphic file (type png)
+<use ./bilder/notcorr7.png>
+Package pdftex.def Info: ./bilder/notcorr7.png  used on input line 101.
+(pdftex.def)             Requested size: 227.62204pt x 170.71628pt.
+<./bilder/notcorr8.png, id=31, 462.528pt x 346.896pt>
+File: ./bilder/notcorr8.png Graphic file (type png)
+<use ./bilder/notcorr8.png>
+Package pdftex.def Info: ./bilder/notcorr8.png  used on input line 102.
+(pdftex.def)             Requested size: 227.62204pt x 170.71628pt.
+<./bilder/notcorr9.png, id=32, 462.528pt x 346.896pt>
+File: ./bilder/notcorr9.png Graphic file (type png)
+<use ./bilder/notcorr9.png>
+Package pdftex.def Info: ./bilder/notcorr9.png  used on input line 103.
+(pdftex.def)             Requested size: 227.62204pt x 170.71628pt.
+<./bilder/notcorr10.png, id=33, 462.528pt x 346.896pt>
+File: ./bilder/notcorr10.png Graphic file (type png)
+<use ./bilder/notcorr10.png>
+Package pdftex.def Info: ./bilder/notcorr10.png  used on input line 104.
+(pdftex.def)             Requested size: 227.62204pt x 170.71628pt.
+[3 <./bilder/ROC.png>]
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.106       \noindent
+                      In Figure 3. the pictures are of either \textit{Harp s...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+[4 <./bilder/corr1.png> <./bilder/corr2.png> <./bilder/corr3.png> <./bilder/cor
+r4.png> <./bilder/corr5.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 106--112
+
+ []
+
+[5 <./bilder/notcorr6.png> <./bilder/notcorr7.png> <./bilder/notcorr8.png> <./b
+ilder/notcorr9.png> <./bilder/notcorr10.png>]
+<./bilder/decisionboundary_2a.png, id=54, 521.95pt x 321.2pt>
+File: ./bilder/decisionboundary_2a.png Graphic file (type png)
+<use ./bilder/decisionboundary_2a.png>
+Package pdftex.def Info: ./bilder/decisionboundary_2a.png  used on input line 1
+17.
+(pdftex.def)             Requested size: 391.46153pt x 240.89941pt.
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.119       T
+             his plot illustrates the two decision boundaries needed to clas...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+<./bilder/DescisionTree.png, id=55, 672.26157pt x 414.79968pt>
+File: ./bilder/DescisionTree.png Graphic file (type png)
+<use ./bilder/DescisionTree.png>
+Package pdftex.def Info: ./bilder/DescisionTree.png  used on input line 123.
+(pdftex.def)             Requested size: 403.36005pt x 248.88173pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 119--124
+
+ []
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.125       \noindent
+                      From this decision tree we see that we can create a IF...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+[6 <./bilder/decisionboundary_2a.png>] [7 <./bilder/DescisionTree.png>] (./port
+folio2_candidate25.aux) ) 
 Here is how much of TeX's memory you used:
- 3031 strings out of 480876
- 39951 string characters out of 5911487
- 287657 words of memory out of 5000000
- 18629 multiletter control sequences out of 15000+600000
- 546660 words of font info for 72 fonts, out of 8000000 for 9000
+ 3179 strings out of 480876
+ 42451 string characters out of 5911487
+ 289180 words of memory out of 5000000
+ 18773 multiletter control sequences out of 15000+600000
+ 547266 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,14n,45p,783b,246s stack positions out of 5000i,500n,10000p,200000b,80000s
-<c:/texlive/2020/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2020/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmbx8.pfb><c:/texlive/2020/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmex10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmmi12.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-mi8.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb>
-<c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texliv
-e/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2020/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2020/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2020/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmsy10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmti12.pfb>
-Output written on portfolio2_candidate25.pdf (3 pages, 154731 bytes).
+ 36i,14n,45p,783b,244s stack positions out of 5000i,500n,10000p,200000b,80000s
+<c:/texlive/2020/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmbx12.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx
+8.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:
+/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/
+2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2020/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><c:/texlive/2020/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2020/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmr6.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmr8.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cms
+y10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on portfolio2_candidate25.pdf (7 pages, 417389 bytes).
 PDF statistics:
- 67 PDF objects out of 1000 (max. 8388607)
- 45 compressed objects within 1 object stream
+ 101 PDF objects out of 1000 (max. 8388607)
+ 52 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 71 words of extra memory for PDF output out of 10000 (max. 10000000)
 
