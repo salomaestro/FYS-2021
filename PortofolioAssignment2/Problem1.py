@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import os
 from sklearn import metrics
 
+
 # Import and initialize the data
 dirname = os.path.dirname(__file__)
 filename_seals_train = os.path.join(dirname, "seals_train.csv")
@@ -10,6 +11,7 @@ filename_seals_test = os.path.join(dirname, "seals_test.csv")
 filename_seals_images_test = os.path.join(dirname, "seals_images_test.csv")
 traindata = np.genfromtxt(filename_seals_train, delimiter=" ")
 testdata = np.genfromtxt(filename_seals_test, delimiter=" ")
+testimages = np.genfromtxt(filename_seals_images_test, delimiter=" ")
 
 class LogisticDiscrimination:
     """
@@ -113,12 +115,13 @@ class LogisticDiscrimination:
         classified = np.where(self.sigmoid(self.testdata, self.w) < discriminationThreshold, 0, 1)
 
         # Same sort of classification as for the training method
-        classifiedZero = np.where(classified < 0.5)
-        classifiedOne = np.where(classified > 0.5)
+        self.classifiedZero = np.where(classified < 0.5)
+        self.classifiedOne = np.where(classified > 0.5)
 
-        actualZero = np.where(groundtruth < 0.5)
-        actualOne = np.where(groundtruth > 0.5)
-        self.testPerf = self.performance(classifiedZero, classifiedOne, actualZero, actualOne)
+        self.actualZero = np.where(groundtruth < 0.5)
+        self.actualOne = np.where(groundtruth > 0.5)
+
+        self.testPerf = self.performance(self.classifiedZero, self.classifiedOne, self.actualZero, self.actualOne)
         return self.testPerf
 
     def is_model_trained(self):
@@ -232,12 +235,46 @@ class LogisticDiscrimination:
 
         return AUC
 
+    def correctly_classified(self):
+        """
+
+        """
+        self.test(self.testdata_unchanged)
+        correctly_classified_harp = np.intersect1d(self.classifiedZero, self.actualZero) # 0
+        correctly_classified_hooded = np.intersect1d(self.classifiedOne, self.actualOne) # 1
+        wrongly_classified_harp = np.intersect1d(self.classifiedZero, self.actualOne)
+        wrongly_classified_hooded = np.intersect1d(self.classifiedOne, self.actualZero)
+
+        correct_class = np.concatenate((correctly_classified_harp, correctly_classified_hooded))
+        wronged_class = np.concatenate((wrongly_classified_harp, wrongly_classified_hooded))
+        five_correct = np.random.choice(correct_class, 5)
+        five_wrong = np.random.choice(wronged_class, 5)
+
+        return five_correct, five_wrong
+
+def show_image(i, title, save_name):
+    plt.imshow(np.reshape(testimages[i], (64, 64)))
+    plt.title(str(title))
+    plt.show()
+    plt.savefig(str(save_name))
+
+def do_task_1d(five_corr, five_wrg):
+    # print(five_corr, five_wrg)
+    all_img = np.concatenate((five_corr, five_wrg))
+    for i, index_of_pic in enumerate(all_img):
+        if i <= 5:
+            show_image(index_of_pic, title="Correctly classified seal", save_name=str(dirname) + "correctly_classified_" + str(i))
+        else:
+            show_image(index_of_pic, title="Not correctly classified seals", save_name= str(dirname) + "not_correctly_classified_" + str(i))
+
 def main():
     seals = LogisticDiscrimination(traindata)
     seals.train()
     seals.test(testdata)
-    seals.ROC(100)
-    # print(seals)
+    print(seals)
+    samples = seals.correctly_classified()
+    #seals.ROC(100)
+    do_task_1d(samples[0], samples[1])
 
 if __name__ == "__main__":
     main()
