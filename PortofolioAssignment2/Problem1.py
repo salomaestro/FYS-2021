@@ -7,6 +7,7 @@ from sklearn import metrics
 dirname = os.path.dirname(__file__)
 filename_seals_train = os.path.join(dirname, "seals_train.csv")
 filename_seals_test = os.path.join(dirname, "seals_test.csv")
+filename_seals_images_test = os.path.join(dirname, "seals_images_test.csv")
 traindata = np.genfromtxt(filename_seals_train, delimiter=" ")
 testdata = np.genfromtxt(filename_seals_test, delimiter=" ")
 
@@ -230,7 +231,7 @@ class LogisticDiscrimination:
         plt.show()
 
         return AUC
-        
+
 def main():
     seals = LogisticDiscrimination(traindata)
     seals.train()
