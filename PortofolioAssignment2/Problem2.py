@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import os
-from sklearn import metrics
+# from sklearn import metrics
 
 # Import and initialize the data
 dirname = os.path.dirname(__file__)
@@ -10,74 +10,63 @@ filename_seals_test = os.path.join(dirname, "seals_test.csv")
 filename_seals_images_test = os.path.join(dirname, "seals_images_test.csv")
 traindata = np.genfromtxt(filename_seals_train, delimiter=" ")
 testdata = np.genfromtxt(filename_seals_test, delimiter=" ")
-# testimages = np.genfromtxt(filename_seals_images_test, delimiter=" ")
 
-class DecisionTree:
+ground_truth = traindata[:, 0]
+traindata = np.delete(traindata, 0, axis=1)
+
+class Tree:
     """
     Class for decision tree.
     """
-    def __init__(self, trainingData):
+    def __init__(self, trainingData, gt):
         # Extract ground truth by indices
-        self.gt = trainingData[:, 0]
+        self.gt = gt
 
         # Init training data
-        self.traindata = np.delete(trainingData, 0, axis=1)
+        self.traindata = trainingData
 
-        # probability of belonging to class 1, p0 = 1 - p1
-        self.p1 = len(self.gt[np.where(self.gt == 1)]) / len(self.gt)
+        self.minimum_impurity = 1
 
-    def train(self):
-        best_boundaries = np.zeros_like(self.traindata[0])
-        for index, columns in enumerate(self.traindata.T):
-            best_boundaries[index] = self.boundary_of_feature(columns)
-        print(best_boundaries)
+    def fit(self, data, gt):
+        if self.impurity(gt) < self.minimum_impurity:
+            self.minimum_impurity = self.impurity(gt)
+            pass
+        else:
+            # Find best split
+            split_index, threshold = self.find_best_split(data, labels)
 
-    def boundary_of_feature(self, features):
-        # snip away the largest and smallest values as theese would be evaluated to 0 in the for loop
-        max_value = np.max(features)
-        min_value = np.min(features)
+            branch1 = Tree()
+            branch2 = Tree()
 
-        # features belonging to class C0 and C1
-        feature_C0 = features[np.where(self.gt == 0)]
-        feature_C1 = features[np.where(self.gt == 1)]
+            branch1.fit(data, labels)
+            branch2.fit(data, labels)
 
-        # Gather entropies in array
-        entropies = np.zeros_like(features)
-        for i, boundary in enumerate(features):
-            if boundary == max_value or boundary == min_value:
-                I_tot = 1
-            else:
-                # Probability of being over the border given beloning to either of the classes.
-                p_over_boundary_belongC0 = len(feature_C0[feature_C0 > boundary]) / len(features[features > boundary])
+    def find_best_split(self, data, lab):
+        for split in data:
+            
 
-                # Probability of being under the border given beloning to eiter of the classes.
-                p_under_boundary_belongC0 = len(feature_C0[feature_C0 <= boundary]) / len(features[features <= boundary])
+    def impurity(self, labels):
+        p0 = len(labels[np.where(labels == 0)]) / len(labels)
+        if p0 == 0 or p0 == 1:
+            I = 1
+        else:
+            I = - p0 * np.log2(p0) - (1 - p0) * np.log2(1 - p0)
+        print(I)
 
-                # Total over the boundary
-                total_over_boundary = len(features[features > boundary]) / len(features)
+    def predict(self, data):
+        for row in data:
+            pass
 
-                # One minus this gives under boundary
-                total_under_boundary = 1 - total_over_boundary
-
-                I_tot = total_over_boundary * self.entropy(p_over_boundary_belongC0) + total_under_boundary * self.entropy(p_under_boundary_belongC0)
-
-            entropies[i] = I_tot
-
-        best_boundary_value = features[np.where(entropies == np.min(entropies))][0]
-        best_boundary_entropy = np.min(entropies)
-        best_boundary = np.where(entropies == np.min(entropies))[0][0]
-        # print("boundary value = {}, entropy = {}, index = {}".format(best_boundary_value, best_boundary_entropy, best_boundary))
-        return best_boundary_value
-
-    def entropy(self, p_i):
+    @staticmethod
+    def entropy(p_i):
         if p_i == 1 or p_i == 0:
             return 0
         else:
             return - p_i * np.log2(p_i) - (p_i) * np.log2(p_i)
 
 def main():
-    seals = DecisionTree(traindata)
-    seals.train()
+    seals = Tree(traindata, ground_truth)
+    seals.fit(traindata, ground_truth)
 
 if __name__ == "__main__":
     main()
