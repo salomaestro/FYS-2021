@@ -14,32 +14,36 @@ testdata = np.genfromtxt(filename_seals_test, delimiter=" ")
 ground_truth = traindata[:, 0]
 traindata = np.delete(traindata, 0, axis=1)
 
+test_gt = testdata[:, 0]
+testdata = np.delete(testdata, 0, axis=1)
+
 class Tree:
     """
     Class for decision tree.
 
     Tree takes no arguements.
     """
-    def __init__(self):
-        self.minimum_impurity = 0.8
+    def __init__(self, list_of_split_index=list(), list_of_threshold=list()):
+        self.minimum_impurity = 0.6
         self.min_data_nodes = 40
-        self.max_recursion_depth = 6
+        self.max_recursion_depth = 5
+        self.list_of_split_index = list_of_split_index
+        self.list_of_threshold = list_of_threshold
 
-    def fit(self, data, gt, depth, node="Root", direction=0):
+    def fit(self, data, gt, split_index=None, threshold=None, depth=0, ):
         self.depth = depth
-        self.node = node
         if self.depth < self.max_recursion_depth:
             if self.impurity(gt) < self.minimum_impurity:
                 if len(gt[np.where(gt == 1)]) > len(gt[np.where(gt == 0)]):
-                    print("Leaf node with {} datapoints, belongs to class 1, at depth = {}".format(len(gt), self.depth))
+                    print("Became leaf node after split index {}, with threshold {}, belongs to class 1, at depth = {}".format(split_index, threshold, self.depth))
                 else:
-                    print("Leaf node with {} datapoints, belongs to class 0, at depth = {}".format(len(gt), self.depth))
+                    print("Became leaf node after split index {}, with threshold {}, belongs to class 0, at depth = {}".format(split_index, threshold, self.depth))
             else:
                 if len(data) < self.min_data_nodes:
                     if len(gt[np.where(gt == 1)]) > len(gt[np.where(gt == 0)]):
-                        print("Leaf node with shape {}, belongs to class 1, at depth = {}".format(len(gt), self.depth))
+                        print("Became leaf node after split index {}, with threshold {}, belongs to class 1, at depth = {}".format(split_index, threshold, self.depth))
                     else:
-                        print("Leaf node with shape {}, belongs to class 0, at depth = {}".format(len(gt), self.depth))
+                        print("Became leaf node after split index {}, with threshold {}, belongs to class 0, at depth = {}".format(split_index, threshold, self.depth))
                 else:
                     # Find best split
                     split_index, threshold = self.find_best_split(data, gt)
@@ -47,37 +51,26 @@ class Tree:
 
                     datasplit1 = data[data_splitted1]
                     datasplit2 = data[data_splitted2]
+                    print(datasplit1.shape)
 
-                    right = Tree()
-                    left = Tree()
-                    
-                    print(self.node)
+                    self.list_of_split_index.append(split_index)
+                    self.list_of_threshold.append(threshold)
 
-                    right.fit(datasplit1, gt_splitted1, self.depth + 1, {"Right rec_depth = {}".format(self.depth):"Threshold: {:.3f}".format(threshold)})
-                    left.fit(datasplit2, gt_splitted2, self.depth + 1, {"Left rec_depth = {}".format(self.depth):"Threshold: {:.3f}".format(threshold)})
+
+                    right = Tree(self.list_of_split_index, self.list_of_threshold)
+                    left = Tree(self.list_of_split_index, self.list_of_threshold)
+
+                    right.fit(datasplit1, gt_splitted1, split_index, threshold, self.depth + 1)
+                    left.fit(datasplit2, gt_splitted2, split_index, threshold, self.depth + 1)
+                    # right.fit(data_splitted1, gt_splitted1, split_index, threshold, self.depth + 1)
+                    # left.fit(data_splitted2, gt_splitted2, split_index, threshold, self.depth + 1)
+
+                    return self.list_of_split_index, self.list_of_threshold
         else:
-            print("max recursion depth exceeded, remainder is classified by majority in class.")
             if len(gt[np.where(gt == 1)]) > len(gt[np.where(gt == 0)]):
-                print("Leaf node with shape {}, belongs to class 1, at depth = {}".format(len(gt), self.depth))
+                print("Became leaf node after split index {}, with threshold {}, belongs to class 1, at depth = {}".format(split_index, threshold, self.depth))
             else:
-                print("Leaf node with shape {}, belongs to class 0, at depth = {}".format(len(gt), self.depth))
-
-    @staticmethod
-    def split(data, groundtruth, index, threshold):
-        """
-        Method for splitting the data!
-        """
-        split1, split2 = [], []
-        split1_gt, split2_gt = [], []
-        for i, val in enumerate(data.T[index]):
-            if val > threshold:
-                split1.append(i)
-                split1_gt.append(groundtruth[i])
-            if val <= threshold:
-                split2.append(i)
-                split2_gt.append(groundtruth[i])
-
-        return np.asarray(split1), np.asarray(split2), np.asarray(split1_gt), np.asarray(split2_gt)
+                print("Became leaf node after split index {}, with threshold {}, belongs to class 0, at depth = {}".format(split_index, threshold, self.depth))
 
     def find_best_split(self, data, groundtruth):
         entropy_column = np.zeros_like(data[0])
@@ -105,6 +98,7 @@ class Tree:
                     # Total over the split
                     total_over_split = len(column[column > split]) / len(column)
 
+                    # Total under the split
                     total_under_split = 1 - total_over_split
 
                     I_tot = total_over_split * self.entropy(p_over_split_belongC0) + total_under_split * self.entropy(p_under_split_belongC0)
@@ -113,6 +107,7 @@ class Tree:
             best_split_of_column = np.min(entropies)
             best_split_value = column[np.where(entropies == np.min(entropies))[0]]
 
+            # If split has multiple choices, choose the first one
             if not isinstance(best_split_value, float):
                 thresholds.append(best_split_value[0])
             else:
@@ -135,8 +130,32 @@ class Tree:
             I = - p0 * np.log2(p0) - (1 - p0) * np.log2(1 - p0)
         return I
 
-    def predict(self, data):
-        pass
+    @staticmethod
+    def split(data, groundtruth, index, threshold):
+        """
+        Method for splitting the data!
+        """
+        split1, split2 = [], []
+        split1_gt, split2_gt = [], []
+
+        # Loop through column to be splitted
+        column_at_index = data.T[index]
+        for i, val in enumerate(column_at_index):
+
+            if val > threshold:
+                split1.append(i)
+                split1_gt.append(groundtruth[i])
+            else:
+                split2.append(i)
+                split2_gt.append(groundtruth[i])
+
+        return np.asarray(split1), np.asarray(split2), np.asarray(split1_gt), np.asarray(split2_gt)
+
+    @staticmethod
+    def predict(data, gt, split_ind, thresholds):
+
+        split = split(data, gt, index, threshold)
+
 
     @staticmethod
     def entropy(p_i):
@@ -147,7 +166,11 @@ class Tree:
 
 def main():
     seals = Tree()
-    seals.fit(traindata, ground_truth, 1)
+    split_index, thresholds = seals.fit(traindata, ground_truth)
+    print(split_index, thresholds)
+    # print(Tree.split(traindata, ground_truth, 0, -1))
+
+    # predict(testdata, test_gt, split_index, thresholds)
 
 if __name__ == "__main__":
     main()
