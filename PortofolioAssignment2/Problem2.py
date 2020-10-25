@@ -23,35 +23,41 @@ class Tree:
 
     Tree takes no arguements.
     """
-    def __init__(self, list_of_split_index=list(), list_of_threshold=list()):
+    def __init__(self, list_of_split_index=list(), list_of_threshold=list(), node_list=list(), depth_list=list()):
         self.minimum_impurity = 0.6
         self.min_data_nodes = 40
         self.max_recursion_depth = 5
         self.list_of_split_index = list_of_split_index
         self.list_of_threshold = list_of_threshold
+        self.node_list = node_list
+        self.depth_list = depth_list
 
-    def fit(self, data, gt, split_index=None, threshold=None, depth=0, ):
+    def fit(self, data, gt, split_index=None, threshold=None, depth=0, node="root"):
         self.depth = depth
         if self.depth < self.max_recursion_depth:
             if self.impurity(gt) < self.minimum_impurity:
                 if len(gt[np.where(gt == 1)]) > len(gt[np.where(gt == 0)]):
-                    print("Became leaf node after split index {}, with threshold {}, belongs to class 1, at depth = {}".format(split_index, threshold, self.depth))
+                    print("Became leaf node after split index {}, with threshold {}, belongs to class 1, at depth = {}".format(split_index, threshold, self.depth), len(gt), node)
                 else:
-                    print("Became leaf node after split index {}, with threshold {}, belongs to class 0, at depth = {}".format(split_index, threshold, self.depth))
+                    print("Became leaf node after split index {}, with threshold {}, belongs to class 0, at depth = {}".format(split_index, threshold, self.depth), len(gt), node)
             else:
                 if len(data) < self.min_data_nodes:
                     if len(gt[np.where(gt == 1)]) > len(gt[np.where(gt == 0)]):
-                        print("Became leaf node after split index {}, with threshold {}, belongs to class 1, at depth = {}".format(split_index, threshold, self.depth))
+                        print("Became leaf node after split index {}, with threshold {}, belongs to class 1, at depth = {}".format(split_index, threshold, self.depth), len(gt), node)
                     else:
-                        print("Became leaf node after split index {}, with threshold {}, belongs to class 0, at depth = {}".format(split_index, threshold, self.depth))
+                        print("Became leaf node after split index {}, with threshold {}, belongs to class 0, at depth = {}".format(split_index, threshold, self.depth), len(gt), node)
                 else:
                     # Find best split
                     split_index, threshold = self.find_best_split(data, gt)
-                    data_splitted1, data_splitted2, gt_splitted1, gt_splitted2 = self.split(data, gt, split_index, threshold)
+                    data_splitted1, data_splitted2, gt_splitted1, gt_splitted2 = self.split_data(data, gt, split_index, threshold, node)
+
+                    # self.list_of_node.append(node + " " + str(depth))
+                    self.node_list.append(node)
+                    self.depth_list.append(depth)
 
                     datasplit1 = data[data_splitted1]
                     datasplit2 = data[data_splitted2]
-                    print(datasplit1.shape)
+                    # print("right split: {}, left split: {}".format(datasplit1.shape, datasplit2.shape))
 
                     self.list_of_split_index.append(split_index)
                     self.list_of_threshold.append(threshold)
@@ -60,17 +66,18 @@ class Tree:
                     right = Tree(self.list_of_split_index, self.list_of_threshold)
                     left = Tree(self.list_of_split_index, self.list_of_threshold)
 
-                    right.fit(datasplit1, gt_splitted1, split_index, threshold, self.depth + 1)
-                    left.fit(datasplit2, gt_splitted2, split_index, threshold, self.depth + 1)
+                    right.fit(datasplit1, gt_splitted1, split_index, threshold, self.depth + 1, "right")
+                    left.fit(datasplit2, gt_splitted2, split_index, threshold, self.depth + 1, "left")
+
                     # right.fit(data_splitted1, gt_splitted1, split_index, threshold, self.depth + 1)
                     # left.fit(data_splitted2, gt_splitted2, split_index, threshold, self.depth + 1)
 
-                    return self.list_of_split_index, self.list_of_threshold
+                    return self.list_of_split_index, self.list_of_threshold, self.node_list, self.depth_list
         else:
             if len(gt[np.where(gt == 1)]) > len(gt[np.where(gt == 0)]):
-                print("Became leaf node after split index {}, with threshold {}, belongs to class 1, at depth = {}".format(split_index, threshold, self.depth))
+                print("Became leaf node after split index {}, with threshold {}, belongs to class 1, at depth = {}".format(split_index, threshold, self.depth), len(gt), node)
             else:
-                print("Became leaf node after split index {}, with threshold {}, belongs to class 0, at depth = {}".format(split_index, threshold, self.depth))
+                print("Became leaf node after split index {}, with threshold {}, belongs to class 0, at depth = {}".format(split_index, threshold, self.depth), len(gt), node)
 
     def find_best_split(self, data, groundtruth):
         entropy_column = np.zeros_like(data[0])
@@ -131,14 +138,18 @@ class Tree:
         return I
 
     @staticmethod
-    def split(data, groundtruth, index, threshold):
+    def split_data(data, groundtruth, index, threshold, node):
         """
         Method for splitting the data!
         """
+        index = int(index)
+
+        print(data.shape, threshold)
         split1, split2 = [], []
         split1_gt, split2_gt = [], []
 
         # Loop through column to be splitted
+        print(index)
         column_at_index = data.T[index]
         for i, val in enumerate(column_at_index):
 
@@ -152,9 +163,45 @@ class Tree:
         return np.asarray(split1), np.asarray(split2), np.asarray(split1_gt), np.asarray(split2_gt)
 
     @staticmethod
-    def predict(data, gt, split_ind, thresholds):
+    def predict(data, gt, split_ind, thresholds, nodes, depths, indices, depth=0, leaf=list()):
+        branch1, branch2 = [], []
+        branch1gt, branch2gt = [], []
+        indices1, indices2 = [], []
 
-        split = split(data, gt, index, threshold)
+        for index, row in enumerate(data):
+            if row[split_ind[depth]] > thresholds[depth]:
+                branch1.append(row)
+                branch1gt.append(gt[index])
+                indices1.append(index)
+            else:
+                branch2.append(row)
+                branch2gt.append(gt[index])
+                indices2.append(index)
+
+        branch1indices = np.zeros_like(indices1)
+        branch2indices = np.zeros_like(indices2)
+
+        for index, i in enumerate(indices1):
+            branch1indices[index] = indices[i]
+        for index, i in enumerate(indices2):
+            branch2indices[index] = indices[i]
+
+        depth += 1
+        if depth < np.max(depths):
+            if depths[depth] != depth:
+                depth = 1
+
+            if nodes[depth] == 'right':
+                print("right")
+                Tree.predict(branch1, branch1gt, split_ind, thresholds, nodes, depths, branch1indices, depth, leaf)
+
+            if nodes[depth] == 'left':
+                print("left")
+                Tree.predict(branch2, branch2gt, split_ind, thresholds, nodes, depths, branch2indices, depth, leaf)
+        else:
+            leaf.append(branch1indices)
+            leaf.append(branch2indices)
+        return leaf
 
 
     @staticmethod
@@ -165,12 +212,14 @@ class Tree:
             return - p_i * np.log2(p_i) - (1 - p_i) * np.log2(1 - p_i)
 
 def main():
-    seals = Tree()
-    split_index, thresholds = seals.fit(traindata, ground_truth)
-    print(split_index, thresholds)
-    # print(Tree.split(traindata, ground_truth, 0, -1))
+    # seals = Tree()
+    # split_index, thresholds, node, depth = seals.fit(traindata, ground_truth)
+    # print(split_index, thresholds, node, depth)
 
-    # predict(testdata, test_gt, split_index, thresholds)
+    data1 = [[0, 1, 1, 106, 0, 11, 1, 0, 103], [-0.8347, 2.8826, 7.7557, -3.4148, 2.6479, 2.9597, -3.6158, -9.6394, 1.5368], ['root', 'right', 'right', 'right', 'left', 'right', 'left', 'left', 'right'], [0, 1, 2, 3, 3, 4, 1, 2, 3]]
+    indexlist = np.array(range(0, len(testdata)))
+
+    print(Tree.predict(testdata, test_gt, data1[0], data1[1], data1[2], data1[3], indexlist))
 
 if __name__ == "__main__":
     main()
