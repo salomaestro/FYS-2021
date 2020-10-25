@@ -1,0 +1,35 @@
+if depth < 5:
+    if Tree.impurity(Tree, gt) < 0.6:
+        if len(gt[np.where(gt == 1)]) > len(gt[np.where(gt == 0)]):
+            print("leaf node class 1", len(gt), depth)
+        else:
+            print("leaf node class 0", len(gt), depth)
+    else:
+        if len(data) < 40:
+            if len(gt[np.where(gt == 1)]) > len(gt[np.where(gt == 0)]):
+                print("leaf node class 1", len(gt), depth)
+            else:
+                print("leaf node class 0", len(gt), depth)
+        else:
+            nodedir, nodedepth = [], []
+            for node in direction:
+                splitted_direction = node.split(" ")
+                nodedir.append(splitted_direction[0])
+                nodedepth.append(splitted_direction[1])
+                # column = data[split_ind[rec_index]]
+
+            split1_col, split2_col, split1_gt, split2_gt = Tree.split_data(data, gt, split_ind[rec_index], thresholds[rec_index], node)
+            print(split1_col.shape)
+
+            split1data = data[split1_col]
+            split2data = data[split2_col]
+            rec_index += 1
+
+            right = Tree.predict(split1data, split1_gt, split_ind, thresholds, direction, rec_index, "right", depth + 1)
+            left = Tree.predict(split2data, split2_gt, split_ind, thresholds, direction, rec_index, "left", depth + 1)
+            return split1data.shape, split2data.shape, len(split1data) + len(split2data), rec_index
+else:
+    if len(gt[np.where(gt == 1)]) > len(gt[np.where(gt == 0)]):
+        print("leaf node class 1", len(gt), depth)
+    else:
+        print("leaf node class 0", len(gt), depth)
