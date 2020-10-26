@@ -38,6 +38,7 @@ class Tree:
             if self.impurity(gt) < self.minimum_impurity:
                 if len(gt[np.where(gt == 1)]) > len(gt[np.where(gt == 0)]):
                     print("Became leaf node after split index {}, with threshold {}, belongs to class 1, at depth = {}".format(split_index, threshold, self.depth), len(gt), node)
+
                 else:
                     print("Became leaf node after split index {}, with threshold {}, belongs to class 0, at depth = {}".format(split_index, threshold, self.depth), len(gt), node)
             else:
@@ -144,12 +145,10 @@ class Tree:
         """
         index = int(index)
 
-        print(data.shape, threshold)
         split1, split2 = [], []
         split1_gt, split2_gt = [], []
 
         # Loop through column to be splitted
-        print(index)
         column_at_index = data.T[index]
         for i, val in enumerate(column_at_index):
 
@@ -163,7 +162,7 @@ class Tree:
         return np.asarray(split1), np.asarray(split2), np.asarray(split1_gt), np.asarray(split2_gt)
 
     @staticmethod
-    def predict(data, gt, split_ind, thresholds, nodes, depths, indices, depth=0, leaf=list()):
+    def predictdunno(data, gt, split_ind, thresholds, nodes, depths, indices, depth=0, leaf=list()):
         branch1, branch2 = [], []
         branch1gt, branch2gt = [], []
         indices1, indices2 = [], []
@@ -173,6 +172,7 @@ class Tree:
                 branch1.append(row)
                 branch1gt.append(gt[index])
                 indices1.append(index)
+
             else:
                 branch2.append(row)
                 branch2gt.append(gt[index])
@@ -186,22 +186,38 @@ class Tree:
         for index, i in enumerate(indices2):
             branch2indices[index] = indices[i]
 
-        depth += 1
-        if depth < np.max(depths):
-            if depths[depth] != depth:
-                depth = 1
-
-            if nodes[depth] == 'right':
+        if dep < np.max(depths):
+            if nodes[dep] == 'right':
                 print("right")
-                Tree.predict(branch1, branch1gt, split_ind, thresholds, nodes, depths, branch1indices, depth, leaf)
+                Tree.predictdunno(branch1, branch1gt, split_ind, thresholds, nodes, depths, branch1indices, dep)
 
-            if nodes[depth] == 'left':
+            if nodes[dep] == 'left':
                 print("left")
-                Tree.predict(branch2, branch2gt, split_ind, thresholds, nodes, depths, branch2indices, depth, leaf)
-        else:
-            leaf.append(branch1indices)
-            leaf.append(branch2indices)
+                Tree.predictdunno(branch2, branch2gt, split_ind, thresholds, nodes, depths, branch2indices, dep)
         return leaf
+
+    @staticmethod
+    def predict(data, gt, split_ind, thresholds, nodes, depths, indices, depth=0, leaf=list()):
+        # loope gjennom nodes, sjekke om det er en leaf. hvis det er leaf, classifiser som leaf, hvis ikke, split data.
+
+        for index_of_node, node in enumerate(nodes):
+            rightdata, leftdata = [], []
+            rightgt, leftgt = [], []
+            for i, row in enumerate(data):
+                if row[split_ind[depth]] > thresholds[depth]:
+                    rightdata.append(row)
+                    rightgt.append(gt[i])
+                else:
+                    leftdata.append(row)
+                    leftgt.append(gt[i])
+
+            depth = depths[index_of_node]
+            if node == "right":
+                print("right at depth %s, number of rows %d" % (depth, len(rightdata)))
+                Tree.predict(rightdata, rightgt, split_ind, thresholds, depths, indices, depth)
+            if node == "left":
+                print("left at depth %s, number of rows %d" % (depth, len(rightdata)))
+                Tree.predict(leftdata, leftgt, split_ind, thresholds, depths, indices, depth)
 
 
     @staticmethod
@@ -219,7 +235,7 @@ def main():
     data1 = [[0, 1, 1, 106, 0, 11, 1, 0, 103], [-0.8347, 2.8826, 7.7557, -3.4148, 2.6479, 2.9597, -3.6158, -9.6394, 1.5368], ['root', 'right', 'right', 'right', 'left', 'right', 'left', 'left', 'right'], [0, 1, 2, 3, 3, 4, 1, 2, 3]]
     indexlist = np.array(range(0, len(testdata)))
 
-    print(Tree.predict(testdata, test_gt, data1[0], data1[1], data1[2], data1[3], indexlist))
+    Tree.predict(testdata, test_gt, data1[0], data1[1], data1[2], data1[3], indexlist)
 
 if __name__ == "__main__":
     main()
