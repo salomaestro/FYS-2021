@@ -17,72 +17,109 @@ traindata = np.delete(traindata, 0, axis=1)
 test_gt = testdata[:, 0]
 testdata = np.delete(testdata, 0, axis=1)
 
+class Node:
+    def __init__(self):
+
+        # left and right nodes
+        self.right = None
+        self.left = None
+
+        # derived from splitting criteria
+        self.split_index = None
+        self.threshold = None
+
+        # probability for object inside the Node to belong for each of the given classes
+        self.impurity = None
+        # depth of the given node
+        self.depth = None
+
+        # if it is the root Node or not
+        self.isLeafnode = False
+
 class Tree:
     """
     Class for decision tree.
 
     Tree takes no arguements.
     """
-    def __init__(self, list_of_split_index=list(), list_of_threshold=list(), node_list=list(), depth_list=list()):
+    def __init__(self, traindata, gt, split_indices=list(), thresholds=list(), nodes=list(), depths=list()):
+        self.traindata = traindata
+        self.gt = gt
         self.minimum_impurity = 0.6
         self.min_data_nodes = 40
         self.max_recursion_depth = 5
-        self.list_of_split_index = list_of_split_index
-        self.list_of_threshold = list_of_threshold
-        self.node_list = node_list
-        self.depth_list = depth_list
+        self.split_indices = split_indices
+        self.thresholds = thresholds
+        self.nodes = nodes
+        self.depths = depths
 
-    def fit(self, data, gt, split_index=None, threshold=None, depth=0, node="root"):
+    def fit(self, data, gt):
+        self.Tree = Node()
+        self.Tree.depth = 1
+        self.Tree.impurity = self.probability_on_node(gt)
+
+        return self.train(data, gt, self.Tree)
+
+    def train(self, data, gt, node, split_index=None, threshold=None, depth=0, on_node="root"):
         self.depth = depth
-        if self.depth < self.max_recursion_depth:
-            if self.impurity(gt) < self.minimum_impurity:
-                if len(gt[np.where(gt == 1)]) > len(gt[np.where(gt == 0)]):
-                    print("Became leaf node after split index {}, with threshold {}, belongs to class 1, at depth = {}".format(split_index, threshold, self.depth), len(gt), node)
-
-                else:
-                    print("Became leaf node after split index {}, with threshold {}, belongs to class 0, at depth = {}".format(split_index, threshold, self.depth), len(gt), node)
-            else:
-                if len(data) < self.min_data_nodes:
-                    if len(gt[np.where(gt == 1)]) > len(gt[np.where(gt == 0)]):
-                        print("Became leaf node after split index {}, with threshold {}, belongs to class 1, at depth = {}".format(split_index, threshold, self.depth), len(gt), node)
-                    else:
-                        print("Became leaf node after split index {}, with threshold {}, belongs to class 0, at depth = {}".format(split_index, threshold, self.depth), len(gt), node)
-                else:
-                    # Find best split
-                    split_index, threshold = self.find_best_split(data, gt)
-                    data_splitted1, data_splitted2, gt_splitted1, gt_splitted2 = self.split_data(data, gt, split_index, threshold, node)
-
-                    # self.list_of_node.append(node + " " + str(depth))
-                    self.node_list.append(node)
-                    self.depth_list.append(depth)
-
-                    datasplit1 = data[data_splitted1]
-                    datasplit2 = data[data_splitted2]
-                    # print("right split: {}, left split: {}".format(datasplit1.shape, datasplit2.shape))
-
-                    self.list_of_split_index.append(split_index)
-                    self.list_of_threshold.append(threshold)
-
-
-                    right = Tree(self.list_of_split_index, self.list_of_threshold)
-                    left = Tree(self.list_of_split_index, self.list_of_threshold)
-
-                    right.fit(datasplit1, gt_splitted1, split_index, threshold, self.depth + 1, "right")
-                    left.fit(datasplit2, gt_splitted2, split_index, threshold, self.depth + 1, "left")
-
-                    # right.fit(data_splitted1, gt_splitted1, split_index, threshold, self.depth + 1)
-                    # left.fit(data_splitted2, gt_splitted2, split_index, threshold, self.depth + 1)
-
-                    return self.list_of_split_index, self.list_of_threshold, self.node_list, self.depth_list
+        if self.isLeaf(data, gt, node):
+            print("leaf", data.shape)
+            node.isleafnode = True
         else:
-            if len(gt[np.where(gt == 1)]) > len(gt[np.where(gt == 0)]):
-                print("Became leaf node after split index {}, with threshold {}, belongs to class 1, at depth = {}".format(split_index, threshold, self.depth), len(gt), node)
-            else:
-                print("Became leaf node after split index {}, with threshold {}, belongs to class 0, at depth = {}".format(split_index, threshold, self.depth), len(gt), node)
+            # Find best split
+            split_index, threshold = self.find_best_split(data, gt)
+            data_splitted_indices1, data_splitted_indices2, gt_splitted1, gt_splitted2 = self.split_data(data, gt, split_index, threshold, on_node)
+
+            if node.split_index is None:
+                node.isLeafnode = True
+
+            node.split_index = split_index
+            node.threshold = threshold
+
+            self.nodes.append(on_node)
+            self.depths.append(depth)
+
+            datasplit1 = data[data_splitted_indices1]
+            datasplit2 = data[data_splitted_indices2]
+
+            self.split_indices.append(split_index)
+            self.thresholds.append(threshold)
+
+            node.right = Node()
+            node.left = Node()
+
+            node.right.depth = node.depth + 1
+            node.left.depth = node.depth + 1
+
+            node.right.impurity = self.probability_on_node(gt_splitted1)
+            node.left.impurity = self.probability_on_node(gt_splitted2)
+
+            right = Tree(self.split_indices, self.thresholds)
+            left = Tree(self.split_indices, self.thresholds)
+
+            right.train(datasplit1, gt_splitted1, node.right, split_index, threshold, self.depth + 1, "right")
+            left.train(datasplit2, gt_splitted2, node.left, split_index, threshold, self.depth + 1, "left")
+
+            return self.split_indices, self.thresholds, self.nodes, self.depths
+
+    def isLeaf(self, data, gt, node):
+        if self.depth > self.max_recursion_depth:
+            return True
+        elif self.impurity(gt) < self.minimum_impurity:
+            return True
+        elif len(data) < self.min_data_nodes:
+            return True
+        else:
+            return False
+
+    def probability_on_node(self, gt):
+        probOne = np.array(len(gt[gt == 1]) / len(gt))
+        probZero = 1 - probOne
+
+        return np.asarray([probZero, probOne])
 
     def find_best_split(self, data, groundtruth):
         entropy_column = np.zeros_like(data[0])
-        # thresholds = np.zeros_like(groundtruth)
         thresholds = []
 
         for index_outer, column in enumerate(data.T):
@@ -138,6 +175,23 @@ class Tree:
             I = - p0 * np.log2(p0) - (1 - p0) * np.log2(1 - p0)
         return I
 
+    def predict(self, data):
+        predictions = []
+        for i, row in enumerate(data):
+            prob = self.predict_sample(row, self.Tree)
+            predictions.append(prob)
+        return np.asarray(predictions)
+
+    def predict_sample(self, row, node):
+        if node.isLeafnode:
+            return node.impurity
+        print(node.threshold)
+        if row[node.split_index] > node.threshold:
+            prob = self.predict_sample(row, node.right)
+        else:
+            prob = self.predict_sample(row, node.left)
+        return prob
+
     @staticmethod
     def split_data(data, groundtruth, index, threshold, node):
         """
@@ -151,7 +205,6 @@ class Tree:
         # Loop through column to be splitted
         column_at_index = data.T[index]
         for i, val in enumerate(column_at_index):
-
             if val > threshold:
                 split1.append(i)
                 split1_gt.append(groundtruth[i])
@@ -162,65 +215,6 @@ class Tree:
         return np.asarray(split1), np.asarray(split2), np.asarray(split1_gt), np.asarray(split2_gt)
 
     @staticmethod
-    def predictdunno(data, gt, split_ind, thresholds, nodes, depths, indices, depth=0, leaf=list()):
-        branch1, branch2 = [], []
-        branch1gt, branch2gt = [], []
-        indices1, indices2 = [], []
-
-        for index, row in enumerate(data):
-            if row[split_ind[depth]] > thresholds[depth]:
-                branch1.append(row)
-                branch1gt.append(gt[index])
-                indices1.append(index)
-
-            else:
-                branch2.append(row)
-                branch2gt.append(gt[index])
-                indices2.append(index)
-
-        branch1indices = np.zeros_like(indices1)
-        branch2indices = np.zeros_like(indices2)
-
-        for index, i in enumerate(indices1):
-            branch1indices[index] = indices[i]
-        for index, i in enumerate(indices2):
-            branch2indices[index] = indices[i]
-
-        if dep < np.max(depths):
-            if nodes[dep] == 'right':
-                print("right")
-                Tree.predictdunno(branch1, branch1gt, split_ind, thresholds, nodes, depths, branch1indices, dep)
-
-            if nodes[dep] == 'left':
-                print("left")
-                Tree.predictdunno(branch2, branch2gt, split_ind, thresholds, nodes, depths, branch2indices, dep)
-        return leaf
-
-    @staticmethod
-    def predict(data, gt, split_ind, thresholds, nodes, depths, indices, depth=0, leaf=list()):
-        # loope gjennom nodes, sjekke om det er en leaf. hvis det er leaf, classifiser som leaf, hvis ikke, split data.
-
-        for index_of_node, node in enumerate(nodes):
-            rightdata, leftdata = [], []
-            rightgt, leftgt = [], []
-            for i, row in enumerate(data):
-                if row[split_ind[depth]] > thresholds[depth]:
-                    rightdata.append(row)
-                    rightgt.append(gt[i])
-                else:
-                    leftdata.append(row)
-                    leftgt.append(gt[i])
-
-            depth = depths[index_of_node]
-            if node == "right":
-                print("right at depth %s, number of rows %d" % (depth, len(rightdata)))
-                Tree.predict(rightdata, rightgt, split_ind, thresholds, depths, indices, depth)
-            if node == "left":
-                print("left at depth %s, number of rows %d" % (depth, len(rightdata)))
-                Tree.predict(leftdata, leftgt, split_ind, thresholds, depths, indices, depth)
-
-
-    @staticmethod
     def entropy(p_i):
         if p_i == 1 or p_i == 0:
             return 0
@@ -228,14 +222,10 @@ class Tree:
             return - p_i * np.log2(p_i) - (1 - p_i) * np.log2(1 - p_i)
 
 def main():
-    # seals = Tree()
-    # split_index, thresholds, node, depth = seals.fit(traindata, ground_truth)
-    # print(split_index, thresholds, node, depth)
-
-    data1 = [[0, 1, 1, 106, 0, 11, 1, 0, 103], [-0.8347, 2.8826, 7.7557, -3.4148, 2.6479, 2.9597, -3.6158, -9.6394, 1.5368], ['root', 'right', 'right', 'right', 'left', 'right', 'left', 'left', 'right'], [0, 1, 2, 3, 3, 4, 1, 2, 3]]
-    indexlist = np.array(range(0, len(testdata)))
-
-    Tree.predict(testdata, test_gt, data1[0], data1[1], data1[2], data1[3], indexlist)
+    seals = Tree(traindata, ground_truth)
+    split_index, thresholds, node, depth = seals.fit(traindata, ground_truth)
+    print(split_index, thresholds, node, depth)
+    print(seals.predict(testdata))
 
 if __name__ == "__main__":
     main()
