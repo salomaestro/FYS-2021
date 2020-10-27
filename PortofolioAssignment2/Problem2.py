@@ -36,16 +36,18 @@ class Node:
         # Is declared leaf if True
         self.isLeafnode = False
 
+        self.ratio = None
+
 class Tree:
     """
     Class for decision tree.
 
     Tree takes no arguements.
     """
-    def __init__(self, node=None):
-        self.minimum_impurity = 0.6
-        self.min_data_nodes = 40
-        self.max_recursion_depth = 5
+    def __init__(self, node=None, minimum_impurity=0.6, min_data_nodes=40, max_recursion_depth=5):
+        self.minimum_impurity = minimum_impurity
+        self.min_data_nodes = min_data_nodes
+        self.max_recursion_depth = max_recursion_depth
         self.Tree = node
 
     def fit(self, data, gt):
@@ -55,10 +57,12 @@ class Tree:
 
         self.train(data, gt, self.Tree)
 
-    def train(self, data, gt, node):
+    def train(self, data, gt, node, ratios=list()):
+        self.ratios = ratios
         if self.isLeaf(data, gt, node):
             node.isleafnode = True
             node.impurity = self.probability_on_node(gt)
+            self.ratios.append(len(np.where(gt == 1)) / len(gt))
         else:
             # Find best split
             split_index, threshold = self.find_best_split(data, gt)
@@ -70,6 +74,8 @@ class Tree:
             if node.split_index is None or node.threshold is None:
                 node.isLeafnode = True
                 node.impurity = self.probability_on_node(gt)
+                self.ratios.append(len(np.where(gt == 1)) / len(gt))
+
 
             datasplit1 = data[data_splitted_indices1]
             datasplit2 = data[data_splitted_indices2]
@@ -86,8 +92,9 @@ class Tree:
             right = Tree(node.right)
             left = Tree(node.left)
 
-            right.train(datasplit1, gt_splitted1, node.right)
-            left.train(datasplit2, gt_splitted2, node.left)
+            right.train(datasplit1, gt_splitted1, node.right, ratios)
+            left.train(datasplit2, gt_splitted2, node.left, ratios)
+        return self.ratios
 
     def isLeaf(self, data, gt, node):
         if node.depth >= self.max_recursion_depth:
@@ -95,8 +102,6 @@ class Tree:
         elif self.impurity(gt) < self.minimum_impurity:
             return True
         elif len(data) < self.min_data_nodes:
-            return True
-        elif len(np.unique(gt)) == 1:
             return True
         else:
             return False
@@ -238,9 +243,12 @@ class Tree:
         tn = np.intersect1d(classified1, actual1).shape[0]
         return np.array([np.array([tp, fn]), np.array([fp, tn])])
 
+    def ROC(self):
+        pass
+
 def main():
     seals = Tree()
-    seals.fit(traindata, ground_truth)
+    print(seals.fit(traindata, ground_truth))
     print("training complete")
     classified = seals.predict(testdata)
     confusionmat = seals.PrecisionMethod(classified, test_gt)
