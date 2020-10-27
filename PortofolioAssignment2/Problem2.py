@@ -36,7 +36,7 @@ class Node:
 
         # Is declared leaf if True
         self.isLeafnode = False
-        
+
         # Node's depth
         self.depth = None
 
@@ -57,14 +57,14 @@ class Tree:
         self.minimum_impurity = minimum_impurity
         self.min_data_nodes = min_data_nodes
         self.max_recursion_depth = max_recursion_depth
-        
+
         # Remember Tree is node through recursion.
         self.Tree = node
 
     def fit(self, data, gt):
         """
         Generic fit function for object
-        
+
         Args:
             param1: (np.ndarray), trainingdata of shape (n, m) with features n (columns), and m datapoints (rows).
             param2: (np.ndarray), ground truth, should be of size gt.size = (n,).
@@ -75,14 +75,14 @@ class Tree:
         self.Tree = Node()
         self.Tree.depth = 1
         self.Tree.impurity = self.probability_on_node(gt)
-        
+
         # Call the train method of Tree object.
         return self.train(data, gt, self.Tree)
 
     def train(self, data, gt, node, ratios=list()):
         """
         Part of object's fit method. should not be used to train the model, instead call object.fit(Args)
-        
+
         Args:
             param1: (np.ndarray), trainingdata, as in object's fit method.
             param2: (np.ndarray), ground truth as in object's fit method.
@@ -92,64 +92,64 @@ class Tree:
             (list), ratios of zeros and ones.
         """
         self.ratios = ratios
-        
+
         # Check if node is leaf at current branch.
         if self.isLeaf(data, gt, node):
             # Declare leaf node
             node.isleafnode = True
-            
+
             # Store node's impurity
             node.impurity = self.probability_on_node(gt)
-            
+
             # Store ratio of zeros to ones at this leaf.
-            self.ratios.append(len(np.where(gt == 1)) / len(gt))
+            self.ratios.append(len(gt[np.where(gt == 1)]) / len(gt))
         else:
             # Find best split
             split_index, threshold = self.find_best_split(data, gt)
-            
+
             # Split data using best split, and threshold.
             data_splitted_indices1, data_splitted_indices2, gt_splitted1, gt_splitted2 = self.split_data(data, gt, split_index, threshold)
-            
+
             # Store node's split index, and threshold.
             node.split_index = split_index
             node.threshold = threshold
-            
+
             # Check if node has a split index or threshold, if not, declare leaf node.
             if node.split_index is None or node.threshold is None:
                 node.isLeafnode = True
                 node.impurity = self.probability_on_node(gt)
-                self.ratios.append(len(np.where(gt == 1)) / len(gt))
+                self.ratios.append(len(gt[np.where(gt == 1)]) / len(gt))
 
             # Find data using data splits indices.
             datasplit1 = data[data_splitted_indices1]
             datasplit2 = data[data_splitted_indices2]
-            
+
             # Initialize left and right node
             node.right = Node()
             node.left = Node()
-            
+
             # Add depth of node
             node.right.depth = node.depth + 1
             node.left.depth = node.depth + 1
-            
+
             # Calculate impurity of node
             node.right.impurity = self.probability_on_node(gt_splitted1)
             node.left.impurity = self.probability_on_node(gt_splitted2)
-            
+
             # Initialize right and left branch of tree, and pass in the respective Node objects.
             right = Tree(node.right)
             left = Tree(node.left)
-    
+
             # Recursively train model, with left and right branches.
             right.train(datasplit1, gt_splitted1, node.right, ratios)
             left.train(datasplit2, gt_splitted2, node.left, ratios)
-            
+
         return self.ratios
 
     def isLeaf(self, data, gt, node):
         """
         Method to check if node is a leaf or not, with branches data.
-        
+
         Args:
             param1: (np.ndarray), trainingdata of shape (n, m) with features n (columns), and m datapoints (rows).
             param2: (np.ndarray), ground truth, should be of size gt.size = (n,).
@@ -170,7 +170,7 @@ class Tree:
     def probability_on_node(self, gt):
         """
         Method for deciding wheter node is classified as 0 or 1.
-        
+
         Args:
             param1: (np.ndarray), ground truth, should be of size gt.size = (n,).
         Returns:
@@ -313,16 +313,54 @@ class Tree:
         tn = np.intersect1d(classified1, actual1).shape[0]
         return np.array([np.array([tp, fn]), np.array([fp, tn])])
 
-    def ROC(self):
-        pass
+    # -------- (2c) --------
+    def ROC(self, ratios, gt):
+        n = 101
+        print(ratios)
+        boundaries = np.linspace(0, 1, n)
+        classifications = []
+        for i, boundary in enumerate(boundaries):
+            classifications.append(np.where(ratios > boundary, 1, 0))
+        classifications = np.asarray(classifications)
+
+        tprates = []
+        fprates = []
+        for classification in classifications:
+            confmat, _ = self.PrecisionMethod(classification, gt)
+            tp = confmat[0][0]
+            fn = confmat[0][1]
+            fp = confmat[1][0]
+            tn = confmat[1][1]
+            tprates.append(tp / (tp + fn))
+            fprates.append(fp / (fp + tn))
+        tprates = np.asarray(tprates)
+        fprates = np.asarray(fprates)
+
+        # my main plot with false postive rates on the first axis, and true positive rates on the second axis.
+        mainplot = plt.plot(fprates, tprates, label="Decision Tree Classifier")
+
+        # The diagonal line, generally known as the x/y - line
+        xyLine = plt.plot(np.linspace(np.min(fprates), np.max(fprates), len(boundaries)), np.linspace(np.min(tprates), np.max(tprates), len(boundaries)), "--", label="x = y")
+
+        # Using sklearn.metrics AUC method
+        AUC = metrics.auc(fprates, tprates)
+
+        # Misc for naming the plots.
+        title = plt.title("ROC curve for Decision Tree")
+        xlab = plt.xlabel("False positive rates")
+        ylab = plt.ylabel("True positive rates")
+        plt.legend(title="n = {} Step size of thresholds\nAUC = {:.3f}".format(n, AUC))
+        plt.show()
+
 
 def main():
     seals = Tree()
-    print(seals.fit(traindata, ground_truth))
+    ratios = seals.fit(traindata, ground_truth)
     print("training complete")
     classified = seals.predict(testdata)
     confusionmat = seals.PrecisionMethod(classified, test_gt)
     print(confusionmat)
+    seals.ROC(ratios, test_gt)
 
 if __name__ == "__main__":
     main()
