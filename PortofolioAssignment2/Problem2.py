@@ -11,6 +11,7 @@ filename_seals_images_test = os.path.join(dirname, "seals_images_test.csv")
 traindata = np.genfromtxt(filename_seals_train, delimiter=" ")
 testdata = np.genfromtxt(filename_seals_test, delimiter=" ")
 
+# Filter out the ground truth from the training and test set.
 ground_truth = traindata[:, 0]
 traindata = np.delete(traindata, 0, axis=1)
 
@@ -18,85 +19,142 @@ test_gt = testdata[:, 0]
 testdata = np.delete(testdata, 0, axis=1)
 
 class Node:
+    """
+    Object for each node of Decision Tree object.
+    """
     def __init__(self):
-        # left and right nodes
+        # left and right nodes to keep track of the direction of each node.
         self.right = None
         self.left = None
 
-        # Assigned when find_best_split function is called
+        # Assigned when find_best_split function is called. This is the index and threshold which made this a node.
         self.split_index = None
         self.threshold = None
 
-        # probability for object inside the Node to belong for each of the given classes
+        # Either node can be 0, or node can be 1, stored here.
         self.impurity = None
-
-        # depth of the given node
-        self.depth = None
 
         # Is declared leaf if True
         self.isLeafnode = False
+        
+        # Node's depth
+        self.depth = None
 
+        # if node is a leaf, stores the ratios of ones to zeros, such that the classifier can change it's decision boundary.
         self.ratio = None
 
 class Tree:
     """
     Class for decision tree.
 
-    Tree takes no arguements.
+    Args:
+        param1: (Node-object), optional, standard set as None
+        param2: (float), optional, standard set as 0.6
+        param3: (int), optional, standard set as 40
+        param4: (int), optinal, standard set as 5
     """
     def __init__(self, node=None, minimum_impurity=0.6, min_data_nodes=40, max_recursion_depth=5):
         self.minimum_impurity = minimum_impurity
         self.min_data_nodes = min_data_nodes
         self.max_recursion_depth = max_recursion_depth
+        
+        # Remember Tree is node through recursion.
         self.Tree = node
 
     def fit(self, data, gt):
+        """
+        Generic fit function for object
+        
+        Args:
+            param1: (np.ndarray), trainingdata of shape (n, m) with features n (columns), and m datapoints (rows).
+            param2: (np.ndarray), ground truth, should be of size gt.size = (n,).
+        Returns:
+            (list), inherits return from train method.
+        """
+        # Initialize tree as Node object.
         self.Tree = Node()
         self.Tree.depth = 1
         self.Tree.impurity = self.probability_on_node(gt)
-
-        self.train(data, gt, self.Tree)
+        
+        # Call the train method of Tree object.
+        return self.train(data, gt, self.Tree)
 
     def train(self, data, gt, node, ratios=list()):
+        """
+        Part of object's fit method. should not be used to train the model, instead call object.fit(Args)
+        
+        Args:
+            param1: (np.ndarray), trainingdata, as in object's fit method.
+            param2: (np.ndarray), ground truth as in object's fit method.
+            param3: (Node-object), current node.
+            param4: (list), list of ratios.
+        Returns:
+            (list), ratios of zeros and ones.
+        """
         self.ratios = ratios
+        
+        # Check if node is leaf at current branch.
         if self.isLeaf(data, gt, node):
+            # Declare leaf node
             node.isleafnode = True
+            
+            # Store node's impurity
             node.impurity = self.probability_on_node(gt)
+            
+            # Store ratio of zeros to ones at this leaf.
             self.ratios.append(len(np.where(gt == 1)) / len(gt))
         else:
             # Find best split
             split_index, threshold = self.find_best_split(data, gt)
+            
+            # Split data using best split, and threshold.
             data_splitted_indices1, data_splitted_indices2, gt_splitted1, gt_splitted2 = self.split_data(data, gt, split_index, threshold)
-
+            
+            # Store node's split index, and threshold.
             node.split_index = split_index
             node.threshold = threshold
-
+            
+            # Check if node has a split index or threshold, if not, declare leaf node.
             if node.split_index is None or node.threshold is None:
                 node.isLeafnode = True
                 node.impurity = self.probability_on_node(gt)
                 self.ratios.append(len(np.where(gt == 1)) / len(gt))
 
-
+            # Find data using data splits indices.
             datasplit1 = data[data_splitted_indices1]
             datasplit2 = data[data_splitted_indices2]
-
+            
+            # Initialize left and right node
             node.right = Node()
             node.left = Node()
-
+            
+            # Add depth of node
             node.right.depth = node.depth + 1
             node.left.depth = node.depth + 1
-
+            
+            # Calculate impurity of node
             node.right.impurity = self.probability_on_node(gt_splitted1)
             node.left.impurity = self.probability_on_node(gt_splitted2)
-
+            
+            # Initialize right and left branch of tree, and pass in the respective Node objects.
             right = Tree(node.right)
             left = Tree(node.left)
-
+    
+            # Recursively train model, with left and right branches.
             right.train(datasplit1, gt_splitted1, node.right, ratios)
             left.train(datasplit2, gt_splitted2, node.left, ratios)
+            
         return self.ratios
 
     def isLeaf(self, data, gt, node):
+        """
+        Method to check if node is a leaf or not, with branches data.
+        
+        Args:
+            param1: (np.ndarray), trainingdata of shape (n, m) with features n (columns), and m datapoints (rows).
+            param2: (np.ndarray), ground truth, should be of size gt.size = (n,).
+            param3: (Node-object), current node.
+        """
         if node.depth >= self.max_recursion_depth:
             return True
         elif self.impurity(gt) < self.minimum_impurity:
