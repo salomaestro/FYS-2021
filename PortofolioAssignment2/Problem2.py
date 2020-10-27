@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import os
-# from sklearn import metrics
+from sklearn import metrics
 
 # Import and initialize the data
 dirname = os.path.dirname(__file__)
@@ -19,21 +19,21 @@ testdata = np.delete(testdata, 0, axis=1)
 
 class Node:
     def __init__(self):
-
         # left and right nodes
         self.right = None
         self.left = None
 
-        # derived from splitting criteria
+        # Assigned when find_best_split function is called
         self.split_index = None
         self.threshold = None
 
         # probability for object inside the Node to belong for each of the given classes
         self.impurity = None
+
         # depth of the given node
         self.depth = None
 
-        # if it is the root Node or not
+        # Is declared leaf if True
         self.isLeafnode = False
 
 class Tree:
@@ -42,48 +42,37 @@ class Tree:
 
     Tree takes no arguements.
     """
-    def __init__(self, traindata, gt, split_indices=list(), thresholds=list(), nodes=list(), depths=list()):
-        self.traindata = traindata
-        self.gt = gt
+    def __init__(self, node=None):
         self.minimum_impurity = 0.6
         self.min_data_nodes = 40
         self.max_recursion_depth = 5
-        self.split_indices = split_indices
-        self.thresholds = thresholds
-        self.nodes = nodes
-        self.depths = depths
+        self.Tree = node
 
     def fit(self, data, gt):
         self.Tree = Node()
         self.Tree.depth = 1
         self.Tree.impurity = self.probability_on_node(gt)
 
-        return self.train(data, gt, self.Tree)
+        self.train(data, gt, self.Tree)
 
-    def train(self, data, gt, node, split_index=None, threshold=None, depth=0, on_node="root"):
-        self.depth = depth
+    def train(self, data, gt, node):
         if self.isLeaf(data, gt, node):
-            print("leaf", data.shape)
             node.isleafnode = True
+            node.impurity = self.probability_on_node(gt)
         else:
             # Find best split
             split_index, threshold = self.find_best_split(data, gt)
-            data_splitted_indices1, data_splitted_indices2, gt_splitted1, gt_splitted2 = self.split_data(data, gt, split_index, threshold, on_node)
-
-            if node.split_index is None:
-                node.isLeafnode = True
+            data_splitted_indices1, data_splitted_indices2, gt_splitted1, gt_splitted2 = self.split_data(data, gt, split_index, threshold)
 
             node.split_index = split_index
             node.threshold = threshold
 
-            self.nodes.append(on_node)
-            self.depths.append(depth)
+            if node.split_index is None or node.threshold is None:
+                node.isLeafnode = True
+                node.impurity = self.probability_on_node(gt)
 
             datasplit1 = data[data_splitted_indices1]
             datasplit2 = data[data_splitted_indices2]
-
-            self.split_indices.append(split_index)
-            self.thresholds.append(threshold)
 
             node.right = Node()
             node.left = Node()
@@ -94,29 +83,29 @@ class Tree:
             node.right.impurity = self.probability_on_node(gt_splitted1)
             node.left.impurity = self.probability_on_node(gt_splitted2)
 
-            right = Tree(self.split_indices, self.thresholds)
-            left = Tree(self.split_indices, self.thresholds)
+            right = Tree(node.right)
+            left = Tree(node.left)
 
-            right.train(datasplit1, gt_splitted1, node.right, split_index, threshold, self.depth + 1, "right")
-            left.train(datasplit2, gt_splitted2, node.left, split_index, threshold, self.depth + 1, "left")
-
-            return self.split_indices, self.thresholds, self.nodes, self.depths
+            right.train(datasplit1, gt_splitted1, node.right)
+            left.train(datasplit2, gt_splitted2, node.left)
 
     def isLeaf(self, data, gt, node):
-        if self.depth > self.max_recursion_depth:
+        if node.depth >= self.max_recursion_depth:
             return True
         elif self.impurity(gt) < self.minimum_impurity:
             return True
         elif len(data) < self.min_data_nodes:
             return True
+        elif len(np.unique(gt)) == 1:
+            return True
         else:
             return False
 
     def probability_on_node(self, gt):
-        probOne = np.array(len(gt[gt == 1]) / len(gt))
-        probZero = 1 - probOne
-
-        return np.asarray([probZero, probOne])
+        if len(gt[np.where(gt == 1)]) > len(gt[np.where(gt == 0)]):
+            return 1
+        else:
+            return 0
 
     def find_best_split(self, data, groundtruth):
         entropy_column = np.zeros_like(data[0])
@@ -177,15 +166,15 @@ class Tree:
 
     def predict(self, data):
         predictions = []
-        for i, row in enumerate(data):
+        for row in data:
             prob = self.predict_sample(row, self.Tree)
             predictions.append(prob)
         return np.asarray(predictions)
 
     def predict_sample(self, row, node):
-        if node.isLeafnode:
+        if node.isLeafnode or node.threshold is None:
             return node.impurity
-        print(node.threshold)
+
         if row[node.split_index] > node.threshold:
             prob = self.predict_sample(row, node.right)
         else:
@@ -193,7 +182,7 @@ class Tree:
         return prob
 
     @staticmethod
-    def split_data(data, groundtruth, index, threshold, node):
+    def split_data(data, groundtruth, index, threshold):
         """
         Method for splitting the data!
         """
@@ -221,11 +210,41 @@ class Tree:
         else:
             return - p_i * np.log2(p_i) - (1 - p_i) * np.log2(1 - p_i)
 
+    def PrecisionMethod(self, classification, groundTruth):
+        classified0 = np.where(classification == 0)
+        classified1 = np.where(classification == 1)
+        actual0 = np.where(groundTruth == 0)
+        actual1 = np.where(groundTruth == 1)
+        confmat = self.confusionMatrix(classified0, classified1, actual0, actual1)
+        accuracy = (confmat[0][0] + confmat[1][1]) / np.sum(confmat).astype("float32")
+        return confmat, accuracy
+
+    def confusionMatrix(self, classified0, classified1, actual0, actual1):
+        # Note: this method has been copied from my own work in Portfolio Assignment 1
+        """
+        Can be used with the performance method as a measure of how good the algorithm works.
+        Args:
+            param1: (ndarray) - Array of indexes which are classified as 0's.
+            param2: (ndarray) - Array of indexes which are classified as 1's.
+            param3: (ndarray) - Array of indexes which are actually 0's.
+            param4: (ndarray) - Array of indexes which are actually 1's.
+        Returns:
+            (ndarray) - Nested list which is the confusion matrix.
+        """
+        # intersect1d compares two arrays and returns the elements which are found in both arrays.
+        tp = np.intersect1d(classified0, actual0).shape[0]
+        fn = np.intersect1d(classified1, actual0).shape[0]
+        fp = np.intersect1d(classified0, actual1).shape[0]
+        tn = np.intersect1d(classified1, actual1).shape[0]
+        return np.array([np.array([tp, fn]), np.array([fp, tn])])
+
 def main():
-    seals = Tree(traindata, ground_truth)
-    split_index, thresholds, node, depth = seals.fit(traindata, ground_truth)
-    print(split_index, thresholds, node, depth)
-    print(seals.predict(testdata))
+    seals = Tree()
+    seals.fit(traindata, ground_truth)
+    print("training complete")
+    classified = seals.predict(testdata)
+    confusionmat = seals.PrecisionMethod(classified, test_gt)
+    print(confusionmat)
 
 if __name__ == "__main__":
     main()
