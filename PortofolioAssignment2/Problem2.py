@@ -154,7 +154,10 @@ class Tree:
             param1: (np.ndarray), trainingdata of shape (n, m) with features n (columns), and m datapoints (rows).
             param2: (np.ndarray), ground truth, should be of size gt.size = (n,).
             param3: (Node-object), current node.
+        Returns:
+            (bool), Either True or False depending on if node is leaf or not.
         """
+        # Declare leaf
         if node.depth >= self.max_recursion_depth:
             return True
         elif self.impurity(gt) < self.minimum_impurity:
@@ -165,6 +168,15 @@ class Tree:
             return False
 
     def probability_on_node(self, gt):
+        """
+        Method for deciding wheter node is classified as 0 or 1.
+        
+        Args:
+            param1: (np.ndarray), ground truth, should be of size gt.size = (n,).
+        Returns:
+            (int), Either 1 or 0.
+        """
+        # Check if number of elements in ground truth which are really 1, is larger or smaller than number of 0's
         if len(gt[np.where(gt == 1)]) > len(gt[np.where(gt == 0)]):
             return 1
         else:
