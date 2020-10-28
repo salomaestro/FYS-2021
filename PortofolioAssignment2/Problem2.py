@@ -7,7 +7,7 @@ from sklearn import metrics
 dirname = os.path.dirname(__file__)
 filename_seals_train = os.path.join(dirname, "seals_train.csv")
 filename_seals_test = os.path.join(dirname, "seals_test.csv")
-filename_seals_images_test = os.path.join(dirname, "seals_images_test.csv")
+
 traindata = np.genfromtxt(filename_seals_train, delimiter=" ")
 testdata = np.genfromtxt(filename_seals_test, delimiter=" ")
 
@@ -32,7 +32,7 @@ class Node:
         self.threshold = None
 
         # Either node can be 0, or node can be 1, stored here.
-        self.impurity = None
+        self.nodeclass = None
 
         # Is declared leaf if True
         self.isLeafnode = False
@@ -74,7 +74,7 @@ class Tree:
         # Initialize tree as Node object.
         self.Tree = Node()
         self.Tree.depth = 1
-        self.Tree.impurity = self.probability_on_node(gt)
+        self.Tree.nodeclass = self.class_of_node(gt)
 
         # Call the train method of Tree object.
         return self.train(data, gt, self.Tree)
@@ -99,7 +99,7 @@ class Tree:
             node.isleafnode = True
 
             # Store node's impurity
-            node.impurity = self.probability_on_node(gt)
+            node.nodeclass = self.class_of_node(gt)
 
             # Store ratio of zeros to ones at this leaf.
             self.ratios.append(len(gt[np.where(gt == 1)]) / len(gt))
@@ -117,7 +117,7 @@ class Tree:
             # Check if node has a split index or threshold, if not, declare leaf node.
             if node.split_index is None or node.threshold is None:
                 node.isLeafnode = True
-                node.impurity = self.probability_on_node(gt)
+                node.nodeclass = self.class_of_node(gt)
                 self.ratios.append(len(gt[np.where(gt == 1)]) / len(gt))
 
             # Find data using data splits indices.
@@ -133,8 +133,8 @@ class Tree:
             node.left.depth = node.depth + 1
 
             # Calculate impurity of node
-            node.right.impurity = self.probability_on_node(gt_splitted1)
-            node.left.impurity = self.probability_on_node(gt_splitted2)
+            node.right.nodeclass = self.class_of_node(gt_splitted1)
+            node.left.nodeclass = self.class_of_node(gt_splitted2)
 
             # Initialize right and left branch of tree, and pass in the respective Node objects.
             right = Tree(node.right)
@@ -167,7 +167,7 @@ class Tree:
         else:
             return False
 
-    def probability_on_node(self, gt):
+    def class_of_node(self, gt):
         """
         Method for deciding wheter node is classified as 0 or 1.
 
@@ -183,18 +183,38 @@ class Tree:
             return 0
 
     def find_best_split(self, data, groundtruth):
+        """
+        Method to find the best split index and threshold value in a trainingset.
+
+        --- Disclaimer ---
+        This is the most demanding process of this classifier, since the tree iterate over every row, then every value of each column. Then do it again for every split
+        ---            ---
+
+        Args:
+            param1: (np.ndarray), data
+            param2: (np.ndarray), ground ground truth
+        Returns:
+            (int, float), index of best split, threshold
+        """
+        # Array which stores the entropy of each row
         entropy_column = np.zeros_like(data[0])
         thresholds = []
 
+        # Loop over the columns of the data
         for index_outer, column in enumerate(data.T):
+            # Same as entropy_column, but for the values in the columns
             entropies = np.zeros_like(column)
 
+            # Elements which are zero and one of column
             column_C0 = column[np.where(groundtruth == 0)]
             column_C1 = column[np.where(groundtruth == 1)]
 
+            # Find min and max value of column
             max_value, min_value = np.max(column), np.min(column)
 
+            # Loop over values of rows
             for index_inner, split in enumerate(column):
+                # if a split is the max or min value, the total entropy is automatically set to 1 because all nodes at this point either are smaller or larger than max or min.
                 if split == max_value or split == min_value:
                     I_tot = 1
                 else:
@@ -210,9 +230,13 @@ class Tree:
                     # Total under the split
                     total_under_split = 1 - total_over_split
 
+                    # Calculate total impurity
                     I_tot = total_over_split * self.entropy(p_over_split_belongC0) + total_under_split * self.entropy(p_under_split_belongC0)
+
+                # Appending total entropies to list
                 entropies[index_inner] = I_tot
 
+            # Find best split, and threshold of the columns
             best_split_of_column = np.min(entropies)
             best_split_value = column[np.where(entropies == np.min(entropies))[0]]
 
@@ -222,8 +246,10 @@ class Tree:
             else:
                 thresholds.append(best_split_value)
 
+            # Appending total entropies to list
             entropy_column[index_outer] = best_split_of_column
 
+        # Do the same as above but for all nodes.
         best_overall_split = np.min(entropy_column)
         best_overall_split_index = np.where(entropy_column == best_overall_split)[0][0]
         thresholds = np.asarray(thresholds)
@@ -232,24 +258,54 @@ class Tree:
         return best_overall_split_index, best_overall_split_value
 
     def impurity(self, labels):
+        """
+        Method for calculating the impurity of given labels.
+
+        Args:
+            param1: (np.ndarray), labels, or ground truth
+        Returns:
+            (float), impurity
+        """
         p0 = len(labels[np.where(labels == 0)]) / len(labels)
+
+        # Because 0 * log( 0 ) =def= 0 check if p = 0 or 1
         if p0 == 0 or p0 == 1:
-            I = 1
+            I = 0
         else:
             I = - p0 * np.log2(p0) - (1 - p0) * np.log2(1 - p0)
         return I
 
     def predict(self, data):
+        """
+        Method for classifying data after Tree has been trained.
+
+        Args:
+            param1: (np.ndarray), testing data
+        Returns:
+            (np.ndarray), predicted 0's and 1's.
+        """
         predictions = []
         for row in data:
+            # This function takes the Tree object itself in, since this has stored all nodes, leafs, etc.
             prob = self.predict_sample(row, self.Tree)
             predictions.append(prob)
         return np.asarray(predictions)
 
     def predict_sample(self, row, node):
-        if node.isLeafnode or node.threshold is None:
-            return node.impurity
+        """
+        Method for predicting a particular sample. This method should not be called alone, but through the predict method.
 
+        Args:
+            param1: (np.ndarray), row from data
+            param2: (Node-object), particular node, first time called it is the main tree.
+        returns:
+            (int), Either 0 or 1, depending on classification.
+        """
+        # Check if particular node is a leaf node, or if the threshold does not exist.
+        if node.isLeafnode or node.threshold is None:
+            return node.nodeclass
+
+        # Recursively move down the tree until each leaf nodes prediction has been returned.
         if row[node.split_index] > node.threshold:
             prob = self.predict_sample(row, node.right)
         else:
@@ -259,7 +315,17 @@ class Tree:
     @staticmethod
     def split_data(data, groundtruth, index, threshold):
         """
-        Method for splitting the data!
+        Method for splitting the data.
+
+        This is a staticmethod, which means it does not have any self object tied to it althoug it is a method within a object.
+
+        Args:
+            param1: (np.ndarray), data to be splitted.
+            param2: (np.ndarray), ground truth
+            param3: (int), index of split
+            param4: (float), threshold at split
+        Returns:
+            (np.ndarray, np.ndarray, np.ndarray, np.ndarray), split1, split2, split1 ground truth, split2 ground truth.
         """
         index = int(index)
 
@@ -269,6 +335,7 @@ class Tree:
         # Loop through column to be splitted
         column_at_index = data.T[index]
         for i, val in enumerate(column_at_index):
+            # Check each value against threshold.
             if val > threshold:
                 split1.append(i)
                 split1_gt.append(groundtruth[i])
@@ -280,22 +347,45 @@ class Tree:
 
     @staticmethod
     def entropy(p_i):
+        """
+        Method for calculating the entropy.
+
+        This is a staticmethod, which means it does not have any self object tied to it althoug it is a method within a object.
+
+        Args:
+            param1: (float), probability
+        Returns:
+            (float), entropy
+        """
+        # Because 0 * log( 0 ) =def= 0 check if p = 0 or 1
         if p_i == 1 or p_i == 0:
             return 0
         else:
             return - p_i * np.log2(p_i) - (1 - p_i) * np.log2(1 - p_i)
 
-    def PrecisionMethod(self, classification, groundTruth):
+    def performance(self, classification, groundTruth):
+        """
+        Method for calculating performance measures of classifiers
+
+        Args:
+            param1: (np.ndarray), classified 0's and 1's.
+            param2: (np.ndarray), actual 0's and 1's.
+        Returns:
+            (np.ndarray, float), confusion matrix, accuracy of classifier.
+        """
+        # Gives index of which elements are 0 and 1.
         classified0 = np.where(classification == 0)
         classified1 = np.where(classification == 1)
         actual0 = np.where(groundTruth == 0)
         actual1 = np.where(groundTruth == 1)
+
+        # Send theese to the confusionMatrix method
         confmat = self.confusionMatrix(classified0, classified1, actual0, actual1)
         accuracy = (confmat[0][0] + confmat[1][1]) / np.sum(confmat).astype("float32")
         return confmat, accuracy
 
     def confusionMatrix(self, classified0, classified1, actual0, actual1):
-        # Note: this method has been copied from my own work in Portfolio Assignment 1
+        # Note: this method has been copied from my own work in Portfolio Assignment 1 and Problem 1.
         """
         Can be used with the performance method as a measure of how good the algorithm works.
         Args:
@@ -314,23 +404,32 @@ class Tree:
         return np.array([np.array([tp, fn]), np.array([fp, tn])])
 
     # -------- (2c) --------
-    def ROC(self, ratios, gt):
-        n = 101
-        print(ratios)
-        boundaries = np.linspace(0, 1, n)
-        classifications = []
-        for i, boundary in enumerate(boundaries):
-            classifications.append(np.where(ratios > boundary, 1, 0))
-        classifications = np.asarray(classifications)
+    def ROC(self, ratios, gt, n=101):
+        """
+        Method for plotting the ROC curve and calculating AUC score of this classifier.
 
+        Args:
+            param1: (np.ndarray), list of ratios fund by dividing ones by total rows in the fit method.
+            param2: (np.ndarray), ground truth
+            param3: (int), optional, standard as n = 101, number of steps.
+        """
+        # Array of boundaries
+        boundaries = np.linspace(0, 1, n)
         tprates = []
         fprates = []
-        for classification in classifications:
-            confmat, _ = self.PrecisionMethod(classification, gt)
+        for i, boundary in enumerate(boundaries):
+
+            # If ratios > boundary, return 1, else return 0 is what the line under does.
+            classification = np.where(ratios > boundary, 1, 0)
+
+            # Only interested in the confusion matrix
+            confmat, _ = self.performance(classification, gt)
             tp = confmat[0][0]
             fn = confmat[0][1]
             fp = confmat[1][0]
             tn = confmat[1][1]
+
+            # Calculate and append tp- and fprates.
             tprates.append(tp / (tp + fn))
             fprates.append(fp / (fp + tn))
         tprates = np.asarray(tprates)
@@ -339,7 +438,7 @@ class Tree:
         # my main plot with false postive rates on the first axis, and true positive rates on the second axis.
         mainplot = plt.plot(fprates, tprates, label="Decision Tree Classifier")
 
-        # The diagonal line, generally known as the x/y - line
+        # The diagonal line, generally known as the x = y - line
         xyLine = plt.plot(np.linspace(np.min(fprates), np.max(fprates), len(boundaries)), np.linspace(np.min(tprates), np.max(tprates), len(boundaries)), "--", label="x = y")
 
         # Using sklearn.metrics AUC method
@@ -352,14 +451,12 @@ class Tree:
         plt.legend(title="n = {} Step size of thresholds\nAUC = {:.3f}".format(n, AUC))
         plt.show()
 
-
 def main():
     seals = Tree()
     ratios = seals.fit(traindata, ground_truth)
-    print("training complete")
     classified = seals.predict(testdata)
-    confusionmat = seals.PrecisionMethod(classified, test_gt)
-    print(confusionmat)
+    confusionmat, accuracy = seals.performance(classified, test_gt)
+    print(confusionmat, accuracy)
     seals.ROC(ratios, test_gt)
 
 if __name__ == "__main__":
