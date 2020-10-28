@@ -1,7 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import os
+import sys
 from sklearn import metrics
+
+if sys.version_info[0] != 3:
+    print("This code might not be working properly because you are running python version {}, while a python 3 distribution is preferred!".format(sys.version))
 
 # Import and initialize the data
 dirname = os.path.dirname(__file__)
