@@ -68,7 +68,8 @@ class RegressionTree:
 
         if self.isLeaf(data, gt, node, bm):
             node.isLeafnode = True
-            print("i found a leaf bois")
+            print("i found a leaf")
+            return
         else:
             # split data
             # self.bm
@@ -80,7 +81,8 @@ class RegressionTree:
 
             if node.split is None or node.threshold is None:
                 node.isLeafnode = True
-                print("i found ze leaf")
+                print("i found a leaf")
+                return
 
             # Initialize left and right node
             node.right = Node()
@@ -88,10 +90,10 @@ class RegressionTree:
 
             bright = np.zeros_like(bm)
             bleft = np.zeros_like(bm)
+            print(bleft.shape, bright.shape)
 
             bright[rightdata] = 1
             bleft[leftdata] = 1
-            print(bright.shape)
 
             rightdata = data[rightdata]
             leftdata = data[leftdata]
@@ -101,9 +103,9 @@ class RegressionTree:
             node.left.depth = node.depth + 1
 
             # Calculate entropy of node
-            # node.right.b = self.b()
-            # node.left.b = self.b()
-            print("I came, she came, we came")
+            node.right.bm = bm
+            node.left.bm = bm
+            print("create branch")
 
             right = RegressionTree(node.right)
             left = RegressionTree(node.left)
@@ -134,17 +136,22 @@ class RegressionTree:
 
 
     def error(self, b, data, gt, gm):
-        N = np.sum(data * b)
+        N = np.sum(b)
         error = 1 / N * (np.sum((gt - gm) ** 2 * b)) / np.sum(b)
         return error
 
     def findsplit(self, data, gt, gm):
         splits = []
         thresholds = []
+        max = np.max(data)
+        min = np.min(data)
         for val in data:
-            possible_b = np.where(data <= val, 1, 0)
-            splits.append(self.error(possible_b, data, gt, gm))
-            thresholds.append(val)
+            if val == max or val == min:
+                thresholds.append(1)
+            else:
+                possible_b = np.where(data <= val, 1, 0)
+                splits.append(self.error(possible_b, data, gt, gm))
+                thresholds.append(val)
 
         lowest_error = np.min(splits)
         split_index = np.where(splits == lowest_error)[0][0]
@@ -158,14 +165,16 @@ class RegressionTree:
         split1gt, split2gt = [], []
 
         for i, val in enumerate(data):
-            if val < threshold:
+            if val <= threshold:
                 split1.append(i)
                 split1gt.append(gt[i])
+                split2gt.append(0)
             else:
                 split2.append(i)
                 split2gt.append(gt[i])
+                split1gt.append(0)
 
-        print(len(split1), len(split2))
+        print("here", len(split1), len(split2))
 
         return np.asarray(split1), np.asarray(split2), np.asarray(split1gt), np.asarray(split2gt)
 
