@@ -73,7 +73,7 @@ index_of_nan = np.round(np.asarray(np.where(np.isnan(flattened_censoredData))) /
 uncensored_nan_values = uncensoredData[index_of_nan]
 uncensored_nan_values = uncensored_nan_values[:, 1]
 
-# Mean Sqared Error between the ground truth and the estimator at the datapoints (rows).
+# Mean Sqared Error between the ground truth and the estimator at the datapoints.
 MSE_mean_estimator = np.mean((uncensored_nan_values - meanimputated[index_of_nan]) ** 2)
 
 MSE_median_estimator = np.mean((uncensored_nan_values - medianimputated[index_of_nan]) ** 2)
