@@ -57,7 +57,8 @@ class Tree:
         param3: (int), optional, standard set as 40
         param4: (int), optinal, standard set as 5
     """
-    def __init__(self, node=None, minimum_impurity=0.6, min_data_nodes=40, max_recursion_depth=5):
+    def __init__(self, node=None, minimum_impurity=0.6, min_data_nodes=40, max_recursion_depth=10):
+        # minimum_impurity=0.6, min_data_nodes=40, max_recursion_depth=5
         self.minimum_impurity = minimum_impurity
         self.min_data_nodes = min_data_nodes
         self.max_recursion_depth = max_recursion_depth
@@ -106,7 +107,7 @@ class Tree:
             node.nodeclass = self.class_of_node(gt)
 
             # Store ratio of zeros to ones at this leaf.
-            self.ratios.append(len(gt[np.where(gt == 1)]) / len(gt))
+            self.ratios.append(len(gt[np.where(gt == 0)]) / len(gt))
         else:
             # Find best split
             split_index, threshold = self.find_best_split(data, gt)
@@ -122,7 +123,9 @@ class Tree:
             if node.split_index is None or node.threshold is None:
                 node.isLeafnode = True
                 node.nodeclass = self.class_of_node(gt)
-                self.ratios.append(len(gt[np.where(gt == 1)]) / len(gt))
+
+                # Store ratio of zeros to ones at this leaf.
+                self.ratios.append(len(gt[np.where(gt == 0)]) / len(gt))
 
             # Find data using data splits indices.
             datasplit1 = data[data_splitted_indices1]
@@ -421,7 +424,8 @@ class Tree:
         boundaries = np.linspace(0, 1, n)
         tprates = []
         fprates = []
-        for i, boundary in enumerate(boundaries):
+
+        for boundary in boundaries:
 
             # If ratios > boundary, return 1, else return 0 is what the line under does.
             classification = np.where(ratios > boundary, 1, 0)
@@ -436,6 +440,7 @@ class Tree:
             # Calculate and append tp- and fprates.
             tprates.append(tp / (tp + fn))
             fprates.append(fp / (fp + tn))
+
         tprates = np.asarray(tprates)
         fprates = np.asarray(fprates)
 

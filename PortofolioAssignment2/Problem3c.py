@@ -47,13 +47,11 @@ class RegressionTree:
 
     Args:
         param1: (float) - optional, standard as 0.06, a float value such that 0 < tetha < 1
-        param2: (int) - optional, standard as 40, integer which specifies the minimum size of the b array
-        param3: (int) - optional, standard as 5, integer specifying how deep the tree is allowed to go.
-        param4: (Node-object) - Should not be set as anything!
+        param2: (int) - optional, standard as 5, integer specifying how deep the tree is allowed to go.
+        param3: (Node-object) - Should not be set as anything!
     """
-    def __init__(self, tetha = 0.06, min_data_size=40, max_recursion_depth=5, node=None):
+    def __init__(self, tetha = 0.06, max_recursion_depth=5, node=None):
         self.tetha = tetha
-        self.min_data_size = min_data_size
         self.max_recursion_depth = max_recursion_depth
 
         # Remember Tree is node through recursion.
@@ -125,8 +123,8 @@ class RegressionTree:
             node.left.bm = leftbm
 
             # Calculate the mean at
-            node.right.gm = self.calc_mean(data, rt, rightbm)
-            node.left.gm = self.calc_mean(data, rt, leftbm)
+            node.right.gm = self.calc_mean(rt, rightbm)
+            node.left.gm = self.calc_mean(rt, leftbm)
 
             # Initialize right and left branch of tree, and pass in the respective Node objects.
             right = RegressionTree(node = node.right)
@@ -154,19 +152,16 @@ class RegressionTree:
             return True
         elif self.error(bm, data, rt, gm) < self.tetha:
             return True
-        elif len(bm) < self.min_data_size:
-            return True
         else:
             return False
 
-    def calc_mean(self, data, rt, bm):
+    def calc_mean(self, rt, bm):
         """
         Method to calculate mean of node.
 
         Args:
-            param1: (np.ndarray) - first column which is should be correlated to param2.
-            param2: (np.ndarray) - rt, secound column, which will be learned.
-            param3: (np.ndarray) - Array of ones and zeros, one indicates that datapoint x has reached node m, 0 otherwize
+            param1: (np.ndarray) - rt, secound column, which will be learned.
+            param2: (np.ndarray) - Array of ones and zeros, one indicates that datapoint x has reached node m, 0 otherwise
         Returns:
             (float) - mean of set.
         """
@@ -189,9 +184,9 @@ class RegressionTree:
 
         # Ensure we dont have any division by 0
         if N == 0:
-            return 1
+            return 1000
         else:
-            return 1 / N * (np.sum((rt - gm) ** 2 * b)) / np.sum(b)
+            return 1 / N * (np.sum((rt - gm) ** 2 * b))
 
     def findsplit(self, data, rt, gm, node):
         """
@@ -219,7 +214,7 @@ class RegressionTree:
         for val in data:
             # Ensure the max and min values wont get the best error, since this would yield an empty b array
             if val == max or val == min:
-                splits.append(1)
+                splits.append(1000)
                 thresholds.append(val)
             else:
                 # Create array of possible splits.
