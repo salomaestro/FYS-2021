@@ -35,17 +35,11 @@ def imputationByRegression(df, actualdata, columnIndexOfNan, plot=False):
     x, y = model.least_squares()
 
     nanrows = regressiondata[index_of_nan]
-    nanrowsUncensored = actualdata[index_of_nan]
+    nanUncensored = actualdata[index_of_nan][:, 1]
 
     estimated_nan = model.w1 * nanrows[:, 0] + model.w0
-    estimated_rows = np.concatenate((nanrows[:, 0].reshape(1, len(nanrows)), estimated_nan.reshape(1, len(estimated_nan)))).T
 
-    last_column = data[:, minvalueind][index_of_nan]
-    last_column = last_column.reshape(len(last_column), 1)
-
-    estimated_rows = np.concatenate((estimated_rows.T, last_column.T)).T
-
-    MSE_regression_estimator = np.mean((nanrowsUncensored - estimated_rows) ** 2)
+    MSE_regression_estimator = np.mean((nanUncensored - estimated_nan) ** 2)
 
     if plot == True:
         plt.plot(x, y)
@@ -65,18 +59,26 @@ meanimputated = np.nan_to_num(censoredData, True, mean_column)
 medianimputated = np.nan_to_num(censoredData, True, median_column)
 maximputated = np.nan_to_num(censoredData, True, max_column)
 
+# Extract middle column
+meanimputated = meanimputated[:, 1]
+medianimputated = medianimputated[:, 1]
+maximputated = maximputated[:, 1]
+
 # Make the matrix of data collapse into a row containing all values along same axis.
 flattened_censoredData = censoredData.flatten()
 
 # Finds the index of what datapoint the nan value is located, in the flattened array, since this dataset only has nan values along the middle column, dividing the result by 3 then rounding and making sure index values are correct datatype will give correct index.
 index_of_nan = np.round(np.asarray(np.where(np.isnan(flattened_censoredData))) / 3)[0].astype("int64")
 
+uncensored_nan_values = uncensoredData[index_of_nan]
+uncensored_nan_values = uncensored_nan_values[:, 1]
+
 # Mean Sqared Error between the ground truth and the estimator at the datapoints (rows).
-MSE_mean_estimator = np.mean((uncensoredData[index_of_nan] - meanimputated[index_of_nan]) ** 2)
+MSE_mean_estimator = np.mean((uncensored_nan_values - meanimputated[index_of_nan]) ** 2)
 
-MSE_median_estimator = np.mean((uncensoredData[index_of_nan] - medianimputated[index_of_nan]) ** 2)
+MSE_median_estimator = np.mean((uncensored_nan_values - medianimputated[index_of_nan]) ** 2)
 
-MSE_max_estimator = np.mean((uncensoredData[index_of_nan] - maximputated[index_of_nan]) ** 2)
+MSE_max_estimator = np.mean((uncensored_nan_values - maximputated[index_of_nan]) ** 2)
 
 MSE_regression_estimator, pred_val = imputationByRegression(censoredData_df, uncensoredData, 1)
 
