@@ -22,7 +22,9 @@ def imputationByRegression(df, actualdata, columnIndexOfNan, plot=False):
         param1: (np.ndarray) - data, containing values and nan's.
         param2: (np.ndarray) - ground truth, to compare against
     """
-    corrmat = df.corr().to_numpy()
+    corrmat = df.corr()
+    print("correlation matrix:\n", corrmat)
+    corrmat = corrmat.to_numpy()
     minvalue = np.min(corrmat[:, columnIndexOfNan])
     minvalueind = np.where(corrmat[:, columnIndexOfNan] == minvalue)[0][0]
     data = df.to_numpy()
@@ -80,9 +82,9 @@ MSE_median_estimator = np.mean((uncensored_nan_values - medianimputated[index_of
 
 MSE_max_estimator = np.mean((uncensored_nan_values - maximputated[index_of_nan]) ** 2)
 
-MSE_regression_estimator, pred_val = imputationByRegression(censoredData_df, uncensoredData, 1)
 
 def main():
+    MSE_regression_estimator, pred_val = imputationByRegression(censoredData_df, uncensoredData, 1)
     print("The columns which hosted nan values is the middle column. Here we have the mean, median and max values:\nmean = {0}, \nmedian = {1}, \nmax = {2}\nMSE for mean estimator: {3}\nMSE for median estimator: {4}\nMSE for max estimator: {5} \nMSE for regression estimator: {6}.\n\nPredicted values for nan's are:\n {7}".format(mean_column[1], median_column[1], max_column[1], MSE_mean_estimator, MSE_median_estimator, MSE_max_estimator, MSE_regression_estimator, pred_val))
 
 

@@ -96,7 +96,6 @@ class RegressionTree:
         else:
             # Find the best split in the dataset
             threshold = self.findsplit(data, rt, gm, node)
-            print(threshold)
             # Assign nodes split index and threshold
             node.threshold = threshold
 
@@ -105,7 +104,7 @@ class RegressionTree:
                 node.isLeafnode = True
                 return
 
-            # Split the b array into right and left b arrays using the threshold found in findsplit function
+            # Split the b array into right and left b arrays using the threshold found in the findsplit function
             rightbm, leftbm = self.split(data, threshold)
 
             # Initialize left and right node

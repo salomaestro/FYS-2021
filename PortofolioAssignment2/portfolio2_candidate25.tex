@@ -151,11 +151,51 @@
       Also we need to set a maximum depth of a decisino tree. This is because the decision tree itself is prone to overfitting to data. In my implementation I have selected a maximum depth of 10. This means that the data can be splitted up to ten times, before it must declare a leaf node.\\
       For determening a threshold when splitting a node, I have used a very inefficient way which loop throught all columns (features), of the dataset. Then it iterates through every value in each of the columns. Last step is to calculate the entropy of the potential new splitted dataset, as if one of the values of the columns were the threshold of the split, then we just select the threshold which has the lowest total entropy of each value of each column, to split the data. Because we do this recursively this means we end up doing this for every new splitted dataset, until we can declare a leaf node.\\
       I have also implemented another way of declaring a leaf node. This just checks how many datapoints we have left on a branch. If this is smaller than a threshold, I have used 40 datapoints as this threshold, then we declare this node a leaf.\\
-      \\
       (kildehenvisning)
-      I have also created another object called a node. The node object keeps track of important information on each node, 
+      I have also created another object called a node. The node object keeps track of important information on each node, things like threshold values, the depth of the node and if the node is a leaf node or not to name a few.
     \subsection*{(2c)}
+      From our predictions we can find the amount of zeros, relative to the amount of elements at a leaf node, by dividing the amount of zeros over the total amount of elements. We know theese have been classified as either ones or zeros. If we take this relation, we can iterate over small values between zero and one, calling this a new threshold, classifying a proportion of the elements at this node if they are either larger or smaller than the threshold value. From this we can construct a ROC curve, since we varied the threshold between 0 and 1.\\
+      \begin{figure}[H]
+        \caption{}
+        \centering
+        \includegraphics[scale=0.8]{ROCDT}
+      \end{figure}\\
+      Here i also included the AUC score, which clocked in at AUC $\approx 0.833$.\\
+      If we compare this to the logistic discrimination classifier we see that the decision tree had a bit better accuracy, at $\approx 0.892$, over the other method which had an accuracy of $\approx 0.878$. While the logisitc discrimination classifier has a better AUC score, of $\approx 0.930$, while the decision tree had $\approx 0.833$.
   \section*{Problem 3}
     \subsection*{(3a)}
-      3a
+      In this task I am handling missing data. I have looked at data which contained \textit{NaN} values, which is a acronym for \textit{Not a Number}. The task looks into how to replace theese missing values with values which wont affect the total outcome of the data, if we wanted to use it for something.\\
+      First off I were given a dataset containig three columns, and a bunch of rows. The middle column contained theese missing values. The first task is to estimate what theese could be using three different methods. Doing this by finding the mean, median and maximum value of the column.\\
+      \begin{align*}
+        &\text{Mean} \approx -0.0394\\
+        &\text{Median} \approx -0.085\\
+        &\text{max} = 9.34\\
+      \end{align*}
+      I then inserted theese values where the dataset contained missing values.\\
+      Then I compared this with the values given in the uncensored data file, which contained the actual values of the dataset. Then to check the accuracy of the estimators mean, median and maximum value, I calculated the MSE, short for mean squared error, of each of the imputated values.
+      \begin{align*}
+        &\text{MSE for mean estimator} \approx 14.056\\
+        &\text{MSE for median estimator} \approx 13.988\\
+        &\text{MSE for maximum estimator} \approx 117.18\\
+      \end{align*}
+      This means the median estimator had the lowest error, and is the best approximation of the missing values.
+    \subsection*{(3b)}
+      For this task I shall do the same as in the last task, but where instead of using mean, median and maximum as our estimator, I instead use linear regression to estimate the \textit{NaN} values.\\
+      First off I need a independent and dependent variable, which should have some correlation between them. This can be thought of as if they have a strong correlation, they are somewhat proportional with each other.\\
+      Clearly the dependent variable will be the column, which is missing values. Because it is theese we are trying to estimate. For the independent variable however using a correlation matrix will give us an idea of which column would fit our description. By using a built-in Python library called Pandas we can find the correlation matrix.\\
+      \[
+      \begin{bmatrix}
+        1&            0.707&     0.004&\\
+        0.707&           1&     -0.011&\\
+        0.004&      -0.011&        1&  \\
+      \end{bmatrix}
+      \]
+      From this we see that in column number 2 we have the dependent variable. The first element of this column is the largest value. This is the correlation between column 1 and column 2. So we choose column 1 as our independent variable.\\
+      \\
+      Now using this result we can train a linear regression model to predict the missing values. I chose to use the regression model we created in Portfolio Assignment 1, as my model.\\
+      From trainig the model of course predicted different values for each independent variable value. Testing this against the actual values we had from earlier i got the mean squared error to be:\\
+      MSE for regression estimator $\approx 6.842$. Which is a large improvement over even the best estimator I previously used.
+    \subsection*{(3c)}
+      In this task we will again predict using a tree model. This tree is called a regression tree, because of the impurity measure used, which is the mean in a splitted dataset. After creating this tree algorithm i got a mean squared error of:\\
+      MSE for regression tree estimator $\approx 12.410$. This means the linear regression method gave the best approximation, then the regression tree, the median estimator, the mean estimator and the maximum estimator gave the worst prediction of the missing values.
 \end{document}

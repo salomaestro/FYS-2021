@@ -153,6 +153,9 @@ INPUT ./bilder/decisionboundary_2a.png
 INPUT ./bilder/DescisionTree.png
 INPUT ./bilder/DescisionTree.png
 INPUT ./bilder/DescisionTree.png
+INPUT ./bilder/ROCDT.png
+INPUT ./bilder/ROCDT.png
+INPUT ./bilder/ROCDT.png
 INPUT portfolio2_candidate25.aux
 INPUT c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb

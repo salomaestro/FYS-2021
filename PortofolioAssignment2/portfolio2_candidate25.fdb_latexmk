@@ -1,7 +1,8 @@
 # Fdb version 3
-["pdflatex"] 1604003736 "portfolio2_candidate25.tex" "portfolio2_candidate25.pdf" "portfolio2_candidate25" 1604003736
+["pdflatex"] 1604008142 "portfolio2_candidate25.tex" "portfolio2_candidate25.pdf" "portfolio2_candidate25" 1604008141
   "bilder/DescisionTree.png" 1603362981 22594 382ec169ab9d96ea6cd92c3ebd63111b ""
   "bilder/ROC.png" 1603362981 34530 556ec1cd972fabe88b4a72895dd88fca ""
+  "bilder/ROCDT.png" 1603997967 32773 48db295af82a9c154e5ac1b0e1bbe063 ""
   "bilder/corr1.png" 1603362981 30298 888cda63ea39c787aaf189a38e1d5060 ""
   "bilder/corr2.png" 1603362981 30923 b009c31cb9db05fc4bf7e33bdfd1c5fc ""
   "bilder/corr3.png" 1603362981 30476 8c63d296f6759e784b618ba5096b86ac ""
@@ -85,9 +86,9 @@
   "c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1600093811 5058289 eeaee0d78bc67376d4a05921ed7ba0c6 ""
   "c:/texlive/2020/texmf-var/web2c/pdftex/pdflatex.fmt" 1600093950 2444765 7780aa0fb020d305c43e07fbb9a295cd ""
   "c:/texlive/2020/texmf.cnf" 1600093760 673 4ae7b2f49cee444c5343a45b5d0f169c ""
-  "portfolio2_candidate25.aux" 1604003370 954 ae0c1506ee0c50c504444ff198dc2f0d "pdflatex"
-  "portfolio2_candidate25.tex" 1604003735 10945 19bf48f1c13c008a5c40cd332517e4ae ""
+  "portfolio2_candidate25.aux" 1604008048 1055 144afce56565366b04d96988f24cc2d9 "pdflatex"
+  "portfolio2_candidate25.tex" 1604008141 15911 8f99b143439eb3aa51a8d463c3730791 ""
   (generated)
   "portfolio2_candidate25.log"
-  "portfolio2_candidate25.pdf"
   "portfolio2_candidate25.aux"
+  "portfolio2_candidate25.pdf"
