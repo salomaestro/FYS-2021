@@ -23,8 +23,7 @@ class Node:
         self.right = None
         self.left = None
 
-        # Assigned when findsplit function is called. This is the index and threshold which made this a node.
-        self.split = None
+        # Assigned when findsplit function is called. This is the threshold which made this a node.
         self.threshold = None
 
         # Mean at node
@@ -50,7 +49,7 @@ class RegressionTree:
         param2: (int) - optional, standard as 5, integer specifying how deep the tree is allowed to go.
         param3: (Node-object) - Should not be set as anything!
     """
-    def __init__(self, tetha = 0.06, max_recursion_depth=5, node=None):
+    def __init__(self, tetha = 0.06, max_recursion_depth=3, node=None):
         self.tetha = tetha
         self.max_recursion_depth = max_recursion_depth
 
@@ -96,19 +95,18 @@ class RegressionTree:
             return
         else:
             # Find the best split in the dataset
-            threshold, split_index = self.findsplit(data, rt, gm, node)
-
+            threshold = self.findsplit(data, rt, gm, node)
+            print(threshold)
             # Assign nodes split index and threshold
-            node.split = split_index
             node.threshold = threshold
 
             # Declare leaf node if any of theese are still None
-            if node.split is None or node.threshold is None:
+            if node.threshold is None:
                 node.isLeafnode = True
                 return
 
             # Split the b array into right and left b arrays using the threshold found in findsplit function
-            rightbm, leftbm = self.split(data, rt, threshold, node)
+            rightbm, leftbm = self.split(data, threshold)
 
             # Initialize left and right node
             node.right = Node()
@@ -233,17 +231,15 @@ class RegressionTree:
         # Find at which threshold that split index is
         threshold = thresholds[split_index]
 
-        return threshold, split_index
+        return threshold
 
-    def split(self, data, rt, threshold, node):
+    def split(self, data, threshold):
         """
         Method to split b array, such that one is the inverse of the other, i.e where there are ones in the right split, there are zeros in the left split.
 
         Args:
             param1: (np.ndarray) - first column which is should be correlated to param2.
-            param2: (np.ndarray) - rt, secound column, which will be learned.
-            param3: (float) - threshold calculated in findsplit method.
-            param4: (Node-object) - current node.
+            param2: (float) - threshold calculated in findsplit method.
         Returns:
             (np.ndarray, np.ndarray) - (b array right, b array left), splitted b arrays
         """

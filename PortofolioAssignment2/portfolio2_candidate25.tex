@@ -80,9 +80,10 @@
         \centering
         \includegraphics[width=14cm]{ROC}
       \end{figure}\\
-      The ROC curve represents\\
+      The ROC curve represents the models performance at different classification tresholds. This means that by varying the treshold of where a previously classified class one would be classified as a one to a threshold where it instead would be classified as a zero. In other words, we can use an iterative approach, using values between 0 and 1, to see how the classifications change. The ROC then simply is the true positive rate against the false positive rate over all thresholds between 0 and 1.\\
+      The AUC on the other hand, is the area under the ROC curve, which also is a number between 0 and 1, where a AUC score of 1 means the model has all predictions correct, while AUC of 0 means all predictions are incorrect.\\
 
-      \noindent For the Area Under the Curve score i got AUC $ \approx \underline{0.930}$ by using \textit{sklearn.metrics} built-in function for calculating the AUC score.
+      For the Area Under the Curve score i got AUC $ \approx \underline{0.930}$ by using \textit{sklearn.metrics} built-in function for calculating the AUC score.
     \subsection*{(1d)}
       For this task I have created a function which classifies seal images corresponding to a given index, called \textit{show\_image}. Furthermore I use this function to show 5 random images which I know my classifier correctly classified in task (1b), and 5 random images I know are incorrectly classified.
       \begin{figure}[H]
@@ -132,10 +133,28 @@
           \end{array}
         \right]
       \]
-      This means that, \\
+      This means that we can assume a decision rule,\\
       IF: $x_1^t < 1.5$, THEN $\mbf{x}^t \rightarrow y^t = 0$\\
       IF: $x_1^t \geq$ AND $x_2^t < 1.5$ THEN $y^t = 0$\\
-      IF: $x_1^t \geq$ AND $x_2^t \geq 1.5$ THEN $y^t = 1$
+      IF: $x_1^t \geq$ AND $x_2^t \geq 1.5$ THEN $y^t = 1$\\
+    \subsection*{(2b)}
+      In this task I have implemented a object oriented decision tree. The way this decision tree works, is by splitting the data into smaller and smaller pieces. To decide where to split the data we introduce a impurity measure: In this case I used entropy, and total entropy. This simply is a measure of uncertainty within our splitted datasets.\\ \\
+      From the decision tree i got the confusion matrix,
+      \[
+        \text{confusion matrix} =
+        \begin{bmatrix}
+          92 & 10  & \\
+          13 & 98 & \\
+        \end{bmatrix}
+        \text{, and accuracy} \approx \underline{0.892}
+      \]\\
+      Also we need to set a maximum depth of a decisino tree. This is because the decision tree itself is prone to overfitting to data. In my implementation I have selected a maximum depth of 10. This means that the data can be splitted up to ten times, before it must declare a leaf node.\\
+      For determening a threshold when splitting a node, I have used a very inefficient way which loop throught all columns (features), of the dataset. Then it iterates through every value in each of the columns. Last step is to calculate the entropy of the potential new splitted dataset, as if one of the values of the columns were the threshold of the split, then we just select the threshold which has the lowest total entropy of each value of each column, to split the data. Because we do this recursively this means we end up doing this for every new splitted dataset, until we can declare a leaf node.\\
+      I have also implemented another way of declaring a leaf node. This just checks how many datapoints we have left on a branch. If this is smaller than a threshold, I have used 40 datapoints as this threshold, then we declare this node a leaf.\\
+      \\
+      (kildehenvisning)
+      I have also created another object called a node. The node object keeps track of important information on each node, 
+    \subsection*{(2c)}
   \section*{Problem 3}
     \subsection*{(3a)}
       3a

@@ -1,12 +1,12 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.9.14)  21 OCT 2020 15:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.9.14)  29 OCT 2020 21:35
 entering extended mode
- \write18 enabled.
+ restricted \write18 enabled.
  %&-line parsing enabled.
 **portfolio2_candidate25.tex
 (./portfolio2_candidate25.tex
 LaTeX2e <2020-02-02> patch level 5
-L3 programming layer <2020-09-06> (c:/texlive/2020/texmf-dist/tex/latex/base/ar
-ticle.cls
+L3 programming layer <2020-09-06>
+(c:/texlive/2020/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
 (c:/texlive/2020/texmf-dist/tex/latex/base/size12.clo
 File: size12.clo 2019/12/20 v1.4l Standard LaTeX file (size option)
@@ -22,17 +22,22 @@ File: size12.clo 2019/12/20 v1.4l Standard LaTeX file (size option)
 \abovecaptionskip=\skip47
 \belowcaptionskip=\skip48
 \bibindent=\dimen134
-) (c:/texlive/2020/texmf-dist/tex/latex/base/inputenc.sty
+)
+(c:/texlive/2020/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2018/08/11 v1.3c Input encoding file
 \inpenc@prehook=\toks15
 \inpenc@posthook=\toks16
-) (c:/texlive/2020/texmf-dist/tex/latex/geometry/geometry.sty
+)
+(c:/texlive/2020/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
+
 (c:/texlive/2020/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks17
-) (c:/texlive/2020/texmf-dist/tex/generic/iftex/ifvtex.sty
+)
+(c:/texlive/2020/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+
 (c:/texlive/2020/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2020/03/06 v1.0d TeX engine tests
 ))
@@ -48,20 +53,25 @@ Package: iftex 2020/03/06 v1.0d TeX engine tests
 \Gm@layouthoffset=\dimen141
 \Gm@layoutvoffset=\dimen142
 \Gm@dimlist=\toks18
-) (c:/texlive/2020/texmf-dist/tex/latex/amsmath/amsmath.sty
+)
+(c:/texlive/2020/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2020/01/20 v2.17e AMS math features
 \@mathmargin=\skip49
+
 For additional information on amsmath, use the `?' option.
 (c:/texlive/2020/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01 AMS text
+
 (c:/texlive/2020/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks19
 \ex@=\dimen143
-)) (c:/texlive/2020/texmf-dist/tex/latex/amsmath/amsbsy.sty
+))
+(c:/texlive/2020/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen144
-) (c:/texlive/2020/texmf-dist/tex/latex/amsmath/amsopn.sty
+)
+(c:/texlive/2020/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
 \inf@bad=\count179
@@ -101,8 +111,10 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 734.
 \mathdisplay@stack=\toks23
 LaTeX Info: Redefining \[ on input line 2859.
 LaTeX Info: Redefining \] on input line 2860.
-) (c:/texlive/2020/texmf-dist/tex/latex/amsfonts/amssymb.sty
+)
+(c:/texlive/2020/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
 (c:/texlive/2020/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
@@ -110,24 +122,31 @@ Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-)) (c:/texlive/2020/texmf-dist/tex/latex/graphics/graphicx.sty
+))
+(c:/texlive/2020/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
+
 (c:/texlive/2020/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2019/11/30 v1.4a Standard LaTeX Graphics (DPC,SPQR)
+
 (c:/texlive/2020/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
-) (c:/texlive/2020/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+)
+(c:/texlive/2020/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 105.
+
 (c:/texlive/2020/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2020/08/26 v1.2 Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen152
 \Gin@req@width=\dimen153
-) (c:/texlive/2020/texmf-dist/tex/latex/cancel/cancel.sty
+)
+(c:/texlive/2020/texmf-dist/tex/latex/cancel/cancel.sty
 Package: cancel 2013/04/12 v2.2 Cancel math terms
-) (c:/texlive/2020/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+)
+(c:/texlive/2020/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 Package: fancyhdr 2019/01/31 v3.10 Extensive control of page headers and footer
 s
 \f@nch@headwidth=\skip52
@@ -139,18 +158,21 @@ s
 \f@nch@O@erf=\skip58
 \f@nch@O@olf=\skip59
 \f@nch@O@orf=\skip60
-) (c:/texlive/2020/texmf-dist/tex/latex/float/float.sty
+)
+(c:/texlive/2020/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count191
 \float@exts=\toks24
 \float@box=\box47
 \@float@everytoks=\toks25
 \@floatcapt=\box48
-) (c:/texlive/2020/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+)
+(c:/texlive/2020/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2020-09-11 L3 backend support: PDF output (pdfTeX)
 \l__kernel_color_stack_int=\count192
 \l__pdf_internal_box=\box49
-) (./portfolio2_candidate25.aux)
+)
+(./portfolio2_candidate25.aux)
 \openout1 = `portfolio2_candidate25.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
@@ -167,6 +189,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
 LaTeX Font Info:    ... okay on input line 24.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
 LaTeX Font Info:    ... okay on input line 24.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -218,21 +241,25 @@ LaTeX Font Info:    ... okay on input line 24.
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 85.
+
 (c:/texlive/2020/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 LaTeX Font Info:    Trying to load font information for U+msa on input line 25.
 
+
 (c:/texlive/2020/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Trying to load font information for U+msb on input line 25.
 
+
 (c:/texlive/2020/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 <./bilder/decisionboundary_1a.png, id=1, 790.45313pt x 451.6875pt>
+
 ! Undefined control sequence.
 \Gin@@eheight ...ght -\the \textundbildtextheight 
                                                   
@@ -295,6 +322,7 @@ File: ./bilder/ROC.png Graphic file (type png)
 Package pdftex.def Info: ./bilder/ROC.png  used on input line 81.
 (pdftex.def)             Requested size: 398.33858pt x 298.76936pt.
 
+
 ! LaTeX Error: There's no line here to end.
 
 See the LaTeX manual or LaTeX Companion for explanation.
@@ -302,40 +330,41 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.83       T
-            he ROC curve represents\\
+            he ROC curve represents the models performance at different clas...
+
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 83--84
+Underfull \hbox (badness 10000) in paragraph at lines 83--85
 
  []
 
 <./bilder/corr1.png, id=24, 462.528pt x 346.896pt>
 File: ./bilder/corr1.png Graphic file (type png)
 <use ./bilder/corr1.png>
-Package pdftex.def Info: ./bilder/corr1.png  used on input line 91.
+Package pdftex.def Info: ./bilder/corr1.png  used on input line 92.
 (pdftex.def)             Requested size: 227.62204pt x 170.71628pt.
 <./bilder/corr2.png, id=25, 462.528pt x 346.896pt>
 File: ./bilder/corr2.png Graphic file (type png)
 <use ./bilder/corr2.png>
-Package pdftex.def Info: ./bilder/corr2.png  used on input line 92.
+Package pdftex.def Info: ./bilder/corr2.png  used on input line 93.
 (pdftex.def)             Requested size: 227.62204pt x 170.71628pt.
 <./bilder/corr3.png, id=26, 462.528pt x 346.896pt>
 File: ./bilder/corr3.png Graphic file (type png)
 <use ./bilder/corr3.png>
-Package pdftex.def Info: ./bilder/corr3.png  used on input line 93.
+Package pdftex.def Info: ./bilder/corr3.png  used on input line 94.
 (pdftex.def)             Requested size: 227.62204pt x 170.71628pt.
 <./bilder/corr4.png, id=27, 462.528pt x 346.896pt>
 File: ./bilder/corr4.png Graphic file (type png)
 <use ./bilder/corr4.png>
-Package pdftex.def Info: ./bilder/corr4.png  used on input line 94.
+Package pdftex.def Info: ./bilder/corr4.png  used on input line 95.
 (pdftex.def)             Requested size: 227.62204pt x 170.71628pt.
 <./bilder/corr5.png, id=28, 462.528pt x 346.896pt>
 File: ./bilder/corr5.png Graphic file (type png)
 <use ./bilder/corr5.png>
-Package pdftex.def Info: ./bilder/corr5.png  used on input line 95.
+Package pdftex.def Info: ./bilder/corr5.png  used on input line 96.
 (pdftex.def)             Requested size: 227.62204pt x 170.71628pt.
 
 ! LaTeX Error: There's no line here to end.
@@ -344,7 +373,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.97       \begin
+l.98       \begin
                  {figure}[H]
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -353,27 +382,27 @@ or  <return>  to continue without it.
 <./bilder/notcorr6.png, id=29, 462.528pt x 346.896pt>
 File: ./bilder/notcorr6.png Graphic file (type png)
 <use ./bilder/notcorr6.png>
-Package pdftex.def Info: ./bilder/notcorr6.png  used on input line 100.
+Package pdftex.def Info: ./bilder/notcorr6.png  used on input line 101.
 (pdftex.def)             Requested size: 227.62204pt x 170.71628pt.
 <./bilder/notcorr7.png, id=30, 462.528pt x 346.896pt>
 File: ./bilder/notcorr7.png Graphic file (type png)
 <use ./bilder/notcorr7.png>
-Package pdftex.def Info: ./bilder/notcorr7.png  used on input line 101.
+Package pdftex.def Info: ./bilder/notcorr7.png  used on input line 102.
 (pdftex.def)             Requested size: 227.62204pt x 170.71628pt.
 <./bilder/notcorr8.png, id=31, 462.528pt x 346.896pt>
 File: ./bilder/notcorr8.png Graphic file (type png)
 <use ./bilder/notcorr8.png>
-Package pdftex.def Info: ./bilder/notcorr8.png  used on input line 102.
+Package pdftex.def Info: ./bilder/notcorr8.png  used on input line 103.
 (pdftex.def)             Requested size: 227.62204pt x 170.71628pt.
 <./bilder/notcorr9.png, id=32, 462.528pt x 346.896pt>
 File: ./bilder/notcorr9.png Graphic file (type png)
 <use ./bilder/notcorr9.png>
-Package pdftex.def Info: ./bilder/notcorr9.png  used on input line 103.
+Package pdftex.def Info: ./bilder/notcorr9.png  used on input line 104.
 (pdftex.def)             Requested size: 227.62204pt x 170.71628pt.
 <./bilder/notcorr10.png, id=33, 462.528pt x 346.896pt>
 File: ./bilder/notcorr10.png Graphic file (type png)
 <use ./bilder/notcorr10.png>
-Package pdftex.def Info: ./bilder/notcorr10.png  used on input line 104.
+Package pdftex.def Info: ./bilder/notcorr10.png  used on input line 105.
 (pdftex.def)             Requested size: 227.62204pt x 170.71628pt.
 [3 <./bilder/ROC.png>]
 
@@ -383,7 +412,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.106       \noindent
+l.107       \noindent
                       In Figure 3. the pictures are of either \textit{Harp s...
 
 Your command was ignored.
@@ -392,7 +421,7 @@ or  <return>  to continue without it.
 
 [4 <./bilder/corr1.png> <./bilder/corr2.png> <./bilder/corr3.png> <./bilder/cor
 r4.png> <./bilder/corr5.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 106--112
+Underfull \hbox (badness 10000) in paragraph at lines 107--113
 
  []
 
@@ -402,8 +431,9 @@ ilder/notcorr9.png> <./bilder/notcorr10.png>]
 File: ./bilder/decisionboundary_2a.png Graphic file (type png)
 <use ./bilder/decisionboundary_2a.png>
 Package pdftex.def Info: ./bilder/decisionboundary_2a.png  used on input line 1
-17.
+18.
 (pdftex.def)             Requested size: 391.46153pt x 240.89941pt.
+
 
 ! LaTeX Error: There's no line here to end.
 
@@ -411,7 +441,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.119       T
+l.120       T
              his plot illustrates the two decision boundaries needed to clas...
 
 Your command was ignored.
@@ -421,10 +451,10 @@ or  <return>  to continue without it.
 <./bilder/DescisionTree.png, id=55, 672.26157pt x 414.79968pt>
 File: ./bilder/DescisionTree.png Graphic file (type png)
 <use ./bilder/DescisionTree.png>
-Package pdftex.def Info: ./bilder/DescisionTree.png  used on input line 123.
+Package pdftex.def Info: ./bilder/DescisionTree.png  used on input line 124.
 (pdftex.def)             Requested size: 403.36005pt x 248.88173pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 119--124
+Underfull \hbox (badness 10000) in paragraph at lines 120--125
 
  []
 
@@ -435,15 +465,29 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.125       \noindent
+l.126       \noindent
                       From this decision tree we see that we can create a IF...
 
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-[6 <./bilder/decisionboundary_2a.png>] [7 <./bilder/DescisionTree.png>] (./port
-folio2_candidate25.aux) ) 
+[6 <./bilder/decisionboundary_2a.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 135--140
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 141--143
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 150--157
+
+ []
+
+[7 <./bilder/DescisionTree.png>] [8] (./portfolio2_candidate25.aux) ) 
 Here is how much of TeX's memory you used:
  3179 strings out of 480876
  42451 string characters out of 5911487
@@ -452,20 +496,21 @@ Here is how much of TeX's memory you used:
  547266 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  36i,14n,45p,783b,244s stack positions out of 5000i,500n,10000p,200000b,80000s
-<c:/texlive/2020/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmbx12.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx
-8.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:
-/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/
-2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2020/texmf
--dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><c:/texlive/2020/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2020/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr6.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmr8.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cms
-y10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on portfolio2_candidate25.pdf (7 pages, 417389 bytes).
+<c:/texliv
+e/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2020/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb><c:/texlive/2020/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2020/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmmi8.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmmib10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.
+pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/tex
+live/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2020/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2020/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on portfolio2_candidate25.pdf (8 pages, 420690 bytes).
 PDF statistics:
- 101 PDF objects out of 1000 (max. 8388607)
- 52 compressed objects within 1 object stream
+ 104 PDF objects out of 1000 (max. 8388607)
+ 54 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  71 words of extra memory for PDF output out of 10000 (max. 10000000)
 
