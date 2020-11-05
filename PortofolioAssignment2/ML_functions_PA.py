@@ -1,6 +1,8 @@
 import numpy as np
 import math
 
+# Candidate 25
+
 def power_iteration(matrix, i):
 	"""
 	Iterates like the power iteration method to converge on the stationary probabilities of the transitionmatrix
