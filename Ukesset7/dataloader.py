@@ -7,4 +7,7 @@ def load_data(*filenames, delimiter=" "):
     for filename in filenames:
         filename_joined = os.path.join(dirname, str(filename))
         data.append(np.genfromtxt(filename_joined, delimiter=delimiter))
-    return data
+    if len(data) == 1:
+        return np.asarray(data[0])
+    else:
+        return np.asarray(data)

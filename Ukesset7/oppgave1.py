@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import os
 from dataloader import load_data
 
-blobsdata, flamedata = load_data("blobs.csv", "flame.csv")
+blobsdata, flamedata, optdigits = load_data("blobs.csv", "flame.csv", "optdigits.csv")
 
 np.random.shuffle(blobsdata)
 np.random.shuffle(flamedata)
@@ -14,6 +14,8 @@ blobsdata = blobsdata
 # Unsupervised algorithm, so no ground truth!
 blobsdata = np.delete(blobsdata, 0, axis=1)
 flamedata = np.delete(flamedata, 0, axis=1)
+optdigits_labels = optdigits[:, 0]
+optdigits = np.delete(optdigits, 0, axis=1)
 
 class Cluster:
     def __init__(self, data):
@@ -23,7 +25,9 @@ class Cluster:
         # np.random.seed(10)
 
         # Set prototype cluster coordinate as random vectors between max and min of input data
-        self.prototypes = np.random.uniform(np.min(self.data), np.max(self.data), size=(n_clusters, 2))
+        # self.prototypes = np.random.uniform(np.min(self.data), np.max(self.data), size=(n_clusters, self.data.shape[1]))
+        prototypesIndices = np.random.choice(len(self.data), n_clusters)
+        self.prototypes = self.data[prototypesIndices]
 
         last_prototype = 0
 
@@ -43,13 +47,6 @@ class Cluster:
 
                 # assign this to keep track of what prototype fits best.
                 b[i][shortest] = 1
-
-            print(b)
-
-            # This checks wheter there is a column of b's which are assigned no datapoints. If so, recursively reduce number of clusters and fit again.
-            if np.any(np.all((b == 0), axis=0)):
-                print("One useless cluster, automatically reduce number of clusters by one! reduces to:", n_clusters - 1, "clusters")
-                return self.fit(n_clusters - 1)
 
             cluster_mean = [np.mean(self.data[np.where(b[:, i] == 1)], axis=0) for i in range(b.shape[1])]
 
@@ -74,10 +71,13 @@ def main():
     blob = Cluster(blobsdata)
     resblobs, _ = blob.fit(2)
     flames = Cluster(flamedata)
-    resflames, _ = flames.fit(10)
-    # print(resflames)
+    resflames, _ = flames.fit(3)
 
     plot(resblobs, resflames)
+
+    opt = Cluster(optdigits)
+    digits, _ = opt.fit(4)
+    print(digits)
 
 if __name__ == "__main__":
     main()
