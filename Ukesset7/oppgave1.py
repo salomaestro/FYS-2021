@@ -44,6 +44,8 @@ class Cluster:
                 # assign this to keep track of what prototype fits best.
                 b[i][shortest] = 1
 
+            print(b)
+
             # This checks wheter there is a column of b's which are assigned no datapoints. If so, recursively reduce number of clusters and fit again.
             if np.any(np.all((b == 0), axis=0)):
                 print("One useless cluster, automatically reduce number of clusters by one! reduces to:", n_clusters - 1, "clusters")
