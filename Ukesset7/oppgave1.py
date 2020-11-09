@@ -35,7 +35,7 @@ class Cluster:
 
             last_prototype = self.prototypes
 
-            b = np.zeros((self.data.shape[0], self.prototypes.shape[0]))
+            self.b = np.zeros((self.data.shape[0], self.prototypes.shape[0]))
 
             for i, vec in enumerate(self.data):
 
@@ -46,13 +46,19 @@ class Cluster:
                 shortest = np.where(distances == np.min(distances))
 
                 # assign this to keep track of what prototype fits best.
-                b[i][shortest] = 1
+                self.b[i][shortest] = 1
 
-            cluster_mean = [np.mean(self.data[np.where(b[:, i] == 1)], axis=0) for i in range(b.shape[1])]
+            cluster_mean = [np.mean(self.data[np.where(self.b[:, i] == 1)], axis=0) for i in range(self.b.shape[1])]
 
             self.prototypes = np.asarray(cluster_mean)
 
-        return self.prototypes, n_clusters
+        return self.prototypes
+
+    def predict(self):
+        """
+        Method for predicting what theese are...
+        """
+        classifications = 
 
 def plot(blobclusters, flameclusters):
     fig, axs = plt.subplots(2, sharex=False, sharey=False)
@@ -69,15 +75,16 @@ def plot(blobclusters, flameclusters):
 
 def main():
     blob = Cluster(blobsdata)
-    resblobs, _ = blob.fit(2)
+    resblobs = blob.fit(2)
     flames = Cluster(flamedata)
-    resflames, _ = flames.fit(3)
+    resflames = flames.fit(3)
 
-    plot(resblobs, resflames)
+    #plot(resblobs, resflames)
 
     opt = Cluster(optdigits)
-    digits, _ = opt.fit(4)
-    print(digits)
+    digits = opt.fit(10)
+    opt.predict()
+
 
 if __name__ == "__main__":
     main()
