@@ -24,8 +24,7 @@ class Cluster:
     def fit(self, n_clusters=2):
         # np.random.seed(10)
 
-        # Set prototype cluster coordinate as random vectors between max and min of input data
-        # self.prototypes = np.random.uniform(np.min(self.data), np.max(self.data), size=(n_clusters, self.data.shape[1]))
+        # Set prototype cluster coordinate as random vectors from the original dataset, with specified amount of clusters.
         prototypesIndices = np.random.choice(len(self.data), n_clusters)
         self.prototypes = self.data[prototypesIndices]
 
@@ -36,6 +35,7 @@ class Cluster:
             last_prototype = self.prototypes
 
             self.b = np.zeros((self.data.shape[0], self.prototypes.shape[0]))
+            self.predictions = np.zeros(self.data.shape[0])
 
             for i, vec in enumerate(self.data):
 
@@ -43,47 +43,54 @@ class Cluster:
                 distances = (np.sum(self.prototypes - vec, axis=1) ** 2) ** 0.5
 
                 # find shortest distance
-                shortest = np.where(distances == np.min(distances))
+                shortest = np.where(distances == np.min(distances))[0][0]
 
                 # assign this to keep track of what prototype fits best.
                 self.b[i][shortest] = 1
+                # print(self.predictions[i][shortest])
+                self.predictions[i] = shortest
 
             cluster_mean = [np.mean(self.data[np.where(self.b[:, i] == 1)], axis=0) for i in range(self.b.shape[1])]
 
             self.prototypes = np.asarray(cluster_mean)
+            self.predictions = np.asarray(self.predictions)
 
-        return self.prototypes
+        return self.prototypes, self.predictions
 
-    def predict(self):
-        """
-        Method for predicting what theese are...
-        """
-        classifications = 
 
 def plot(blobclusters, flameclusters):
     fig, axs = plt.subplots(2, sharex=False, sharey=False)
-    topplot = axs[0].scatter(blobsdata[:, 1], blobsdata[:, 0], label="datapoints", s=10)
-    topplot = axs[0].scatter(blobclusters[:, 1], blobclusters[:, 0], label="clusters", s=50)
+    topplot = axs[0].scatter(blobsdata[:, 0], blobsdata[:, 1], label="datapoints", s=10)
+    topplot = axs[0].scatter(blobclusters[:, 0], blobclusters[:, 1], label="clusters", s=50)
     axs[0].legend()
     axs[0].set_title("Blobsdata")
-    bottomplot = axs[1].scatter(flamedata[:, 1], flamedata[:, 0], label="datapoints", s=10)
-    bottomplot = axs[1].scatter(flameclusters[:, 1], flameclusters[:, 0], label="clusters", s=50)
+    bottomplot = axs[1].scatter(flamedata[:, 0], flamedata[:, 1], label="datapoints", s=10)
+    bottomplot = axs[1].scatter(flameclusters[:, 0], flameclusters[:, 1], label="clusters", s=50)
     axs[1].legend()
     axs[1].set_title("Flamedata")
     fig.tight_layout()
     plt.show()
 
+def rescale(digs):
+    vecs = []
+    for vec in digs:
+        vecs.append(np.reshape(vec, (8, 8)))
+    print(np.asarray(vecs))
+    # digits = np.reshape(digs, (1, 8, 8))
+
+
 def main():
     blob = Cluster(blobsdata)
-    resblobs = blob.fit(2)
+    resblobs, blobsclass = blob.fit(2)
     flames = Cluster(flamedata)
-    resflames = flames.fit(3)
+    resflames, flamesclass = flames.fit(2)
 
-    #plot(resblobs, resflames)
+    # plot(resblobs, resflames)
 
     opt = Cluster(optdigits)
-    digits = opt.fit(10)
-    opt.predict()
+    digits, _ = opt.fit(10)
+    print(digits, _)
+    rescale(digits)
 
 
 if __name__ == "__main__":
