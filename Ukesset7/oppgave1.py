@@ -22,7 +22,7 @@ class Cluster:
         self.data = data
 
     def fit(self, n_clusters=2):
-        # np.random.seed(10)
+        # np.random.seed(11) # seed 11 was a problematic seed.
 
         # Set prototype cluster coordinate as random vectors from the original dataset, with specified amount of clusters.
         prototypesIndices = np.random.choice(len(self.data), n_clusters)
@@ -40,16 +40,26 @@ class Cluster:
             for i, vec in enumerate(self.data):
 
                 # caluclate distances between each coordinate and possible cluster coordinate
-                distances = (np.sum(self.prototypes - vec, axis=1) ** 2) ** 0.5
+
+                # using what might be a "cheatsy" way to avoid having two distances being equal, since this messes up the indices where i define shortest distance variable.. what is done is subtracting a tiny nudge of +- 1E-4 to each element of the vector.
+                distances = (np.sum(self.prototypes - vec - np.random.uniform(-1E-4, 1E-4, size=self.prototypes.shape), axis=1) ** 2) ** 0.5
+
+                # Remove this to show teacher: - np.random.uniform(-1E-4, 1E-4, size=self.prototypes.shape)
 
                 # find shortest distance
                 shortest = np.where(distances == np.min(distances))[0][0]
+
+                # print(shortest)
+                # print(distances)
+                # if isinstance(shortest, np.ndarray):
+                #     shortest = shortest[0]
 
                 # assign this to keep track of what prototype fits best.
                 self.b[i][shortest] = 1
                 # print(self.predictions[i][shortest])
                 self.predictions[i] = shortest
 
+            # Calculates the mean of the datapoints assigned to a cluster. Good luck understanding this...
             cluster_mean = [np.mean(self.data[np.where(self.b[:, i] == 1)], axis=0) for i in range(self.b.shape[1])]
 
             self.prototypes = np.asarray(cluster_mean)
@@ -71,13 +81,45 @@ def plot(blobclusters, flameclusters):
     fig.tight_layout()
     plt.show()
 
-def rescale(digs):
-    vecs = []
-    for vec in digs:
-        vecs.append(np.reshape(vec, (8, 8)))
-    print(np.asarray(vecs))
-    # digits = np.reshape(digs, (1, 8, 8))
+# def rescale(digs):
+#     image, axs = plt.subplots(len(digs) + 1)
+#
+#     # Choose random
+#     plt.set_cmap("gray")
+#     image = axs[0].imshow(np.reshape(optdigits[np.random.choice(len(optdigits))], (8, 8)))
+#     axs[0].axis("off")
+#     for i, vec in enumerate(digs, start=1):
+#         image = axs[i].imshow(np.reshape(vec, (8, 8)))
+#         axs[i].axis("off")
+#
+#     image.axes.get_xaxis().set_visible(False)
+#     image.axes.get_yaxis().set_visible(False)
+#     plt.show()
 
+def rescale(digs):
+    n = len(digs) // 2
+    fig, axs = plt.subplots(nrows=3, ncols=n, sharex=True, sharey=True, figsize=(10, 6))
+
+    axs[0, n // 2].set_title("Images of clusters and random reference images from the optdigits file, using {} clusters".format(len(digs)))
+    reference = np.random.choice(len(optdigits), size=n)
+    references = optdigits[reference]
+
+    rownames = ["{}".format(row) for row in ["Reference\n(random images)", "Centroid", "Centroid"]]
+
+    for i, vec in enumerate(references):
+        fig = axs[0, i].imshow(np.reshape(vec, (8, 8)))
+
+    for i, vec in enumerate(digs):
+        if i < n:
+            fig = axs[1, i].imshow(np.reshape(vec, (8, 8)))
+        else:
+            i -= n
+            fig = axs[2, i].imshow(np.reshape(vec, (8, 8)))
+
+    for ax, row in zip(axs[:, 0], rownames):
+        ax.set_ylabel(row, size="large")
+
+    plt.show()
 
 def main():
     blob = Cluster(blobsdata)
@@ -88,8 +130,8 @@ def main():
     # plot(resblobs, resflames)
 
     opt = Cluster(optdigits)
-    digits, _ = opt.fit(10)
-    print(digits, _)
+    digits, _ = opt.fit(14)
+    # print(digits, _)
     rescale(digits)
 
 
