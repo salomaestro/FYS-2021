@@ -49,11 +49,6 @@ class Cluster:
                 # find shortest distance
                 shortest = np.where(distances == np.min(distances))[0][0]
 
-                # print(shortest)
-                # print(distances)
-                # if isinstance(shortest, np.ndarray):
-                #     shortest = shortest[0]
-
                 # assign this to keep track of what prototype fits best.
                 self.b[i][shortest] = 1
                 # print(self.predictions[i][shortest])
