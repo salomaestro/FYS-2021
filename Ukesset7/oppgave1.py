@@ -81,21 +81,6 @@ def plot(blobclusters, flameclusters):
     fig.tight_layout()
     plt.show()
 
-# def rescale(digs):
-#     image, axs = plt.subplots(len(digs) + 1)
-#
-#     # Choose random
-#     plt.set_cmap("gray")
-#     image = axs[0].imshow(np.reshape(optdigits[np.random.choice(len(optdigits))], (8, 8)))
-#     axs[0].axis("off")
-#     for i, vec in enumerate(digs, start=1):
-#         image = axs[i].imshow(np.reshape(vec, (8, 8)))
-#         axs[i].axis("off")
-#
-#     image.axes.get_xaxis().set_visible(False)
-#     image.axes.get_yaxis().set_visible(False)
-#     plt.show()
-
 def rescale(digs):
     n = len(digs) // 2
     fig, axs = plt.subplots(nrows=3, ncols=n, sharex=True, sharey=True, figsize=(10, 6))
@@ -127,10 +112,10 @@ def main():
     flames = Cluster(flamedata)
     resflames, flamesclass = flames.fit(2)
 
-    # plot(resblobs, resflames)
+    plot(resblobs, resflames)
 
     opt = Cluster(optdigits)
-    digits, _ = opt.fit(14)
+    digits, _ = opt.fit(10)
     # print(digits, _)
     rescale(digits)
 
