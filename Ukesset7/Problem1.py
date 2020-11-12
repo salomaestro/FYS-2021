@@ -30,13 +30,12 @@ class LogisticDiscrimination:
         # Init training data
         self.traindata = np.delete(trainingData, 0, axis=1)
         self.traindata = np.insert(self.traindata, 0, np.ones_like(self.gt), axis=1)
+
+        # Normalize training data
         self.traindata = self.traindata / np.linalg.norm(self.traindata)
 
         # Init weights
         self.w = np.random.uniform(-0.01, 0.01, size=(self.traindata.shape[1]))
-
-        # Init derivatives, as array of same shape as weights, but as an random number between -10 and 10
-        Dj = np.ones_like(self.w) * np.random.uniform(-10, 10)
 
         self.has_been_trained = False
         self.test_has_been_called = False
