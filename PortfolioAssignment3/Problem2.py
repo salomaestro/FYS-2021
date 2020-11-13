@@ -22,23 +22,28 @@ class Cluster:
 
             self.b = np.zeros((self.data.shape[0], self.prototypes.shape[0]))
             self.predictions = np.zeros(self.data.shape[0])
+            self.edgecases = []
 
             for i, vec in enumerate(self.data):
 
                 # caluclate distances between each coordinate and possible cluster coordinate
 
                 # using what might be a "cheatsy" way to avoid having two distances being equal, since this messes up the indices where i define shortest distance variable.. what is done is subtracting a tiny nudge of +- 1E-4 to each element of the vector.
-                distances = (np.sum(self.prototypes - vec - np.random.uniform(-1E-4, 1E-4, size=self.prototypes.shape), axis=1) ** 2) ** 0.5
+                distances = (np.sum(self.prototypes - vec, axis=1) ** 2) ** 0.5
 
-                # Remove this to show teacher: - np.random.uniform(-1E-4, 1E-4, size=self.prototypes.shape)
+                # distances = distances - np.random.uniform(-1E-4, 1E-4, size=distances.shape)
 
                 # find shortest distance
-                shortest = np.where(distances == np.min(distances))[0][0]
+                shortest = np.where(distances == np.min(distances))[0]
+                if len(shortest) > 1:
+                    self.edgecases.append(i)
+                    shortest = shortest[0]
 
                 # assign this to keep track of what prototype fits best.
                 self.b[i][shortest] = 1
                 # print(self.predictions[i][shortest])
                 self.predictions[i] = shortest
+
 
             # Calculates the mean of the datapoints assigned to a cluster. Good luck understanding this...
             cluster_mean = [np.mean(self.data[np.where(self.b[:, i] == 1)], axis=0) for i in range(self.b.shape[1])]
@@ -46,10 +51,12 @@ class Cluster:
             self.prototypes = np.asarray(cluster_mean)
             self.predictions = np.asarray(self.predictions)
 
+        print(self.edgecases)
+
         return self.prototypes, self.predictions
 
 def rescale(vecs, original_data):
-    reshapeto = (20, 28)
+    reshapeto = (28, 20)
     if len(vecs) == 2:
         fig, axs = plt.subplots(nrows=1, ncols=3, sharey=True, figsize=(10, 6))
         reference = np.random.choice(len(original_data), size=1)
@@ -89,6 +96,7 @@ def rescale(vecs, original_data):
                 i -= n
                 axs[2, i].imshow(np.reshape(vec, reshapeto))
 
+        # adds descriptive row names
         for ax, row in zip(axs, rownames):
             ax[n // 2].set_xlabel(row, size="large")
         fig.tight_layout()
@@ -98,6 +106,7 @@ def main():
     start_time = time.time()
     frey = Cluster(frey_faces_data)
     frey_face, _ = frey.fit(2)
+
     print("Used {:.4f} seconds".format(time.time() - start_time))
     rescale(frey_face, frey_faces_data)
 
