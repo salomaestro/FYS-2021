@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from dataloader import load_data
 import time
 
-def init_data():
+def get_data():
     data = load_data("frey-faces.csv")
     return data
 
@@ -51,14 +51,13 @@ def K_means(data, n=2):
             # caluclate distances between each coordinate and possible cluster coordinate.
             distances = (np.sum(prototypes - vec, axis=1) ** 2) ** 0.5
 
-            # Finds the images that lay on the border between two clusters. i have used a threshold to check this of 2, such that if the difference in distance between two vectors are less than two, declare border-incident.
-            for dist in distances:
-                # elementwise compare each distance to list of distances. There will always be at least one which is true, therefore check when the length is greater than 1.
-                if len(distances[np.abs(distances - dist) < 2]) > 1:
-                    edgecases.append(i)
+            # Finds the images that lay on the border between two clusters. i have used a threshold to check this of 7, such that if the difference in distance between two vectors are less than seven, declare border-incident.
+            border = np.argsort(distances)
+            if abs(distances[border[0]] - distances[border[1]]) < 7:
+                edgecases.append(i)
 
             # find shortest distance
-            shortest = np.argsort(distances)[0]
+            shortest = border[0]
 
             # assign this to keep track of what prototype fits best.
             b[i][shortest] = 1
@@ -72,8 +71,8 @@ def K_means(data, n=2):
         predictions = np.asarray(predictions)
         closest_to_each_cluster = np.argsort(closest_to_cluster, axis=0)[0]
 
-    # This array originally will produce two indices which are equal at all times. So use np.unique to only
-    edgecases = np.unique(np.asarray(edgecases))
+    edgecases = np.asarray(edgecases)
+
     return prototypes, predictions, edgecases, closest_to_each_cluster
 
 def rescale(vecs, original_data, edgecase, closest):
@@ -129,36 +128,31 @@ def rescale(vecs, original_data, edgecase, closest):
     plt.show()
 
     # Plotting the border cases!
-    if len(edgecase) != 0:
-        if len(edgecase) > 1:
-            if len(edgecase) > 8:
-                # if we have more than 6, choose six random.
-                edgecaseind = np.random.choice(len(edgecase), 8)
-                edgecase = edgecase[edgecaseind]
-            n = len(edgecase) // 2
-            fig, axs = plt.subplots(nrows=2, ncols = n, figsize=figsize)
+    ednum = len(edgecase)
+    if ednum != 0:
+        if ednum > 5:
+            # To not make the plot too large i at max only include 5 images.
+            edgeind = np.random.choice(len(edgecase), size=5)
+            edgecase = edgecase[edgeind]
+        fig, axs = plt.subplots(ncols=len(edgecase), figsize=figsize)
 
-            for i, edge in enumerate(edgecase):
-                if i < n:
-                    axs[0, i].imshow(np.reshape(original_data[edge], newshape), cmap=cmap)
-                    axs[0, i].set_axis_off()
-                else:
-                    i -= n
-                    axs[1, i].imshow(np.reshape(original_data[edge], newshape), cmap=cmap)
-                    axs[1, i].set_axis_off()
-
-            fig.suptitle("For {} clusters, we have the border cases where\ntheese images lay on the border between two clusters.".format(len(vecs)), size=14)
+        if ednum != 1:
+            for edge, ax in zip(edgecase, axs):
+                ax.imshow(np.reshape(original_data[edge], newshape), cmap=cmap)
+                ax.set_axis_off()
         else:
-            fig, ax = plt.subplots(1, figsize=figsize)
-            ax.imshow(np.reshape(original_data[edgecase], newshape), cmap=cmap)
-            ax.set_axis_off()
-            fig.suptitle("For {} clusters, we have the border cases where\nthis image lay on the border between two clusters.".format(len(vecs)), size=14)
+            # For the event where there is only one border incident.
+            axs.imshow(np.reshape(original_data[edgecase], newshape), cmap=cmap)
+            axs.set_axis_off()
 
+        fig.suptitle("For {} clusters there are {} bordercase(s).".format(len(vecs), ednum), size=18)
         fig.tight_layout()
         plt.show()
 
 def main():
-    frey_faces_data = init_data()
+    # To recreate the results i presented in my paper use the seed 69420.
+    # np.random.seed(69420)
+    frey_faces_data = get_data()
 
     K = [2, 4, 10]
 
