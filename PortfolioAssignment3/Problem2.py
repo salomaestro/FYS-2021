@@ -1,7 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from dataloader import load_data
-import time
 
 def get_data():
     data = load_data("frey-faces.csv")
