@@ -149,8 +149,8 @@ def rescale(vecs, original_data, edgecase, closest):
         plt.show()
 
 def main():
-    # To recreate the results i presented in my paper use the seed 69420.
-    # np.random.seed(69420)
+    # To recreate the results i presented in my paper use the seed 42069, you can remove the "#" before the next line of code to get theese results!
+    # np.random.seed(42069)
     frey_faces_data = get_data()
 
     K = [2, 4, 10]
