@@ -153,6 +153,7 @@ def main():
     # np.random.seed(42069)
     frey_faces_data = get_data()
 
+    # how many clusters we´ll use.
     K = [2, 4, 10]
 
     for k in K:
