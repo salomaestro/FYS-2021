@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1605730109 "portfolio2_candidate25.tex" "portfolio2_candidate25.pdf" "portfolio2_candidate25" 1605730111
+["pdflatex"] 1605810829 "portfolio2_candidate25.tex" "portfolio2_candidate25.pdf" "portfolio2_candidate25" 1605810936
   "bilder/Swedishcities.png" 1605535685 122053 553577bc69aca8260776c84586e048e6 ""
   "bilder/Swedishmap.jpg" 1605535685 934883 d433cf1382bb21830855c30ecb1311a2 ""
   "bilder/border10.png" 1605729117 23293 a1f9cf165c29b441496ef022d5902817 ""
@@ -68,9 +68,9 @@
   "c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1600093811 5058289 eeaee0d78bc67376d4a05921ed7ba0c6 ""
   "c:/texlive/2020/texmf-var/web2c/pdftex/pdflatex.fmt" 1600093950 2444765 7780aa0fb020d305c43e07fbb9a295cd ""
   "c:/texlive/2020/texmf.cnf" 1600093760 673 4ae7b2f49cee444c5343a45b5d0f169c ""
-  "portfolio2_candidate25.aux" 1605730111 679 a96c0508a43bdc8fc9b8d41a40d6f0e1 "pdflatex"
-  "portfolio2_candidate25.tex" 1605730107 8560 102fbd2264b52c857c55123788850f25 ""
+  "portfolio2_candidate25.aux" 1605810831 679 c2d67411c422c2056c5e3968fcac2173 "pdflatex"
+  "portfolio2_candidate25.tex" 1605810829 8904 0f1ce0cec78aab6bf31923fbac16d502 ""
   (generated)
+  "portfolio2_candidate25.pdf"
   "portfolio2_candidate25.aux"
   "portfolio2_candidate25.log"
-  "portfolio2_candidate25.pdf"
