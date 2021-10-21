@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.9.14)  18 NOV 2020 21:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.9.14)  19 NOV 2020 19:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -263,27 +263,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 28--29
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 30--31
+Underfull \hbox (badness 10000) in paragraph at lines 30--33
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 32--33
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 34--35
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 36--37
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 46--48
+Underfull \hbox (badness 10000) in paragraph at lines 43--45
 
  []
 
@@ -293,15 +278,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 46--48
 <./bilder/Swedishcities.png, id=13, 462.528pt x 346.896pt>
 File: ./bilder/Swedishcities.png Graphic file (type png)
 <use ./bilder/Swedishcities.png>
-Package pdftex.def Info: ./bilder/Swedishcities.png  used on input line 52.
+Package pdftex.def Info: ./bilder/Swedishcities.png  used on input line 49.
 (pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
 <./bilder/Swedishmap.jpg, id=15, 2850.65pt x 1318.9275pt>
 File: ./bilder/Swedishmap.jpg Graphic file (type jpg)
 <use ./bilder/Swedishmap.jpg>
-Package pdftex.def Info: ./bilder/Swedishmap.jpg  used on input line 53.
+Package pdftex.def Info: ./bilder/Swedishmap.jpg  used on input line 50.
 (pdftex.def)             Requested size: 285.0817pt x 131.90047pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 55--57
+Underfull \hbox (badness 10000) in paragraph at lines 52--54
 
  []
 
@@ -309,62 +294,63 @@ Underfull \hbox (badness 10000) in paragraph at lines 55--57
 <./bilder/exampleplot.png, id=20, 462.528pt x 346.896pt>
 File: ./bilder/exampleplot.png Graphic file (type png)
 <use ./bilder/exampleplot.png>
-Package pdftex.def Info: ./bilder/exampleplot.png  used on input line 66.
+Package pdftex.def Info: ./bilder/exampleplot.png  used on input line 63.
 (pdftex.def)             Requested size: 319.14465pt x 239.35849pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 59--67
+Underfull \hbox (badness 10000) in paragraph at lines 56--64
 
  []
 
-[3 <./bilder/exampleplot.png>]
-<./bilder/cluster2.png, id=25, 722.7pt x 433.62pt>
+[3]
+<./bilder/cluster2.png, id=24, 722.7pt x 433.62pt>
 File: ./bilder/cluster2.png Graphic file (type png)
 <use ./bilder/cluster2.png>
-Package pdftex.def Info: ./bilder/cluster2.png  used on input line 74.
+Package pdftex.def Info: ./bilder/cluster2.png  used on input line 71.
 (pdftex.def)             Requested size: 505.88655pt x 303.53192pt.
-<./bilder/border2.png, id=26, 722.7pt x 433.62pt>
+<./bilder/border2.png, id=25, 722.7pt x 433.62pt>
 File: ./bilder/border2.png Graphic file (type png)
 <use ./bilder/border2.png>
-Package pdftex.def Info: ./bilder/border2.png  used on input line 75.
+Package pdftex.def Info: ./bilder/border2.png  used on input line 72.
 (pdftex.def)             Requested size: 289.07487pt x 173.44492pt.
 
-Overfull \hbox (5.40256pt too wide) in paragraph at lines 74--76
+Overfull \hbox (5.40256pt too wide) in paragraph at lines 71--73
  [][] 
  []
 
-<./bilder/cluster4.png, id=27, 722.7pt x 433.62pt>
+<./bilder/cluster4.png, id=26, 722.7pt x 433.62pt>
 File: ./bilder/cluster4.png Graphic file (type png)
 <use ./bilder/cluster4.png>
-Package pdftex.def Info: ./bilder/cluster4.png  used on input line 80.
+Package pdftex.def Info: ./bilder/cluster4.png  used on input line 77.
 (pdftex.def)             Requested size: 505.88655pt x 303.53192pt.
-<./bilder/border4.png, id=28, 722.7pt x 433.62pt>
+<./bilder/border4.png, id=27, 722.7pt x 433.62pt>
 File: ./bilder/border4.png Graphic file (type png)
 <use ./bilder/border4.png>
-Package pdftex.def Info: ./bilder/border4.png  used on input line 81.
+Package pdftex.def Info: ./bilder/border4.png  used on input line 78.
 (pdftex.def)             Requested size: 289.07487pt x 173.44492pt.
 
-Overfull \hbox (5.40256pt too wide) in paragraph at lines 80--82
+Overfull \hbox (5.40256pt too wide) in paragraph at lines 77--79
  [][] 
  []
 
-<./bilder/cluster10.png, id=29, 722.7pt x 433.62pt>
+[4 <./bilder/exampleplot.png>]
+<./bilder/cluster10.png, id=32, 722.7pt x 433.62pt>
 File: ./bilder/cluster10.png Graphic file (type png)
 <use ./bilder/cluster10.png>
-Package pdftex.def Info: ./bilder/cluster10.png  used on input line 86.
+Package pdftex.def Info: ./bilder/cluster10.png  used on input line 83.
 (pdftex.def)             Requested size: 505.88655pt x 303.53192pt.
-<./bilder/border10.png, id=30, 722.7pt x 433.62pt>
+<./bilder/border10.png, id=33, 722.7pt x 433.62pt>
 File: ./bilder/border10.png Graphic file (type png)
 <use ./bilder/border10.png>
-Package pdftex.def Info: ./bilder/border10.png  used on input line 87.
+Package pdftex.def Info: ./bilder/border10.png  used on input line 84.
 (pdftex.def)             Requested size: 289.07487pt x 173.44492pt.
 
-Overfull \hbox (5.40256pt too wide) in paragraph at lines 86--88
+Overfull \hbox (5.40256pt too wide) in paragraph at lines 83--85
  [][] 
  []
 
-[4 <./bilder/cluster2.png> <./bilder/border2.png>] [5 <./bilder/cluster4.png> <
-./bilder/border4.png>] [6 <./bilder/cluster10.png> <./bilder/border10.png>]
-[7] (./portfolio2_candidate25.aux) ) 
+[5 <./bilder/cluster2.png> <./bilder/border2.png>] [6 <./bilder/cluster4.png> <
+./bilder/border4.png>] [7 <./bilder/cluster10.png> <./bilder/border10.png>]
+[8] (./portfolio2_candidate25.aux) ) 
 Here is how much of TeX's memory you used:
  3126 strings out of 480876
  41560 string characters out of 5911487
@@ -372,7 +358,7 @@ Here is how much of TeX's memory you used:
  18727 multiletter control sequences out of 15000+600000
  544497 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,10n,45p,550b,233s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,10n,45p,552b,233s stack positions out of 5000i,500n,10000p,200000b,80000s
 <c:/texlive/2020/texmf-dist/fonts/type1/pub
 lic/amsfonts/cm/cmbx12.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfo
 nts/cm/cmmi12.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cm
@@ -380,10 +366,10 @@ mi8.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c
 :/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2
 020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2020/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on portfolio2_candidate25.pdf (7 pages, 1283837 bytes).
+Output written on portfolio2_candidate25.pdf (8 pages, 1286172 bytes).
 PDF statistics:
- 74 PDF objects out of 1000 (max. 8388607)
- 40 compressed objects within 1 object stream
+ 77 PDF objects out of 1000 (max. 8388607)
+ 42 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  46 words of extra memory for PDF output out of 10000 (max. 10000000)
 

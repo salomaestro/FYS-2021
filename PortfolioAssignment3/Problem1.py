@@ -29,6 +29,7 @@ def multidimensional_scaling(data, dimensions):
     ev = eigenvals_n_vecs[0][wanted_eigenvals]
     evec = eigenvals_n_vecs[1][:, wanted_eigenvals]
 
+    # Use the result to find Z matrix
     Lambda = np.identity(len(ev)) * ev
     Z = np.matmul(evec, Lambda ** 0.5)
     return Z
